@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		31C376131787EF5000F814B8 /* ControlPanelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 31C376121787EF5000F814B8 /* ControlPanelViewController.m */; };
+		31C376161787EFD100F814B8 /* SettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 31C376151787EFD100F814B8 /* SettingCell.m */; };
 		31C5E6F3178779AE00AB361D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31C5E6F2178779AE00AB361D /* Foundation.framework */; };
 		31C5E6F5178779AE00AB361D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31C5E6F4178779AE00AB361D /* CoreGraphics.framework */; };
 		31C5E6F7178779AE00AB361D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31C5E6F6178779AE00AB361D /* UIKit.framework */; };
@@ -25,6 +27,8 @@
 		31C5E72C17877BBA00AB361D /* UIColor+my_projectColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 31C5E72B17877BBA00AB361D /* UIColor+my_projectColors.m */; };
 		31C5E72F17877F8700AB361D /* StrutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 31C5E72E17877F8700AB361D /* StrutView.m */; };
 		31C5E7321787881000AB361D /* Anchor.m in Sources */ = {isa = PBXBuildFile; fileRef = 31C5E7311787881000AB361D /* Anchor.m */; };
+		31D3E2D81787F85400C7E666 /* Setting.m in Sources */ = {isa = PBXBuildFile; fileRef = 31D3E2D71787F85400C7E666 /* Setting.m */; };
+		31D3E2DB1788016C00C7E666 /* UIView+Rob_FindAncestor.m in Sources */ = {isa = PBXBuildFile; fileRef = 31D3E2DA1788016C00C7E666 /* UIView+Rob_FindAncestor.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +42,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		31C376111787EF5000F814B8 /* ControlPanelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControlPanelViewController.h; sourceTree = "<group>"; };
+		31C376121787EF5000F814B8 /* ControlPanelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ControlPanelViewController.m; sourceTree = "<group>"; };
+		31C376141787EFD100F814B8 /* SettingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingCell.h; sourceTree = "<group>"; };
+		31C376151787EFD100F814B8 /* SettingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingCell.m; sourceTree = "<group>"; };
 		31C5E6EF178779AE00AB361D /* Cocoa Coder 1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Cocoa Coder 1.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		31C5E6F2178779AE00AB361D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		31C5E6F4178779AE00AB361D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -66,6 +74,10 @@
 		31C5E7301787881000AB361D /* Anchor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Anchor.h; sourceTree = "<group>"; };
 		31C5E7311787881000AB361D /* Anchor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Anchor.m; sourceTree = "<group>"; };
 		31C5E7331787DC2F00AB361D /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		31D3E2D61787F85400C7E666 /* Setting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Setting.h; sourceTree = "<group>"; };
+		31D3E2D71787F85400C7E666 /* Setting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Setting.m; sourceTree = "<group>"; };
+		31D3E2D91788016C00C7E666 /* UIView+Rob_FindAncestor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Rob_FindAncestor.h"; sourceTree = "<group>"; };
+		31D3E2DA1788016C00C7E666 /* UIView+Rob_FindAncestor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Rob_FindAncestor.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +153,14 @@
 				31C5E72E17877F8700AB361D /* StrutView.m */,
 				31C5E7301787881000AB361D /* Anchor.h */,
 				31C5E7311787881000AB361D /* Anchor.m */,
+				31C376111787EF5000F814B8 /* ControlPanelViewController.h */,
+				31C376121787EF5000F814B8 /* ControlPanelViewController.m */,
+				31C376141787EFD100F814B8 /* SettingCell.h */,
+				31C376151787EFD100F814B8 /* SettingCell.m */,
+				31D3E2D61787F85400C7E666 /* Setting.h */,
+				31D3E2D71787F85400C7E666 /* Setting.m */,
+				31D3E2D91788016C00C7E666 /* UIView+Rob_FindAncestor.h */,
+				31D3E2DA1788016C00C7E666 /* UIView+Rob_FindAncestor.m */,
 			);
 			path = "Cocoa Coder 1";
 			sourceTree = "<group>";
@@ -274,10 +294,14 @@
 				31C5E709178779AE00AB361D /* LayoutDemoViewController.m in Sources */,
 				31C5E72F17877F8700AB361D /* StrutView.m in Sources */,
 				31C5E72917877AF900AB361D /* LayoutDemoView.m in Sources */,
+				31C376161787EFD100F814B8 /* SettingCell.m in Sources */,
 				31C5E72C17877BBA00AB361D /* UIColor+my_projectColors.m in Sources */,
 				31C5E703178779AE00AB361D /* AppDelegate.m in Sources */,
+				31D3E2DB1788016C00C7E666 /* UIView+Rob_FindAncestor.m in Sources */,
 				31C5E7321787881000AB361D /* Anchor.m in Sources */,
 				31C5E6FF178779AE00AB361D /* main.m in Sources */,
+				31D3E2D81787F85400C7E666 /* Setting.m in Sources */,
+				31C376131787EF5000F814B8 /* ControlPanelViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -484,6 +508,7 @@
 				31C5E723178779AE00AB361D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		31C5E724178779AE00AB361D /* Build configuration list for PBXNativeTarget "Cocoa Coder 1Tests" */ = {
 			isa = XCConfigurationList;
@@ -492,6 +517,7 @@
 				31C5E726178779AE00AB361D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
