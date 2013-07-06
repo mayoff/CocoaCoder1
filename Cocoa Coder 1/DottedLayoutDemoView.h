@@ -5,10 +5,8 @@ Copyright (c) 2013 Rob Mayoff. All rights reserved.
 
 #import <UIKit/UIKit.h>
 
-@class Setting;
+@interface DottedLayoutDemoView : UIView
 
-@interface SettingCell : UITableViewCell
-
-@property (nonatomic, weak) Setting *setting;
+- (id)initWithOriginalView:(UIView *)theOriginalView;
 
 @end

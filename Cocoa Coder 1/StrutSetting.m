@@ -3,9 +3,9 @@ Created by Rob Mayoff on 7/6/13.
 Copyright (c) 2013 Rob Mayoff. All rights reserved.
 */
 
-#import "Setting.h"
+#import "StrutSetting.h"
 
-@implementation Setting
+@implementation StrutSetting
 
 - (instancetype)initWithName:(NSString *)name strutView:(StrutView *)strutView {
     if (!(self = [super init]))

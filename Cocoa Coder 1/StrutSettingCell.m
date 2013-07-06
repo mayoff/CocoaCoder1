@@ -3,23 +3,23 @@ Created by Rob Mayoff on 7/6/13.
 Copyright (c) 2013 Rob Mayoff. All rights reserved.
 */
 
-#import "SettingCell.h"
-#import "Setting.h"
+#import "StrutSettingCell.h"
+#import "StrutSetting.h"
 #import "StrutView.h"
 #import "UIView+Rob_FindAncestor.h"
 
-@interface SettingCell ()
+@interface StrutSettingCell ()
 @property (strong, nonatomic) IBOutlet UILabel *nameLabel;
 @property (strong, nonatomic) IBOutlet UIButton *showStrutButton;
 @property (strong, nonatomic) IBOutlet UIButton *showArrowButton;
 @property (strong, nonatomic) IBOutlet UICollectionView *dialView;
 @end
 
-@implementation SettingCell
+@implementation StrutSettingCell
 
 #pragma mark - Public API
 
-- (void)setSetting:(Setting *)setting {
+- (void)setSetting:(StrutSetting *)setting {
     [self disconnect];
     _setting = setting;
     [self connect];

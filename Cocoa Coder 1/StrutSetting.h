@@ -7,7 +7,7 @@ Copyright (c) 2013 Rob Mayoff. All rights reserved.
 
 @class StrutView;
 
-@interface Setting : NSObject
+@interface StrutSetting : NSObject
 
 - (instancetype)initWithName:(NSString *)name strutView:(StrutView *)strutView;
 

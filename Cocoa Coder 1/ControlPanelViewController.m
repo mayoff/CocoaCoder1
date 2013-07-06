@@ -4,8 +4,8 @@ Copyright (c) 2013 Rob Mayoff. All rights reserved.
 */
 
 #import "ControlPanelViewController.h"
-#import "SettingCell.h"
-#import "Setting.h"
+#import "StrutSettingCell.h"
+#import "StrutSetting.h"
 
 @interface ControlPanelViewController ()
 
@@ -34,7 +34,7 @@ Copyright (c) 2013 Rob Mayoff. All rights reserved.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
-    SettingCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    StrutSettingCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 
     cell.setting = [self settingForIndexPath:indexPath];
     
@@ -49,7 +49,7 @@ Copyright (c) 2013 Rob Mayoff. All rights reserved.
 
 #pragma mark - Implementation details
 
-- (Setting *)settingForIndexPath:(NSIndexPath *)indexPath {
+- (StrutSetting *)settingForIndexPath:(NSIndexPath *)indexPath {
     return self.settings[indexPath.row];
 }
 

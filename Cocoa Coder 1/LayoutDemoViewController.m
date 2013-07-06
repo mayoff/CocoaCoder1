@@ -1,9 +1,10 @@
 
 #import "LayoutDemoViewController.h"
-#import "Setting.h"
+#import "StrutSetting.h"
 #import "StrutView.h"
 #import "Anchor.h"
 #import "ControlPanelViewController.h"
+#import "DottedLayoutDemoView.h"
 
 @interface LayoutDemoViewController ()
 
@@ -23,19 +24,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    settings = [NSMutableArray array];
-    [settings addObject:[[Setting alloc] initWithName:@"myView.center.x"
-        strutView:[StrutView
-            strutViewFromAnchor:[Anchor anchorWithXView:self.myView.superview xPosition:0 yView:self.myView position:0.5]
-            toAnchor:[Anchor anchorWithXView:self.myView xPosition:0.5 yView:self.myView position:0.5]]]];
-    [settings addObject:[[Setting alloc] initWithName:@"myView.center.y"
-        strutView:[StrutView
-            strutViewFromAnchor:[Anchor anchorWithXView:self.myView xPosition:0.5 yView:self.myView.superview position:0]
-            toAnchor:[Anchor anchorWithXView:self.myView xPosition:0.5 yView:self.myView position:0.5]]]];
-    for (Setting *setting in settings) {
-        [self.view addSubview:setting.strutView];
-    }
-    controlPanelViewController.settings = settings;
+    [self initSettings];
+    [self initDottedViews];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -65,6 +55,32 @@
 
 - (void)prepareForControlPanelEmbeddingSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     controlPanelViewController = segue.destinationViewController;
+    controlPanelViewController.settings = settings;
+}
+
+#pragma mark - Implementation details
+
+- (void)initSettings {
+    settings = [NSMutableArray array];
+    [settings addObject:[[StrutSetting alloc] initWithName:@"myView.center.x"
+        strutView:[StrutView
+            strutViewFromAnchor:[Anchor anchorWithXView:self.myView.superview xPosition:0 yView:self.myView position:0.5]
+            toAnchor:[Anchor anchorWithXView:self.myView xPosition:0.5 yView:self.myView position:0.5]]]];
+    [settings addObject:[[StrutSetting alloc] initWithName:@"myView.center.y"
+        strutView:[StrutView
+            strutViewFromAnchor:[Anchor anchorWithXView:self.myView xPosition:0.5 yView:self.myView.superview position:0]
+            toAnchor:[Anchor anchorWithXView:self.myView xPosition:0.5 yView:self.myView position:0.5]]]];
+    for (StrutSetting *setting in settings) {
+        [self.view addSubview:setting.strutView];
+    }
+    controlPanelViewController.settings = settings;
+}
+
+- (void)initDottedViews {
+    DottedLayoutDemoView *view = [[DottedLayoutDemoView alloc] initWithOriginalView:self.myView];
+    [self.view insertSubview:view atIndex:0];
+    UIPanGestureRecognizer *recognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGestureWasRecognized:)];
+    [view addGestureRecognizer:recognizer];
 }
 
 @end

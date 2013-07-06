@@ -32,6 +32,7 @@ static char kStrutViewContext;
         [self initShapeLayer];
         [self startObservingAnchor:_anchor0];
         [self startObservingAnchor:_anchor1];
+        self.userInteractionEnabled = NO;
     }
     return self;
 }
