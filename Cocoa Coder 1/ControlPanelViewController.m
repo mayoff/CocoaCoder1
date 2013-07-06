@@ -1,11 +1,7 @@
-/*
-Created by Rob Mayoff on 7/6/13.
-Copyright (c) 2013 Rob Mayoff. All rights reserved.
-*/
 
 #import "ControlPanelViewController.h"
-#import "StrutSettingCell.h"
-#import "StrutSetting.h"
+#import "SettingCell.h"
+#import "Setting.h"
 
 @interface ControlPanelViewController ()
 
@@ -33,10 +29,10 @@ Copyright (c) 2013 Rob Mayoff. All rights reserved.
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
-    StrutSettingCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    Setting *setting = [self settingForIndexPath:indexPath];
+    SettingCell *cell = [tableView dequeueReusableCellWithIdentifier:setting.cellReuseIdentifier];
 
-    cell.setting = [self settingForIndexPath:indexPath];
+    cell.setting = setting;
     
     return cell;
 }
@@ -44,12 +40,14 @@ Copyright (c) 2013 Rob Mayoff. All rights reserved.
 #pragma mark - UITableViewDelegate protocol
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return [self settingForIndexPath:indexPath].shouldShowControls ? 139.0f : 44.0f;
+    Setting *setting = [self settingForIndexPath:indexPath];
+    Class cellClass = setting.cellClass;
+    return [cellClass heightForSetting:setting];
 }
 
 #pragma mark - Implementation details
 
-- (StrutSetting *)settingForIndexPath:(NSIndexPath *)indexPath {
+- (Setting *)settingForIndexPath:(NSIndexPath *)indexPath {
     return self.settings[indexPath.row];
 }
 

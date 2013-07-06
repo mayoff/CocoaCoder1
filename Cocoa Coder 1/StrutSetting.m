@@ -1,9 +1,6 @@
-/*
-Created by Rob Mayoff on 7/6/13.
-Copyright (c) 2013 Rob Mayoff. All rights reserved.
-*/
 
 #import "StrutSetting.h"
+#import "StrutSettingCell.h"
 
 @implementation StrutSetting
 
@@ -15,6 +12,14 @@ Copyright (c) 2013 Rob Mayoff. All rights reserved.
     _strutView = strutView;
 
     return self;
+}
+
+- (NSString *)cellReuseIdentifier {
+    return @"StrutSetting";
+}
+
+- (Class)cellClass {
+    return [StrutSettingCell class];
 }
 
 @end

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3198D0AA1788B20400A8ED58 /* SettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3198D0A91788B20400A8ED58 /* SettingCell.m */; };
+		31C364051788ACB50077496D /* Setting.m in Sources */ = {isa = PBXBuildFile; fileRef = 31C364041788ACB50077496D /* Setting.m */; };
 		31C376131787EF5000F814B8 /* ControlPanelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 31C376121787EF5000F814B8 /* ControlPanelViewController.m */; };
 		31C376161787EFD100F814B8 /* StrutSettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 31C376151787EFD100F814B8 /* StrutSettingCell.m */; };
 		31C5E6F3178779AE00AB361D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31C5E6F2178779AE00AB361D /* Foundation.framework */; };
@@ -43,6 +45,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3198D0A81788B20400A8ED58 /* SettingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingCell.h; sourceTree = "<group>"; };
+		3198D0A91788B20400A8ED58 /* SettingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingCell.m; sourceTree = "<group>"; };
+		3198D0AB1788B43D00A8ED58 /* SettingCell+SubclassHooks.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SettingCell+SubclassHooks.h"; sourceTree = "<group>"; };
+		31C364031788ACB50077496D /* Setting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Setting.h; sourceTree = "<group>"; };
+		31C364041788ACB50077496D /* Setting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Setting.m; sourceTree = "<group>"; };
 		31C376111787EF5000F814B8 /* ControlPanelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControlPanelViewController.h; sourceTree = "<group>"; };
 		31C376121787EF5000F814B8 /* ControlPanelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ControlPanelViewController.m; sourceTree = "<group>"; };
 		31C376141787EFD100F814B8 /* StrutSettingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StrutSettingCell.h; sourceTree = "<group>"; };
@@ -107,6 +114,43 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3198D0A41788B0D700A8ED58 /* Control Panel */ = {
+			isa = PBXGroup;
+			children = (
+				31C376111787EF5000F814B8 /* ControlPanelViewController.h */,
+				31C364031788ACB50077496D /* Setting.h */,
+				31D3E2D61787F85400C7E666 /* StrutSetting.h */,
+				3198D0A61788B0F500A8ED58 /* Implementation */,
+			);
+			name = "Control Panel";
+			sourceTree = "<group>";
+		};
+		3198D0A61788B0F500A8ED58 /* Implementation */ = {
+			isa = PBXGroup;
+			children = (
+				3198D0AB1788B43D00A8ED58 /* SettingCell+SubclassHooks.h */,
+				31C376121787EF5000F814B8 /* ControlPanelViewController.m */,
+				31D3E2D71787F85400C7E666 /* StrutSetting.m */,
+				31C364041788ACB50077496D /* Setting.m */,
+				3198D0A81788B20400A8ED58 /* SettingCell.h */,
+				3198D0A91788B20400A8ED58 /* SettingCell.m */,
+				31C376141787EFD100F814B8 /* StrutSettingCell.h */,
+				31C376151787EFD100F814B8 /* StrutSettingCell.m */,
+			);
+			name = Implementation;
+			sourceTree = "<group>";
+		};
+		3198D0A71788B12F00A8ED58 /* Categories on System Classes */ = {
+			isa = PBXGroup;
+			children = (
+				31C5E72A17877BBA00AB361D /* UIColor+my_projectColors.h */,
+				31C5E72B17877BBA00AB361D /* UIColor+my_projectColors.m */,
+				31D3E2D91788016C00C7E666 /* UIView+Rob_FindAncestor.h */,
+				31D3E2DA1788016C00C7E666 /* UIView+Rob_FindAncestor.m */,
+			);
+			name = "Categories on System Classes";
+			sourceTree = "<group>";
+		};
 		31C5E6E6178779AE00AB361D = {
 			isa = PBXGroup;
 			children = (
@@ -141,31 +185,21 @@
 		31C5E6F8178779AE00AB361D /* Cocoa Coder 1 */ = {
 			isa = PBXGroup;
 			children = (
-				31C5E701178779AE00AB361D /* AppDelegate.h */,
-				31C5E702178779AE00AB361D /* AppDelegate.m */,
 				31C5E704178779AE00AB361D /* Main.storyboard */,
+				3198D0A41788B0D700A8ED58 /* Control Panel */,
 				31C5E707178779AE00AB361D /* LayoutDemoViewController.h */,
 				31C5E708178779AE00AB361D /* LayoutDemoViewController.m */,
-				31C5E70A178779AE00AB361D /* Images.xcassets */,
-				31C5E6F9178779AE00AB361D /* Supporting Files */,
 				31C5E72717877AF900AB361D /* LayoutDemoView.h */,
 				31C5E72817877AF900AB361D /* LayoutDemoView.m */,
 				31D3E2DC17889F0800C7E666 /* DottedLayoutDemoView.h */,
 				31D3E2DD17889F0900C7E666 /* DottedLayoutDemoView.m */,
-				31C5E72A17877BBA00AB361D /* UIColor+my_projectColors.h */,
-				31C5E72B17877BBA00AB361D /* UIColor+my_projectColors.m */,
 				31C5E72D17877F8700AB361D /* StrutView.h */,
 				31C5E72E17877F8700AB361D /* StrutView.m */,
 				31C5E7301787881000AB361D /* Anchor.h */,
 				31C5E7311787881000AB361D /* Anchor.m */,
-				31C376111787EF5000F814B8 /* ControlPanelViewController.h */,
-				31C376121787EF5000F814B8 /* ControlPanelViewController.m */,
-				31C376141787EFD100F814B8 /* StrutSettingCell.h */,
-				31C376151787EFD100F814B8 /* StrutSettingCell.m */,
-				31D3E2D61787F85400C7E666 /* StrutSetting.h */,
-				31D3E2D71787F85400C7E666 /* StrutSetting.m */,
-				31D3E2D91788016C00C7E666 /* UIView+Rob_FindAncestor.h */,
-				31D3E2DA1788016C00C7E666 /* UIView+Rob_FindAncestor.m */,
+				31C5E70A178779AE00AB361D /* Images.xcassets */,
+				3198D0A71788B12F00A8ED58 /* Categories on System Classes */,
+				31C5E6F9178779AE00AB361D /* Supporting Files */,
 			);
 			path = "Cocoa Coder 1";
 			sourceTree = "<group>";
@@ -173,6 +207,8 @@
 		31C5E6F9178779AE00AB361D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				31C5E701178779AE00AB361D /* AppDelegate.h */,
+				31C5E702178779AE00AB361D /* AppDelegate.m */,
 				31C5E6FA178779AE00AB361D /* Cocoa Coder 1-Info.plist */,
 				31C5E6FB178779AE00AB361D /* InfoPlist.strings */,
 				31C5E6FE178779AE00AB361D /* main.m */,
@@ -296,6 +332,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				31C364051788ACB50077496D /* Setting.m in Sources */,
 				31C5E709178779AE00AB361D /* LayoutDemoViewController.m in Sources */,
 				31C5E72F17877F8700AB361D /* StrutView.m in Sources */,
 				31C5E72917877AF900AB361D /* LayoutDemoView.m in Sources */,
@@ -305,6 +342,7 @@
 				31C5E703178779AE00AB361D /* AppDelegate.m in Sources */,
 				31D3E2DB1788016C00C7E666 /* UIView+Rob_FindAncestor.m in Sources */,
 				31C5E7321787881000AB361D /* Anchor.m in Sources */,
+				3198D0AA1788B20400A8ED58 /* SettingCell.m in Sources */,
 				31C5E6FF178779AE00AB361D /* main.m in Sources */,
 				31D3E2D81787F85400C7E666 /* StrutSetting.m in Sources */,
 				31C376131787EF5000F814B8 /* ControlPanelViewController.m in Sources */,

@@ -1,13 +1,10 @@
-/*
-Created by Rob Mayoff on 7/6/13.
-Copyright (c) 2013 Rob Mayoff. All rights reserved.
-*/
 
 #import <Foundation/Foundation.h>
+#import "Setting.h"
 
 @class StrutView;
 
-@interface StrutSetting : NSObject
+@interface StrutSetting : Setting
 
 - (instancetype)initWithName:(NSString *)name strutView:(StrutView *)strutView;
 

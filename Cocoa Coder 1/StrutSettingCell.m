@@ -1,28 +1,35 @@
-/*
-Created by Rob Mayoff on 7/6/13.
-Copyright (c) 2013 Rob Mayoff. All rights reserved.
-*/
 
 #import "StrutSettingCell.h"
 #import "StrutSetting.h"
 #import "StrutView.h"
+#import "SettingCell+SubclassHooks.h"
 #import "UIView+Rob_FindAncestor.h"
 
 @interface StrutSettingCell ()
+
+@property (nonatomic, strong) StrutSetting *setting;
+
 @property (strong, nonatomic) IBOutlet UILabel *nameLabel;
 @property (strong, nonatomic) IBOutlet UIButton *showStrutButton;
 @property (strong, nonatomic) IBOutlet UIButton *showArrowButton;
 @property (strong, nonatomic) IBOutlet UICollectionView *dialView;
+
 @end
 
 @implementation StrutSettingCell
 
 #pragma mark - Public API
 
-- (void)setSetting:(StrutSetting *)setting {
-    [self disconnect];
-    _setting = setting;
-    [self connect];
++ (CGFloat)heightForSetting:(StrutSetting *)setting {
+    // These must match the prototype cell in the storyboard.
+    return setting.shouldShowControls ? 139.0f : 44.0f;
+}
+
+#pragma mark - SettingCell+SubclassingHooks
+
+- (void)connect {
+    self.nameLabel.text = self.setting.name;
+    [self updateFromModel];
 }
 
 #pragma mark - NSObject overrides
@@ -57,18 +64,6 @@ Copyright (c) 2013 Rob Mayoff. All rights reserved.
     }];
     [tableView beginUpdates];
     [tableView endUpdates];
-}
-
-- (void)disconnect {
-    if (!_setting)
-        return;
-}
-
-- (void)connect {
-    if (!_setting)
-        return;
-    self.nameLabel.text = _setting.name;
-    [self updateFromModel];
 }
 
 - (void)updateFromModel {
