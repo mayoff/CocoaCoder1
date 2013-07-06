@@ -1,5 +1,6 @@
 
 #import "LayoutDemoViewController.h"
+#import "ViewVisibilitySetting.h"
 #import "StrutSetting.h"
 #import "StrutView.h"
 #import "Anchor.h"
@@ -62,18 +63,41 @@
 
 - (void)initSettings {
     settings = [NSMutableArray array];
-    [settings addObject:[[StrutSetting alloc] initWithName:@"myView.center.x"
-        strutView:[StrutView
-            strutViewFromAnchor:[Anchor anchorWithXView:self.myView.superview xPosition:0 yView:self.myView position:0.5]
-            toAnchor:[Anchor anchorWithXView:self.myView xPosition:0.5 yView:self.myView position:0.5]]]];
-    [settings addObject:[[StrutSetting alloc] initWithName:@"myView.center.y"
-        strutView:[StrutView
-            strutViewFromAnchor:[Anchor anchorWithXView:self.myView xPosition:0.5 yView:self.myView.superview position:0]
-            toAnchor:[Anchor anchorWithXView:self.myView xPosition:0.5 yView:self.myView position:0.5]]]];
-    for (StrutSetting *setting in settings) {
-        [self.view addSubview:setting.strutView];
-    }
+    UIView *myView = self.myView;
+    UIView *superview = self.myView.superview;
+    [self addVisibilitySettingWithName:@"myView" view:myView];
+    [self addVisibilitySettingWithName:@"superview" view:superview];
+    [self addHorizontalStrutSettingWithName:@"myView.center.x" yView:myView position:0.5 offset:0 fromXView:superview position:0 toXView:myView position:0];
+    [self addVerticalStrutSettingWithName:@"myView.center.y" xView:myView position:0.5 offset:0 fromYView:superview position:0 toYView:myView position:0];
+    [self addHorizontalStrutSettingWithName:@"myView.bounds.size.width" yView:myView position:1 offset:6 fromXView:myView position:0 toXView:myView position:1];
+    [self addVerticalStrutSettingWithName:@"myView.bounds.size.height" xView:myView position:1 offset:6 fromYView:myView position:0 toYView:myView position:1];
     controlPanelViewController.settings = settings;
+}
+
+- (void)addVisibilitySettingWithName:(NSString *)name view:(UIView *)view {
+    view.hidden = YES;
+    ViewVisibilitySetting *setting = [[ViewVisibilitySetting alloc] init];
+    setting.name = name;
+    setting.view = view;
+    [settings addObject:setting];
+}
+
+- (void)addHorizontalStrutSettingWithName:(NSString *)name yView:(UIView *)yView position:(CGFloat)yPosition offset:(CGFloat)yOffset fromXView:(UIView *)xView0 position:(CGFloat)xPosition0 toXView:(UIView *)xView1 position:(CGFloat)xPosition1 {
+    Anchor *anchor0 = [Anchor anchorWithXView:xView0 position:xPosition0 offset:0 yView:yView position:yPosition offset:yOffset];
+    Anchor *anchor1 = [Anchor anchorWithXView:xView1 position:xPosition1 offset:0 yView:yView position:yPosition offset:yOffset];
+    StrutView *strutView = [StrutView strutViewFromAnchor:anchor0 toAnchor:anchor1];
+    strutView.hidden = YES;
+    [settings addObject:[[StrutSetting alloc] initWithName:name strutView:strutView]];
+    [self.view addSubview:strutView];
+}
+
+- (void)addVerticalStrutSettingWithName:(NSString *)name xView:(UIView *)xView position:(CGFloat)xPosition offset:(CGFloat)xOffset fromYView:(UIView *)yView0 position:(CGFloat)yPosition0 toYView:(UIView *)yView1 position:(CGFloat)yPosition1 {
+    Anchor *anchor0 = [Anchor anchorWithXView:xView position:xPosition offset:xOffset yView:yView0 position:yPosition0 offset:0];
+    Anchor *anchor1 = [Anchor anchorWithXView:xView position:xPosition offset:xOffset yView:yView1 position:yPosition1 offset:0];
+    StrutView *strutView = [StrutView strutViewFromAnchor:anchor0 toAnchor:anchor1];
+    strutView.hidden = YES;
+    [settings addObject:[[StrutSetting alloc] initWithName:name strutView:strutView]];
+    [self.view addSubview:strutView];
 }
 
 - (void)initDottedViews {

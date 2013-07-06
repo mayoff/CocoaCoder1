@@ -8,7 +8,8 @@
 
 @end
 
-static char kDottedLayoutDemoViewContext;
+static char kLayoutContext;
+static char kHiddenContext;
 
 @implementation DottedLayoutDemoView {
     UIView *originalView;
@@ -50,26 +51,29 @@ static char kDottedLayoutDemoViewContext;
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-    if (context != &kDottedLayoutDemoViewContext) {
+    if (context == &kLayoutContext) {
+        [self setNeedsLayout];
+    } else if (context == &kHiddenContext) {
+        self.hidden = originalView.hidden;
+    } else {
         [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
-        return;
     }
-
-    [self setNeedsLayout];
 }
 
 #pragma mark - Implementation details
 
 - (void)startObservingOriginalView {
-    [originalView addObserver:self forKeyPath:@"center" options:NSKeyValueObservingOptionInitial context:&kDottedLayoutDemoViewContext];
-    [originalView addObserver:self forKeyPath:@"bounds" options:NSKeyValueObservingOptionInitial context:&kDottedLayoutDemoViewContext];
-    [originalView addObserver:self forKeyPath:@"frame" options:NSKeyValueObservingOptionInitial context:&kDottedLayoutDemoViewContext];
+    [originalView addObserver:self forKeyPath:@"center" options:NSKeyValueObservingOptionInitial context:&kLayoutContext];
+    [originalView addObserver:self forKeyPath:@"bounds" options:NSKeyValueObservingOptionInitial context:&kLayoutContext];
+    [originalView addObserver:self forKeyPath:@"frame" options:NSKeyValueObservingOptionInitial context:&kLayoutContext];
+    [originalView addObserver:self forKeyPath:@"hidden" options:NSKeyValueObservingOptionInitial context:&kHiddenContext];
 }
 
 - (void)stopObservingOriginalView {
-    [originalView removeObserver:self forKeyPath:@"center" context:&kDottedLayoutDemoViewContext];
-    [originalView removeObserver:self forKeyPath:@"bounds" context:&kDottedLayoutDemoViewContext];
-    [originalView removeObserver:self forKeyPath:@"frame" context:&kDottedLayoutDemoViewContext];
+    [originalView removeObserver:self forKeyPath:@"center" context:&kLayoutContext];
+    [originalView removeObserver:self forKeyPath:@"bounds" context:&kLayoutContext];
+    [originalView removeObserver:self forKeyPath:@"frame" context:&kLayoutContext];
+    [originalView removeObserver:self forKeyPath:@"hidden" context:&kHiddenContext];
 }
 
 - (void)initBorder {
