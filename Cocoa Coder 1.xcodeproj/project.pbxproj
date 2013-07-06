@@ -14,13 +14,17 @@
 		31C5E6FF178779AE00AB361D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 31C5E6FE178779AE00AB361D /* main.m */; };
 		31C5E703178779AE00AB361D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 31C5E702178779AE00AB361D /* AppDelegate.m */; };
 		31C5E706178779AE00AB361D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 31C5E704178779AE00AB361D /* Main.storyboard */; };
-		31C5E709178779AE00AB361D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 31C5E708178779AE00AB361D /* ViewController.m */; };
+		31C5E709178779AE00AB361D /* LayoutDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 31C5E708178779AE00AB361D /* LayoutDemoViewController.m */; };
 		31C5E70B178779AE00AB361D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31C5E70A178779AE00AB361D /* Images.xcassets */; };
 		31C5E712178779AE00AB361D /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31C5E711178779AE00AB361D /* XCTest.framework */; };
 		31C5E713178779AE00AB361D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31C5E6F2178779AE00AB361D /* Foundation.framework */; };
 		31C5E714178779AE00AB361D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31C5E6F6178779AE00AB361D /* UIKit.framework */; };
 		31C5E71C178779AE00AB361D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 31C5E71A178779AE00AB361D /* InfoPlist.strings */; };
 		31C5E71E178779AE00AB361D /* Cocoa_Coder_1Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 31C5E71D178779AE00AB361D /* Cocoa_Coder_1Tests.m */; };
+		31C5E72917877AF900AB361D /* LayoutDemoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 31C5E72817877AF900AB361D /* LayoutDemoView.m */; };
+		31C5E72C17877BBA00AB361D /* UIColor+my_projectColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 31C5E72B17877BBA00AB361D /* UIColor+my_projectColors.m */; };
+		31C5E72F17877F8700AB361D /* StrutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 31C5E72E17877F8700AB361D /* StrutView.m */; };
+		31C5E7321787881000AB361D /* Anchor.m in Sources */ = {isa = PBXBuildFile; fileRef = 31C5E7311787881000AB361D /* Anchor.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,14 +49,23 @@
 		31C5E701178779AE00AB361D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		31C5E702178779AE00AB361D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		31C5E705178779AE00AB361D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		31C5E707178779AE00AB361D /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		31C5E708178779AE00AB361D /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		31C5E707178779AE00AB361D /* LayoutDemoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LayoutDemoViewController.h; sourceTree = "<group>"; };
+		31C5E708178779AE00AB361D /* LayoutDemoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LayoutDemoViewController.m; sourceTree = "<group>"; };
 		31C5E70A178779AE00AB361D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		31C5E710178779AE00AB361D /* Cocoa Coder 1Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Cocoa Coder 1Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		31C5E711178779AE00AB361D /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		31C5E719178779AE00AB361D /* Cocoa Coder 1Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Cocoa Coder 1Tests-Info.plist"; sourceTree = "<group>"; };
 		31C5E71B178779AE00AB361D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		31C5E71D178779AE00AB361D /* Cocoa_Coder_1Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Cocoa_Coder_1Tests.m; sourceTree = "<group>"; };
+		31C5E72717877AF900AB361D /* LayoutDemoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LayoutDemoView.h; sourceTree = "<group>"; };
+		31C5E72817877AF900AB361D /* LayoutDemoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LayoutDemoView.m; sourceTree = "<group>"; };
+		31C5E72A17877BBA00AB361D /* UIColor+my_projectColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+my_projectColors.h"; sourceTree = "<group>"; };
+		31C5E72B17877BBA00AB361D /* UIColor+my_projectColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+my_projectColors.m"; sourceTree = "<group>"; };
+		31C5E72D17877F8700AB361D /* StrutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StrutView.h; sourceTree = "<group>"; };
+		31C5E72E17877F8700AB361D /* StrutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StrutView.m; sourceTree = "<group>"; };
+		31C5E7301787881000AB361D /* Anchor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Anchor.h; sourceTree = "<group>"; };
+		31C5E7311787881000AB361D /* Anchor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Anchor.m; sourceTree = "<group>"; };
+		31C5E7331787DC2F00AB361D /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +95,7 @@
 		31C5E6E6178779AE00AB361D = {
 			isa = PBXGroup;
 			children = (
+				31C5E7331787DC2F00AB361D /* .gitignore */,
 				31C5E6F8178779AE00AB361D /* Cocoa Coder 1 */,
 				31C5E717178779AE00AB361D /* Cocoa Coder 1Tests */,
 				31C5E6F1178779AE00AB361D /* Frameworks */,
@@ -115,10 +129,18 @@
 				31C5E701178779AE00AB361D /* AppDelegate.h */,
 				31C5E702178779AE00AB361D /* AppDelegate.m */,
 				31C5E704178779AE00AB361D /* Main.storyboard */,
-				31C5E707178779AE00AB361D /* ViewController.h */,
-				31C5E708178779AE00AB361D /* ViewController.m */,
+				31C5E707178779AE00AB361D /* LayoutDemoViewController.h */,
+				31C5E708178779AE00AB361D /* LayoutDemoViewController.m */,
 				31C5E70A178779AE00AB361D /* Images.xcassets */,
 				31C5E6F9178779AE00AB361D /* Supporting Files */,
+				31C5E72717877AF900AB361D /* LayoutDemoView.h */,
+				31C5E72817877AF900AB361D /* LayoutDemoView.m */,
+				31C5E72A17877BBA00AB361D /* UIColor+my_projectColors.h */,
+				31C5E72B17877BBA00AB361D /* UIColor+my_projectColors.m */,
+				31C5E72D17877F8700AB361D /* StrutView.h */,
+				31C5E72E17877F8700AB361D /* StrutView.m */,
+				31C5E7301787881000AB361D /* Anchor.h */,
+				31C5E7311787881000AB361D /* Anchor.m */,
 			);
 			path = "Cocoa Coder 1";
 			sourceTree = "<group>";
@@ -249,8 +271,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				31C5E709178779AE00AB361D /* ViewController.m in Sources */,
+				31C5E709178779AE00AB361D /* LayoutDemoViewController.m in Sources */,
+				31C5E72F17877F8700AB361D /* StrutView.m in Sources */,
+				31C5E72917877AF900AB361D /* LayoutDemoView.m in Sources */,
+				31C5E72C17877BBA00AB361D /* UIColor+my_projectColors.m in Sources */,
 				31C5E703178779AE00AB361D /* AppDelegate.m in Sources */,
+				31C5E7321787881000AB361D /* Anchor.m in Sources */,
 				31C5E6FF178779AE00AB361D /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -379,6 +405,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Cocoa Coder 1/Cocoa Coder 1-Prefix.pch";
 				INFOPLIST_FILE = "Cocoa Coder 1/Cocoa Coder 1-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -392,6 +419,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Cocoa Coder 1/Cocoa Coder 1-Prefix.pch";
 				INFOPLIST_FILE = "Cocoa Coder 1/Cocoa Coder 1-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
