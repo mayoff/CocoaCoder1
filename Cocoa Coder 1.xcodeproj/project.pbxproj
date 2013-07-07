@@ -60,6 +60,7 @@
 		3198D0B31788C2CD00A8ED58 /* NumberCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NumberCell.m; sourceTree = "<group>"; };
 		31BE46D41788CB35007C3D0B /* DialView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DialView.h; sourceTree = "<group>"; };
 		31BE46D51788CB35007C3D0B /* DialView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DialView.m; sourceTree = "<group>"; };
+		31BE46E31789204A007C3D0B /* RobGeometry.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RobGeometry.h; sourceTree = "<group>"; };
 		31C364031788ACB50077496D /* Setting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Setting.h; sourceTree = "<group>"; };
 		31C364041788ACB50077496D /* Setting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Setting.m; sourceTree = "<group>"; };
 		31C376111787EF5000F814B8 /* ControlPanelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControlPanelViewController.h; sourceTree = "<group>"; };
@@ -228,6 +229,7 @@
 				31C5E70A178779AE00AB361D /* Images.xcassets */,
 				3198D0A71788B12F00A8ED58 /* Categories on System Classes */,
 				31C5E6F9178779AE00AB361D /* Supporting Files */,
+				31BE46E31789204A007C3D0B /* RobGeometry.h */,
 			);
 			path = "Cocoa Coder 1";
 			sourceTree = "<group>";

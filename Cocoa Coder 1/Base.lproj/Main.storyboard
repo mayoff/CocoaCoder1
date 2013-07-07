@@ -24,8 +24,8 @@
                                         <color key="backgroundColor" red="0.097574374993188343" green="0.099332998294786146" blue="0.31549337635869568" alpha="1" colorSpace="calibratedRGB"/>
                                         <gestureRecognizers/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="160" id="Lpr-tG-YEq"/>
-                                            <constraint firstAttribute="width" constant="240" id="Rln-5U-Wbn"/>
+                                            <constraint firstAttribute="height" constant="160" placeholder="YES" id="Lpr-tG-YEq"/>
+                                            <constraint firstAttribute="width" constant="240" placeholder="YES" id="Rln-5U-Wbn"/>
                                         </constraints>
                                         <connections>
                                             <outletCollection property="gestureRecognizers" destination="ejd-Gx-bgy" appends="YES" id="8mU-wS-yDT"/>
@@ -36,8 +36,8 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="320" id="9Uu-3G-tJh"/>
                                     <constraint firstAttribute="width" constant="480" id="Gm2-NH-BKK"/>
-                                    <constraint firstItem="FvM-1v-DXQ" firstAttribute="left" secondItem="luI-Ub-kCa" secondAttribute="left" constant="177" id="oPY-XO-Bwj"/>
-                                    <constraint firstItem="FvM-1v-DXQ" firstAttribute="top" secondItem="luI-Ub-kCa" secondAttribute="top" constant="123" id="tez-R5-Y9M"/>
+                                    <constraint firstItem="FvM-1v-DXQ" firstAttribute="left" secondItem="luI-Ub-kCa" secondAttribute="left" constant="177" placeholder="YES" id="oPY-XO-Bwj"/>
+                                    <constraint firstItem="FvM-1v-DXQ" firstAttribute="top" secondItem="luI-Ub-kCa" secondAttribute="top" constant="123" placeholder="YES" id="tez-R5-Y9M"/>
                                 </constraints>
                             </view>
                             <containerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GUi-fz-W8Y">
@@ -69,8 +69,6 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
                         <outlet property="myView" destination="FvM-1v-DXQ" id="l4z-N4-3iw"/>
-                        <outlet property="myViewLeftEdgeConstraint" destination="oPY-XO-Bwj" id="cIg-Vj-vs7"/>
-                        <outlet property="myViewTopEdgeConstraint" destination="tez-R5-Y9M" id="SaQ-Fl-SFS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -258,8 +256,6 @@
             <relationships>
                 <relationship kind="action" name="panGestureWasRecognized:" candidateClass="UIPanGestureRecognizer"/>
                 <relationship kind="outlet" name="myView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="myViewLeftEdgeConstraint" candidateClass="NSLayoutConstraint"/>
-                <relationship kind="outlet" name="myViewTopEdgeConstraint" candidateClass="NSLayoutConstraint"/>
             </relationships>
         </class>
         <class className="NSLayoutConstraint" superclassName="NSObject">
@@ -271,7 +267,6 @@
         <class className="StrutSettingCell" superclassName="SettingCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/StrutSettingCell.h"/>
             <relationships>
-                <relationship kind="action" name="showStrutButtonWasTapped:"/>
                 <relationship kind="outlet" name="dialView" candidateClass="DialView"/>
                 <relationship kind="outlet" name="nameLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="showArrowButton" candidateClass="UIButton"/>

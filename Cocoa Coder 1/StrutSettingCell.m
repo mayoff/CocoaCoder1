@@ -87,8 +87,9 @@ static char kStrutSettingCellContext;
 
 - (IBAction)dialValueDidChange {
     isUpdatingFromUserInterface = YES;
-    if (_setValue) {
-        _setValue(self.dialView.value);
+    if (self.setting.setLength) {
+        CGFloat length = roundf(self.dialView.value);
+        self.setting.setLength(length);
     }
     isUpdatingFromUserInterface = NO;
 }

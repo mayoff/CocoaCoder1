@@ -4,12 +4,13 @@
 
 @implementation StrutSetting
 
-- (instancetype)initWithName:(NSString *)name strutView:(StrutView *)strutView {
+- (instancetype)initWithName:(NSString *)name strutView:(StrutView *)strutView setLengthBlock:(void (^)(CGFloat))block {
     if (!(self = [super init]))
         return nil;
 
     _name = [name copy];
     _strutView = strutView;
+    _setLength = [block copy];
 
     return self;
 }
