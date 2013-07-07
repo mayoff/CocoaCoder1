@@ -68,9 +68,9 @@
     [self addVisibilitySettingWithName:@"myView" view:myView];
     [self addVisibilitySettingWithName:@"superview" view:superview];
     [self addHorizontalStrutSettingWithName:@"myView.center.x" yView:myView position:0.5 offset:0 fromXView:superview position:0 toXView:myView position:0];
-    [self addVerticalStrutSettingWithName:@"myView.center.y" xView:myView position:0.5 offset:0 fromYView:superview position:0 toYView:myView position:0];
-    [self addHorizontalStrutSettingWithName:@"myView.bounds.size.width" yView:myView position:1 offset:6 fromXView:myView position:0 toXView:myView position:1];
-    [self addVerticalStrutSettingWithName:@"myView.bounds.size.height" xView:myView position:1 offset:6 fromYView:myView position:0 toYView:myView position:1];
+//    [self addVerticalStrutSettingWithName:@"myView.center.y" xView:myView position:0.5 offset:0 fromYView:superview position:0 toYView:myView position:0];
+//    [self addHorizontalStrutSettingWithName:@"myView.bounds.size.width" yView:myView position:1 offset:6 fromXView:myView position:0 toXView:myView position:1];
+//    [self addVerticalStrutSettingWithName:@"myView.bounds.size.height" xView:myView position:1 offset:6 fromYView:myView position:0 toYView:myView position:1];
     controlPanelViewController.settings = settings;
 }
 

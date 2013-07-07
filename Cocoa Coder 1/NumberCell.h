@@ -7,4 +7,6 @@ Copyright (c) 2013 Rob Mayoff. All rights reserved.
 
 @interface NumberCell : UICollectionViewCell
 
+@property (nonatomic, strong) IBOutlet UILabel *label;
+
 @end

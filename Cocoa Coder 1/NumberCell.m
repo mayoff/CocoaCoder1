@@ -5,6 +5,10 @@ Copyright (c) 2013 Rob Mayoff. All rights reserved.
 
 #import "NumberCell.h"
 
+@interface NumberCell ()
+
+@end
+
 @implementation NumberCell
 
 - (id)initWithFrame:(CGRect)frame

@@ -102,45 +102,6 @@
                                     <rect key="frame" x="0.0" y="0.0" width="256" height="138"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="22T-8R-q5u">
-                                            <rect key="frame" x="0.0" y="92" width="256" height="44"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                            <color key="backgroundColor" red="1" green="0.46813187090029573" blue="0.66138978548767025" alpha="1" colorSpace="calibratedRGB"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="44" id="BQP-CL-ej7"/>
-                                            </constraints>
-                                            <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="IgV-xt-Xo0">
-                                                <size key="itemSize" width="50" height="50"/>
-                                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                                <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                            </collectionViewFlowLayout>
-                                            <cells>
-                                                <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Number" id="wjL-e0-bVi">
-                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                                        <autoresizingMask key="autoresizingMask"/>
-                                                        <subviews>
-                                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9999" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ix5-yx-QEa">
-                                                                <rect key="frame" x="2" y="15" width="46" height="20"/>
-                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                        </subviews>
-                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                    </view>
-                                                    <constraints>
-                                                        <constraint firstItem="Ix5-yx-QEa" firstAttribute="leading" secondItem="wjL-e0-bVi" secondAttribute="leading" constant="2" id="YMd-Ty-WNO"/>
-                                                        <constraint firstAttribute="centerY" secondItem="Ix5-yx-QEa" secondAttribute="centerY" id="flZ-VB-bTM"/>
-                                                        <constraint firstAttribute="trailing" secondItem="Ix5-yx-QEa" secondAttribute="trailing" constant="2" id="ls2-6l-lxu"/>
-                                                    </constraints>
-                                                </collectionViewCell>
-                                            </cells>
-                                        </collectionView>
                                         <label opaque="NO" clipsSubviews="YES" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="superview.bounds.origin.x" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="n0l-iS-4qa">
                                             <rect key="frame" x="8" y="0.0" width="240" height="44"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -195,6 +156,17 @@
                                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                         </button>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ecm-st-ZFx" customClass="DialView">
+                                            <rect key="frame" x="0.0" y="92" width="256" height="44"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="44" id="grq-fa-T56"/>
+                                            </constraints>
+                                            <connections>
+                                                <action selector="dialValueDidChange" destination="mHy-15-Kmy" eventType="valueChanged" id="tqh-bm-TgJ"/>
+                                            </connections>
+                                        </view>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
@@ -203,19 +175,19 @@
                                     <constraint firstItem="oTh-BQ-Vcb" firstAttribute="top" secondItem="9HE-mS-ROh" secondAttribute="top" id="4Ot-4W-2AH"/>
                                     <constraint firstItem="oTh-BQ-Vcb" firstAttribute="height" secondItem="9HE-mS-ROh" secondAttribute="height" id="6a4-EF-N1w"/>
                                     <constraint firstItem="oTh-BQ-Vcb" firstAttribute="leading" secondItem="9HE-mS-ROh" secondAttribute="trailing" constant="20" id="AoK-cm-Y6R"/>
-                                    <constraint firstItem="22T-8R-q5u" firstAttribute="trailing" secondItem="mHy-15-Kmy" secondAttribute="trailing" id="Ham-kM-B6d"/>
                                     <constraint firstItem="9HE-mS-ROh" firstAttribute="leading" secondItem="n0l-iS-4qa" secondAttribute="leading" id="LZG-YI-lGz"/>
                                     <constraint firstItem="n0l-iS-4qa" firstAttribute="leading" secondItem="mHy-15-Kmy" secondAttribute="leading" constant="8" id="NQY-5P-0X4"/>
                                     <constraint firstItem="n0l-iS-4qa" firstAttribute="top" secondItem="mHy-15-Kmy" secondAttribute="top" id="T2z-q0-ODj"/>
+                                    <constraint firstItem="ecm-st-ZFx" firstAttribute="leading" secondItem="mHy-15-Kmy" secondAttribute="leading" id="To4-Mr-Hdf"/>
                                     <constraint firstItem="oTh-BQ-Vcb" firstAttribute="width" secondItem="9HE-mS-ROh" secondAttribute="width" id="Vwq-ug-Z2L"/>
+                                    <constraint firstItem="ecm-st-ZFx" firstAttribute="trailing" secondItem="mHy-15-Kmy" secondAttribute="trailing" id="ekb-rn-4tm"/>
                                     <constraint firstItem="oTh-BQ-Vcb" firstAttribute="trailing" secondItem="n0l-iS-4qa" secondAttribute="trailing" id="gzt-xg-Yim"/>
-                                    <constraint firstItem="22T-8R-q5u" firstAttribute="leading" secondItem="mHy-15-Kmy" secondAttribute="leading" id="kRD-y4-ub0"/>
-                                    <constraint firstItem="22T-8R-q5u" firstAttribute="top" secondItem="9HE-mS-ROh" secondAttribute="bottom" constant="2" id="rGQ-Lf-qZ8"/>
                                     <constraint firstAttribute="trailing" secondItem="n0l-iS-4qa" secondAttribute="trailing" constant="8" id="rMP-ww-XA5"/>
                                     <constraint firstItem="9HE-mS-ROh" firstAttribute="top" secondItem="n0l-iS-4qa" secondAttribute="bottom" constant="2" id="tMq-sf-Se6"/>
+                                    <constraint firstItem="ecm-st-ZFx" firstAttribute="top" secondItem="9HE-mS-ROh" secondAttribute="bottom" constant="2" id="vGU-y0-Aso"/>
                                 </constraints>
                                 <connections>
-                                    <outlet property="dialView" destination="22T-8R-q5u" id="y2R-xr-j7Y"/>
+                                    <outlet property="dialView" destination="ecm-st-ZFx" id="Vcf-3Q-wUP"/>
                                     <outlet property="nameLabel" destination="n0l-iS-4qa" id="5s0-BV-brB"/>
                                     <outlet property="showArrowButton" destination="oTh-BQ-Vcb" id="Nan-Ji-QuT"/>
                                     <outlet property="showStrutButton" destination="9HE-mS-ROh" id="Frb-BF-DLV"/>
@@ -275,6 +247,9 @@
         <class className="ControlPanelViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ControlPanelViewController.h"/>
         </class>
+        <class className="DialView" superclassName="UIControl">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DialView.h"/>
+        </class>
         <class className="LayoutDemoView" superclassName="UIView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/LayoutDemoView.h"/>
         </class>
@@ -297,23 +272,11 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/StrutSettingCell.h"/>
             <relationships>
                 <relationship kind="action" name="showStrutButtonWasTapped:"/>
-                <relationship kind="outlet" name="dialView" candidateClass="UICollectionView"/>
+                <relationship kind="outlet" name="dialView" candidateClass="DialView"/>
                 <relationship kind="outlet" name="nameLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="showArrowButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="showStrutButton" candidateClass="UIButton"/>
             </relationships>
-        </class>
-        <class className="UICollectionReusableView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionReusableView.h"/>
-        </class>
-        <class className="UICollectionViewCell" superclassName="UICollectionReusableView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewCell.h"/>
-        </class>
-        <class className="UICollectionViewFlowLayout" superclassName="UICollectionViewLayout">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewFlowLayout.h"/>
-        </class>
-        <class className="UICollectionViewLayout" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewLayout.h"/>
         </class>
         <class className="ViewVisibilitySettingCell" superclassName="SettingCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewVisibilitySettingCell.h"/>
