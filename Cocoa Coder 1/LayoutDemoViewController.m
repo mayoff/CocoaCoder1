@@ -81,15 +81,19 @@
     [self addVisibilitySettingWithName:@"superview" view:superview];
     [self addHorizontalStrutSettingWithName:@"myView.center.x" yView:myView position:0.5 offset:0 fromXView:superview position:0 toXView:myView position:0.5 setLengthBlock:^(CGFloat length) {
         myView.center = pointByReplacingX(myView.center, length);
+        [myView layoutIfNeeded];
     }];
     [self addVerticalStrutSettingWithName:@"myView.center.y" xView:myView position:0.5 offset:0 fromYView:superview position:0 toYView:myView position:0.5 setLengthBlock:^(CGFloat length) {
         myView.center = pointByReplacingY(myView.center, length);
+        [myView layoutIfNeeded];
     }];
     [self addHorizontalStrutSettingWithName:@"myView.bounds.size.width" yView:myView position:1 offset:6 fromXView:myView position:0 toXView:myView position:1 setLengthBlock:^(CGFloat length) {
         myView.bounds = rectByReplacingWidth(myView.bounds, length);
+        [myView layoutIfNeeded];
     }];
     [self addVerticalStrutSettingWithName:@"myView.bounds.size.height" xView:myView position:1 offset:6 fromYView:myView position:0 toYView:myView position:1 setLengthBlock:^(CGFloat length) {
         myView.bounds = rectByReplacingHeight(myView.bounds, length);
+        [myView layoutIfNeeded];
     }];
     controlPanelViewController.settings = settings;
 }
@@ -105,7 +109,7 @@
 - (void)addHorizontalStrutSettingWithName:(NSString *)name yView:(UIView *)yView position:(CGFloat)yPosition offset:(CGFloat)yOffset fromXView:(UIView *)xView0 position:(CGFloat)xPosition0 toXView:(UIView *)xView1 position:(CGFloat)xPosition1 setLengthBlock:(void (^)(CGFloat length))block {
     Anchor *anchor0 = [Anchor anchorWithXView:xView0 position:xPosition0 offset:0 yView:yView position:yPosition offset:yOffset];
     Anchor *anchor1 = [Anchor anchorWithXView:xView1 position:xPosition1 offset:0 yView:yView position:yPosition offset:yOffset];
-    StrutView *strutView = [StrutView strutViewFromAnchor:anchor0 toAnchor:anchor1];
+    StrutView *strutView = [StrutView strutViewFromAnchor:anchor0 toAnchor:anchor1 measuringAxis:StrutViewAxisHorizontal];
     strutView.hidden = YES;
     [settings addObject:[[StrutSetting alloc] initWithName:name strutView:strutView setLengthBlock:block]];
     [self.view addSubview:strutView];
@@ -114,7 +118,7 @@
 - (void)addVerticalStrutSettingWithName:(NSString *)name xView:(UIView *)xView position:(CGFloat)xPosition offset:(CGFloat)xOffset fromYView:(UIView *)yView0 position:(CGFloat)yPosition0 toYView:(UIView *)yView1 position:(CGFloat)yPosition1 setLengthBlock:(void (^)(CGFloat length))block {
     Anchor *anchor0 = [Anchor anchorWithXView:xView position:xPosition offset:xOffset yView:yView0 position:yPosition0 offset:0];
     Anchor *anchor1 = [Anchor anchorWithXView:xView position:xPosition offset:xOffset yView:yView1 position:yPosition1 offset:0];
-    StrutView *strutView = [StrutView strutViewFromAnchor:anchor0 toAnchor:anchor1];
+    StrutView *strutView = [StrutView strutViewFromAnchor:anchor0 toAnchor:anchor1 measuringAxis:StrutViewAxisVertical];
     strutView.hidden = YES;
     [settings addObject:[[StrutSetting alloc] initWithName:name strutView:strutView setLengthBlock:block]];
     [self.view addSubview:strutView];

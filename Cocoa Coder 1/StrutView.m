@@ -6,6 +6,7 @@
 @interface StrutView ()
 
 @property (nonatomic, readonly) CAShapeLayer *layer;
+@property (nonatomic, readwrite) CGFloat signedLength;
 
 @end
 
@@ -20,14 +21,15 @@ static char kStrutViewContext;
 
 #pragma mark - Public API
 
-+ (instancetype)strutViewFromAnchor:(Anchor *)anchor0 toAnchor:(Anchor *)anchor1 {
-    return [[self alloc] initFromAnchor:anchor0 toAnchor:anchor1 withThickness:2];
++ (instancetype)strutViewFromAnchor:(Anchor *)anchor0 toAnchor:(Anchor *)anchor1 measuringAxis:(StrutViewAxis)axis {
+    return [[self alloc] initFromAnchor:anchor0 toAnchor:anchor1 measuringAxis:axis withThickness:2];
 }
 
-- (instancetype)initFromAnchor:(Anchor *)anchor0 toAnchor:(Anchor *)anchor1 withThickness:(CGFloat)myThickness {
+- (instancetype)initFromAnchor:(Anchor *)anchor0 toAnchor:(Anchor *)anchor1 measuringAxis:(StrutViewAxis)axis withThickness:(CGFloat)myThickness {
     if (self = [super init]) {
         _anchor0 = anchor0;
         _anchor1 = anchor1;
+        _axis = axis;
         thickness = myThickness;
         [self initShapeLayer];
         [self startObservingAnchor:_anchor0];
@@ -88,6 +90,7 @@ static char kStrutViewContext;
     dx = p1.x - p0.x;
     dy = p1.y - p0.y;
     length = hypot(dx, dy);
+    self.signedLength = _axis == StrutViewAxisHorizontal ? dx : dy;
 }
 
 - (void)setCenterWithCurrentParameters {

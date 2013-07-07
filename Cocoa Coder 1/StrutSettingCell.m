@@ -35,14 +35,12 @@ static char kStrutSettingCellContext;
 
 - (void)connect {
     self.nameLabel.text = self.setting.name;
-    [self.setting.strutView addObserver:self forKeyPath:@"bounds" options:0 context:&kStrutSettingCellContext];
-    [self.setting.strutView addObserver:self forKeyPath:@"frame" options:0 context:&kStrutSettingCellContext];
+    [self.setting.strutView addObserver:self forKeyPath:@"signedLength" options:NSKeyValueObservingOptionInitial context:&kStrutSettingCellContext];
     [self updateFromModel];
 }
 
 - (void)disconnect {
-    [self.setting.strutView removeObserver:self forKeyPath:@"bounds" context:&kStrutSettingCellContext];
-    [self.setting.strutView removeObserver:self forKeyPath:@"frame" context:&kStrutSettingCellContext];
+    [self.setting.strutView removeObserver:self forKeyPath:@"signedLength" context:&kStrutSettingCellContext];
 }
 
 #pragma mark - NSObject overrides
@@ -113,6 +111,7 @@ static char kStrutSettingCellContext;
 - (void)updateFromModel {
     self.showStrutButton.selected = !self.setting.strutView.hidden;
     self.showArrowButton.enabled = self.showStrutButton.selected;
+    self.dialView.value = self.setting.strutView.signedLength;
 }
 
 @end
