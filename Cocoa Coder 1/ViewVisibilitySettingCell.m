@@ -12,6 +12,7 @@ Copyright (c) 2013 Rob Mayoff. All rights reserved.
 @property (nonatomic, strong) ViewVisibilitySetting *setting;
 
 @property (nonatomic, strong) IBOutlet UILabel *nameLabel;
+@property (nonatomic, strong) IBOutlet UIButton *showViewButton;
 
 @end
 
@@ -25,7 +26,6 @@ static char kViewVisibilitySettingCellContext;
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    [self initTapGestureRecognizer];
     [self updateFromModel];
 }
 
@@ -37,17 +37,12 @@ static char kViewVisibilitySettingCellContext;
     [self updateFromModel];
 }
 
-- (void)initTapGestureRecognizer {
-    UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(cellWasTapped:)];
-    [self.contentView addGestureRecognizer:recognizer];
-}
-
-- (void)cellWasTapped:(UITapGestureRecognizer *)recognizer {
+- (IBAction)showViewButtonWasTapped {
     self.setting.view.hidden = !self.setting.view.hidden;
 }
 
 - (void)updateFromModel {
-    self.accessoryType = self.setting.view.hidden ? UITableViewCellAccessoryNone : UITableViewCellAccessoryCheckmark;
+    self.showViewButton.selected = !self.setting.view.hidden;
 }
 
 - (void)connect {

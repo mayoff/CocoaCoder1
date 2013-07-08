@@ -177,7 +177,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="superview.bounds.origin.x" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dTk-lX-EtT">
-                                            <rect key="frame" x="8" y="0.0" width="240" height="44"/>
+                                            <rect key="frame" x="8" y="0.0" width="196" height="44"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <gestureRecognizers/>
@@ -193,17 +193,43 @@
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
                                         </label>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gd6-SS-Dl4" userLabel="Show Strut Button - 🙈">
+                                            <rect key="frame" x="212" y="0.0" width="44" height="43"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="43" id="2rb-rG-V6a"/>
+                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="44" id="4HA-T5-0Y2"/>
+                                                <constraint firstAttribute="height" constant="43" id="ZW8-gZ-hJ7"/>
+                                                <constraint firstAttribute="width" constant="44" id="o0N-u3-Tgv"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                            <state key="normal" title="🙈">
+                                                <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <state key="selected" title="👀"/>
+                                            <state key="highlighted">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="showViewButtonWasTapped" destination="gdP-Jh-WH5" eventType="touchUpInside" id="B6Y-Fc-Pl8"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="dTk-lX-EtT" firstAttribute="top" secondItem="gdP-Jh-WH5" secondAttribute="top" id="DZn-PN-ftm"/>
-                                    <constraint firstAttribute="trailing" secondItem="dTk-lX-EtT" secondAttribute="trailing" constant="8" id="KzS-y2-oHp"/>
+                                    <constraint firstItem="Gd6-SS-Dl4" firstAttribute="leading" secondItem="dTk-lX-EtT" secondAttribute="trailing" constant="8" id="WFr-wS-Omk"/>
                                     <constraint firstItem="dTk-lX-EtT" firstAttribute="leading" secondItem="gdP-Jh-WH5" secondAttribute="leading" constant="8" id="dDK-hW-Q6R"/>
+                                    <constraint firstItem="Gd6-SS-Dl4" firstAttribute="top" secondItem="gdP-Jh-WH5" secondAttribute="top" id="tiK-bT-JsW"/>
+                                    <constraint firstItem="Gd6-SS-Dl4" firstAttribute="trailing" secondItem="gdP-Jh-WH5" secondAttribute="trailing" id="y46-Zc-IBR"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="nameLabel" destination="dTk-lX-EtT" id="hm5-67-KoV"/>
+                                    <outlet property="showViewButton" destination="Gd6-SS-Dl4" id="b88-Iz-TKd"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -255,6 +281,7 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewVisibilitySettingCell.h"/>
             <relationships>
                 <relationship kind="outlet" name="nameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="showViewButton" candidateClass="UIButton"/>
             </relationships>
         </class>
     </classes>
