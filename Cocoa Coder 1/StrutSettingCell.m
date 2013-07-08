@@ -109,7 +109,9 @@ static char kStrutSettingCellContext;
 
 - (void)updateFromModel {
     self.showStrutButton.selected = !self.setting.strutView.hidden;
-    self.dialView.value = self.setting.strutView.signedLength;
+    if (self.dialView.value != self.setting.strutView.signedLength) {
+        self.dialView.value = self.setting.strutView.signedLength;
+    }
 }
 
 @end

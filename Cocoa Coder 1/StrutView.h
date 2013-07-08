@@ -10,8 +10,9 @@ typedef enum {
 
 @interface StrutView : UIView
 
-+ (instancetype)strutViewFromAnchor:(Anchor *)anchor0 toAnchor:(Anchor *)anchor1 measuringAxis:(StrutViewAxis)axis;
++ (instancetype)strutViewWithName:(NSString *)name fromAnchor:(Anchor *)anchor0 toAnchor:(Anchor *)anchor1 measuringAxis:(StrutViewAxis)axis;
 
+@property (nonatomic, copy, readonly) NSString *name;
 @property (nonatomic, strong, readonly) Anchor *anchor0;
 @property (nonatomic, strong, readonly) Anchor *anchor1;
 @property (nonatomic, readonly) StrutViewAxis axis;

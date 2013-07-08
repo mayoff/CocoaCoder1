@@ -19,12 +19,12 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FvM-1v-DXQ" userLabel="myView" customClass="LayoutDemoView">
-                                        <rect key="frame" x="177" y="123" width="240" height="160"/>
+                                        <rect key="frame" x="177" y="90" width="240" height="180"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <color key="backgroundColor" red="0.097574374993188343" green="0.099332998294786146" blue="0.31549337635869568" alpha="1" colorSpace="calibratedRGB"/>
                                         <gestureRecognizers/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="160" placeholder="YES" id="Lpr-tG-YEq"/>
+                                            <constraint firstAttribute="height" constant="180" placeholder="YES" id="Lpr-tG-YEq"/>
                                             <constraint firstAttribute="width" constant="240" placeholder="YES" id="Rln-5U-Wbn"/>
                                         </constraints>
                                         <connections>
@@ -37,7 +37,7 @@
                                     <constraint firstAttribute="height" constant="320" id="9Uu-3G-tJh"/>
                                     <constraint firstAttribute="width" constant="480" id="Gm2-NH-BKK"/>
                                     <constraint firstItem="FvM-1v-DXQ" firstAttribute="left" secondItem="luI-Ub-kCa" secondAttribute="left" constant="177" placeholder="YES" id="oPY-XO-Bwj"/>
-                                    <constraint firstItem="FvM-1v-DXQ" firstAttribute="top" secondItem="luI-Ub-kCa" secondAttribute="top" constant="123" placeholder="YES" id="tez-R5-Y9M"/>
+                                    <constraint firstItem="FvM-1v-DXQ" firstAttribute="top" secondItem="luI-Ub-kCa" secondAttribute="top" constant="90" placeholder="YES" id="tez-R5-Y9M"/>
                                 </constraints>
                             </view>
                             <containerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GUi-fz-W8Y">

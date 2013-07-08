@@ -31,3 +31,11 @@ static inline CGRect rectByReplacingHeight(CGRect rect, CGFloat newValue) {
     return rect;
 }
 
+static inline CGPoint rectMidpoint(CGRect rect) {
+    // I'm not using CGRectGetMid[XY] to avoid unnecessary calls to CGRectStandardize.
+    return CGPointMake(rect.origin.x + rect.size.width * 0.5f, rect.origin.y + rect.size.height * 0.5f);
+}
+
+static inline CGPoint pointOffset(CGPoint point, CGFloat dx, CGFloat dy) {
+    return CGPointMake(point.x + dx, point.y + dy);
+}

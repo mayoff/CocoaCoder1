@@ -1,6 +1,7 @@
 
 #import "StrutView.h"
 #import "Anchor.h"
+#import "RobGeometry.h"
 @import QuartzCore;
 
 @interface StrutView ()
@@ -17,21 +18,25 @@ static char kStrutViewContext;
     double dy;
     double length;
     CGFloat thickness;
+    UILabel *nameLabel;
 }
 
 #pragma mark - Public API
 
-+ (instancetype)strutViewFromAnchor:(Anchor *)anchor0 toAnchor:(Anchor *)anchor1 measuringAxis:(StrutViewAxis)axis {
-    return [[self alloc] initFromAnchor:anchor0 toAnchor:anchor1 measuringAxis:axis withThickness:2];
++ (instancetype)strutViewWithName:(NSString *)name fromAnchor:(Anchor *)anchor0 toAnchor:(Anchor *)anchor1 measuringAxis:(StrutViewAxis)axis {
+    return [[self alloc] initWithName:(NSString *)name fromAnchor:anchor0 toAnchor:anchor1 measuringAxis:axis withThickness:2];
 }
 
-- (instancetype)initFromAnchor:(Anchor *)anchor0 toAnchor:(Anchor *)anchor1 measuringAxis:(StrutViewAxis)axis withThickness:(CGFloat)myThickness {
+- (instancetype)initWithName:(NSString *)name fromAnchor:(Anchor *)anchor0 toAnchor:(Anchor *)anchor1 measuringAxis:(StrutViewAxis)axis withThickness:(CGFloat)myThickness {
     if (self = [super init]) {
+        _name = [name copy];
         _anchor0 = anchor0;
         _anchor1 = anchor1;
         _axis = axis;
         thickness = myThickness;
+        self.autoresizesSubviews = NO;
         [self initShapeLayer];
+        [self initNameLabel];
         [self startObservingAnchor:_anchor0];
         [self startObservingAnchor:_anchor1];
         self.userInteractionEnabled = NO;
@@ -57,6 +62,7 @@ static char kStrutViewContext;
     [self setBoundsWithCurrentParameters];
     [self setTransformWithCurrentParameters];
     [self setPathWithCurrentParameters];
+    [self layoutNameLabel];
 }
 
 #pragma mark - NSObject overrides
@@ -82,6 +88,18 @@ static char kStrutViewContext;
     layer.strokeColor = nil;
     layer.fillColor = [UIColor yellowColor].CGColor;
     self.backgroundColor = nil;
+}
+
+- (void)initNameLabel {
+    nameLabel = [[UILabel alloc] init];
+    nameLabel.font = [UIFont fontWithName:@"HelveticaNeue-Medium" size:12];
+    nameLabel.text = self.name;
+    nameLabel.numberOfLines = 1;
+    nameLabel.textAlignment = NSTextAlignmentCenter;
+    nameLabel.textColor = [UIColor colorWithCGColor:self.layer.fillColor];
+    nameLabel.backgroundColor = [UIColor colorWithWhite:0 alpha:0.8];
+    nameLabel.layer.cornerRadius = 2 * thickness;
+    [self addSubview:nameLabel];
 }
 
 - (void)updateParameters {
@@ -147,6 +165,19 @@ static char kStrutViewContext;
 
 - (void)stopObservingAnchor:(Anchor *)anchor {
     [anchor removeObserver:self forKeyPath:@"point" context:&kStrutViewContext];
+}
+
+- (void)layoutNameLabel {
+    CGRect myBounds = self.bounds;
+    CGRect labelBounds = CGRectInset((CGRect){ CGPointZero, nameLabel.intrinsicContentSize }, -thickness, -0.5f * thickness);
+    if (labelBounds.size.width + 4 * thickness > myBounds.size.width) {
+        nameLabel.hidden = YES;
+    } else {
+        nameLabel.hidden = NO;
+        nameLabel.center = pointOffset(rectMidpoint(self.bounds), 0, 0.5f * labelBounds.size.height + 2 * thickness);
+        nameLabel.bounds = labelBounds;
+        nameLabel.frame = CGRectIntegral(nameLabel.frame);
+    }
 }
 
 @end
