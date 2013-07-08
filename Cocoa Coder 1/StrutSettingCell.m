@@ -13,7 +13,6 @@
 
 @property (strong, nonatomic) IBOutlet UILabel *nameLabel;
 @property (strong, nonatomic) IBOutlet UIButton *showStrutButton;
-@property (strong, nonatomic) IBOutlet UIButton *showArrowButton;
 @property (strong, nonatomic) IBOutlet DialView *dialView;
 
 @end
@@ -28,7 +27,7 @@ static char kStrutSettingCellContext;
 
 + (CGFloat)heightForSetting:(StrutSetting *)setting {
     // These must match the prototype cell in the storyboard.
-    return setting.shouldShowControls ? 139.0f : 44.0f;
+    return setting.shouldShowControls ? 91.0f : 44.0f;
 }
 
 #pragma mark - SettingCell+SubclassingHooks
@@ -110,7 +109,6 @@ static char kStrutSettingCellContext;
 
 - (void)updateFromModel {
     self.showStrutButton.selected = !self.setting.strutView.hidden;
-    self.showArrowButton.enabled = self.showStrutButton.selected;
     self.dialView.value = self.setting.strutView.signedLength;
 }
 

@@ -93,15 +93,15 @@
                         <color key="sectionIndexColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="sectionIndexTrackingBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="StrutSetting" rowHeight="139" id="mHy-15-Kmy" customClass="StrutSettingCell">
-                                <rect key="frame" x="0.0" y="22" width="256" height="139"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="StrutSetting" rowHeight="91" id="mHy-15-Kmy" customClass="StrutSettingCell">
+                                <rect key="frame" x="0.0" y="22" width="256" height="91"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="256" height="138"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="256" height="90"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="superview.bounds.origin.x" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="n0l-iS-4qa">
-                                            <rect key="frame" x="8" y="0.0" width="240" height="44"/>
+                                        <label opaque="NO" clipsSubviews="YES" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="superview.bounds.origin.x" lineBreakMode="headTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="n0l-iS-4qa">
+                                            <rect key="frame" x="8" y="0.0" width="196" height="44"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <gestureRecognizers/>
@@ -117,45 +117,8 @@
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9HE-mS-ROh">
-                                            <rect key="frame" x="8" y="46" width="110" height="44"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="44" id="KYD-dP-5en"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                            <state key="normal" title="Show Strut">
-                                                <color key="titleColor" red="0.55364668369293213" green="0.6654626727104187" blue="0.91342443227767944" alpha="1" colorSpace="calibratedRGB"/>
-                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                            </state>
-                                            <state key="selected" title="Hide Strut"/>
-                                            <state key="highlighted">
-                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            </state>
-                                            <connections>
-                                                <action selector="showStrutButtonWasTapped:" destination="mHy-15-Kmy" eventType="touchUpInside" id="2Y4-4H-XQF"/>
-                                            </connections>
-                                        </button>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oTh-BQ-Vcb">
-                                            <rect key="frame" x="138" y="46" width="110" height="44"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                            <state key="normal" title="Show Arrow">
-                                                <color key="titleColor" red="0.55364668369293213" green="0.6654626727104187" blue="0.91342443227767944" alpha="1" colorSpace="calibratedRGB"/>
-                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                            </state>
-                                            <state key="disabled">
-                                                <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                            </state>
-                                            <state key="selected" title="Hide Arrow"/>
-                                            <state key="highlighted">
-                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            </state>
-                                        </button>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ecm-st-ZFx" customClass="DialView">
-                                            <rect key="frame" x="0.0" y="92" width="256" height="44"/>
+                                            <rect key="frame" x="0.0" y="46" width="256" height="44"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                             <constraints>
@@ -165,34 +128,49 @@
                                                 <action selector="dialValueDidChange" destination="mHy-15-Kmy" eventType="valueChanged" id="tqh-bm-TgJ"/>
                                             </connections>
                                         </view>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zbc-Jf-TR4" userLabel="Show Strut Button - 🙈">
+                                            <rect key="frame" x="212" y="0.0" width="44" height="43"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="43" id="8RW-L1-zzg"/>
+                                                <constraint firstAttribute="width" constant="44" id="fKy-BS-2dC"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                            <state key="normal" title="🙈">
+                                                <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <state key="selected" title="👀"/>
+                                            <state key="highlighted">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="showStrutButtonWasTapped:" destination="mHy-15-Kmy" eventType="touchUpInside" id="cND-VH-ZQs"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="oTh-BQ-Vcb" firstAttribute="top" secondItem="9HE-mS-ROh" secondAttribute="top" id="4Ot-4W-2AH"/>
-                                    <constraint firstItem="oTh-BQ-Vcb" firstAttribute="height" secondItem="9HE-mS-ROh" secondAttribute="height" id="6a4-EF-N1w"/>
-                                    <constraint firstItem="oTh-BQ-Vcb" firstAttribute="leading" secondItem="9HE-mS-ROh" secondAttribute="trailing" constant="20" id="AoK-cm-Y6R"/>
-                                    <constraint firstItem="9HE-mS-ROh" firstAttribute="leading" secondItem="n0l-iS-4qa" secondAttribute="leading" id="LZG-YI-lGz"/>
                                     <constraint firstItem="n0l-iS-4qa" firstAttribute="leading" secondItem="mHy-15-Kmy" secondAttribute="leading" constant="8" id="NQY-5P-0X4"/>
+                                    <constraint firstItem="zbc-Jf-TR4" firstAttribute="top" secondItem="mHy-15-Kmy" secondAttribute="top" id="NWb-pY-qzu"/>
                                     <constraint firstItem="n0l-iS-4qa" firstAttribute="top" secondItem="mHy-15-Kmy" secondAttribute="top" id="T2z-q0-ODj"/>
                                     <constraint firstItem="ecm-st-ZFx" firstAttribute="leading" secondItem="mHy-15-Kmy" secondAttribute="leading" id="To4-Mr-Hdf"/>
-                                    <constraint firstItem="oTh-BQ-Vcb" firstAttribute="width" secondItem="9HE-mS-ROh" secondAttribute="width" id="Vwq-ug-Z2L"/>
+                                    <constraint firstItem="zbc-Jf-TR4" firstAttribute="leading" secondItem="n0l-iS-4qa" secondAttribute="trailing" constant="8" id="eTr-l8-BIw"/>
                                     <constraint firstItem="ecm-st-ZFx" firstAttribute="trailing" secondItem="mHy-15-Kmy" secondAttribute="trailing" id="ekb-rn-4tm"/>
-                                    <constraint firstItem="oTh-BQ-Vcb" firstAttribute="trailing" secondItem="n0l-iS-4qa" secondAttribute="trailing" id="gzt-xg-Yim"/>
-                                    <constraint firstAttribute="trailing" secondItem="n0l-iS-4qa" secondAttribute="trailing" constant="8" id="rMP-ww-XA5"/>
-                                    <constraint firstItem="9HE-mS-ROh" firstAttribute="top" secondItem="n0l-iS-4qa" secondAttribute="bottom" constant="2" id="tMq-sf-Se6"/>
-                                    <constraint firstItem="ecm-st-ZFx" firstAttribute="top" secondItem="9HE-mS-ROh" secondAttribute="bottom" constant="2" id="vGU-y0-Aso"/>
+                                    <constraint firstItem="zbc-Jf-TR4" firstAttribute="trailing" secondItem="mHy-15-Kmy" secondAttribute="trailing" id="qzn-4W-M52"/>
+                                    <constraint firstItem="ecm-st-ZFx" firstAttribute="top" secondItem="n0l-iS-4qa" secondAttribute="bottom" constant="2" id="rMb-ze-9cz"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="dialView" destination="ecm-st-ZFx" id="Vcf-3Q-wUP"/>
                                     <outlet property="nameLabel" destination="n0l-iS-4qa" id="5s0-BV-brB"/>
-                                    <outlet property="showArrowButton" destination="oTh-BQ-Vcb" id="Nan-Ji-QuT"/>
-                                    <outlet property="showStrutButton" destination="9HE-mS-ROh" id="Frb-BF-DLV"/>
+                                    <outlet property="showStrutButton" destination="zbc-Jf-TR4" id="Ixi-co-Ihh"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ViewVisibilitySetting" rowHeight="44" id="gdP-Jh-WH5" customClass="ViewVisibilitySettingCell">
-                                <rect key="frame" x="0.0" y="161" width="256" height="44"/>
+                                <rect key="frame" x="0.0" y="113" width="256" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="256" height="43"/>
@@ -267,9 +245,9 @@
         <class className="StrutSettingCell" superclassName="SettingCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/StrutSettingCell.h"/>
             <relationships>
+                <relationship kind="action" name="showStrutButtonWasTapped:"/>
                 <relationship kind="outlet" name="dialView" candidateClass="DialView"/>
                 <relationship kind="outlet" name="nameLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="showArrowButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="showStrutButton" candidateClass="UIButton"/>
             </relationships>
         </class>
