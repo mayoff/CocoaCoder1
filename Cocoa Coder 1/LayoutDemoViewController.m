@@ -95,6 +95,22 @@
         myView.bounds = rectByReplacingHeight(myView.bounds, length);
         [myView layoutIfNeeded];
     }];
+    [self addHorizontalStrutSettingWithName:@"myView.frame.origin.x" yView:myView position:0 offset:0 fromXView:superview position:0 toXView:myView position:0 setLengthBlock:^(CGFloat length) {
+        myView.frame = rectByReplacingX(myView.frame, length);
+        [myView layoutIfNeeded];
+    }];
+    [self addVerticalStrutSettingWithName:@"myView.frame.origin.y" xView:myView position:0 offset:0 fromYView:superview position:0 toYView:myView position:0 setLengthBlock:^(CGFloat length) {
+        myView.frame = rectByReplacingY(myView.frame, length);
+        [myView layoutIfNeeded];
+    }];
+    [self addHorizontalStrutSettingWithName:@"myView.frame.size.width" yView:myView position:1 offset:6 fromXView:myView position:0 toXView:myView position:1 setLengthBlock:^(CGFloat length) {
+        myView.frame = rectByReplacingWidth(myView.frame, length);
+        [myView layoutIfNeeded];
+    }];
+    [self addVerticalStrutSettingWithName:@"myView.frame.size.height" xView:myView position:1 offset:6 fromYView:myView position:0 toYView:myView position:1 setLengthBlock:^(CGFloat length) {
+        myView.frame = rectByReplacingHeight(myView.frame, length);
+        [myView layoutIfNeeded];
+    }];
     controlPanelViewController.settings = settings;
 }
 
