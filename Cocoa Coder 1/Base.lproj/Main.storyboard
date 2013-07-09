@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4457.9" systemVersion="12E55" targetRuntime="iOS.CocoaTouch.iPad" variant="6xAndEarlier" propertyAccessControl="none" useAutolayout="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4471.1" systemVersion="12E55" targetRuntime="iOS.CocoaTouch.iPad" variant="6xAndEarlier" propertyAccessControl="none" useAutolayout="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment defaultVersion="1536" identifier="iOS"/>
         <development version="5000" identifier="xcode"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3682.9"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3697.3"/>
     </dependencies>
     <scenes>
         <!--Layout Demo View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="LayoutDemoViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ROe-FF-3FM"/>
+                        <viewControllerLayoutGuide type="bottom" id="tmQ-H9-eF7"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -96,8 +100,8 @@
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="StrutSetting" rowHeight="91" id="mHy-15-Kmy" customClass="StrutSettingCell">
                                 <rect key="frame" x="0.0" y="22" width="256" height="91"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="256" height="90"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mHy-15-Kmy" id="O60-EH-7Rf">
+                                    <rect key="frame" x="-1" y="0.0" width="258" height="90"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="superview.bounds.origin.x" lineBreakMode="headTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="n0l-iS-4qa">
@@ -150,18 +154,17 @@
                                             </connections>
                                         </button>
                                     </subviews>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </view>
+                                </tableViewCellContentView>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="n0l-iS-4qa" firstAttribute="leading" secondItem="mHy-15-Kmy" secondAttribute="leading" constant="8" id="NQY-5P-0X4"/>
-                                    <constraint firstItem="zbc-Jf-TR4" firstAttribute="top" secondItem="mHy-15-Kmy" secondAttribute="top" id="NWb-pY-qzu"/>
-                                    <constraint firstItem="n0l-iS-4qa" firstAttribute="top" secondItem="mHy-15-Kmy" secondAttribute="top" id="T2z-q0-ODj"/>
-                                    <constraint firstItem="ecm-st-ZFx" firstAttribute="leading" secondItem="mHy-15-Kmy" secondAttribute="leading" id="To4-Mr-Hdf"/>
-                                    <constraint firstItem="zbc-Jf-TR4" firstAttribute="leading" secondItem="n0l-iS-4qa" secondAttribute="trailing" constant="8" id="eTr-l8-BIw"/>
-                                    <constraint firstItem="ecm-st-ZFx" firstAttribute="trailing" secondItem="mHy-15-Kmy" secondAttribute="trailing" id="ekb-rn-4tm"/>
-                                    <constraint firstItem="zbc-Jf-TR4" firstAttribute="trailing" secondItem="mHy-15-Kmy" secondAttribute="trailing" id="qzn-4W-M52"/>
-                                    <constraint firstItem="ecm-st-ZFx" firstAttribute="top" secondItem="n0l-iS-4qa" secondAttribute="bottom" constant="2" id="rMb-ze-9cz"/>
+                                    <constraint firstItem="zbc-Jf-TR4" firstAttribute="trailing" secondItem="mHy-15-Kmy" secondAttribute="trailing" id="6cw-g2-CGN"/>
+                                    <constraint firstItem="n0l-iS-4qa" firstAttribute="leading" secondItem="mHy-15-Kmy" secondAttribute="leading" constant="8" id="8zI-gJ-r1C"/>
+                                    <constraint firstItem="zbc-Jf-TR4" firstAttribute="top" secondItem="mHy-15-Kmy" secondAttribute="top" id="ClT-bb-zmV"/>
+                                    <constraint firstItem="ecm-st-ZFx" firstAttribute="leading" secondItem="mHy-15-Kmy" secondAttribute="leading" id="EkO-ri-DEg"/>
+                                    <constraint firstItem="ecm-st-ZFx" firstAttribute="trailing" secondItem="mHy-15-Kmy" secondAttribute="trailing" id="Eoc-9R-y6x"/>
+                                    <constraint firstItem="zbc-Jf-TR4" firstAttribute="leading" secondItem="n0l-iS-4qa" secondAttribute="trailing" constant="8" id="ROi-hb-l6E"/>
+                                    <constraint firstItem="ecm-st-ZFx" firstAttribute="top" secondItem="n0l-iS-4qa" secondAttribute="bottom" constant="2" id="Wbl-uy-vuA"/>
+                                    <constraint firstItem="n0l-iS-4qa" firstAttribute="top" secondItem="mHy-15-Kmy" secondAttribute="top" id="lh4-3t-gkX"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="dialView" destination="ecm-st-ZFx" id="Vcf-3Q-wUP"/>
@@ -172,8 +175,8 @@
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ViewVisibilitySetting" rowHeight="44" id="gdP-Jh-WH5" customClass="ViewVisibilitySettingCell">
                                 <rect key="frame" x="0.0" y="113" width="256" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="256" height="43"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gdP-Jh-WH5" id="yQg-EL-i1x">
+                                    <rect key="frame" x="-1" y="0.0" width="258" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="superview.bounds.origin.x" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dTk-lX-EtT">
@@ -217,15 +220,14 @@
                                             </connections>
                                         </button>
                                     </subviews>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </view>
+                                </tableViewCellContentView>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="dTk-lX-EtT" firstAttribute="top" secondItem="gdP-Jh-WH5" secondAttribute="top" id="DZn-PN-ftm"/>
-                                    <constraint firstItem="Gd6-SS-Dl4" firstAttribute="leading" secondItem="dTk-lX-EtT" secondAttribute="trailing" constant="8" id="WFr-wS-Omk"/>
-                                    <constraint firstItem="dTk-lX-EtT" firstAttribute="leading" secondItem="gdP-Jh-WH5" secondAttribute="leading" constant="8" id="dDK-hW-Q6R"/>
-                                    <constraint firstItem="Gd6-SS-Dl4" firstAttribute="top" secondItem="gdP-Jh-WH5" secondAttribute="top" id="tiK-bT-JsW"/>
-                                    <constraint firstItem="Gd6-SS-Dl4" firstAttribute="trailing" secondItem="gdP-Jh-WH5" secondAttribute="trailing" id="y46-Zc-IBR"/>
+                                    <constraint firstItem="Gd6-SS-Dl4" firstAttribute="top" secondItem="gdP-Jh-WH5" secondAttribute="top" id="6JU-yq-pcv"/>
+                                    <constraint firstItem="Gd6-SS-Dl4" firstAttribute="trailing" secondItem="gdP-Jh-WH5" secondAttribute="trailing" id="EfT-Ob-IbD"/>
+                                    <constraint firstItem="Gd6-SS-Dl4" firstAttribute="leading" secondItem="dTk-lX-EtT" secondAttribute="trailing" constant="8" id="b43-dC-ZfT"/>
+                                    <constraint firstItem="dTk-lX-EtT" firstAttribute="top" secondItem="gdP-Jh-WH5" secondAttribute="top" id="gK9-3N-UrP"/>
+                                    <constraint firstItem="dTk-lX-EtT" firstAttribute="leading" secondItem="gdP-Jh-WH5" secondAttribute="leading" constant="8" id="jbV-dj-wxS"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="nameLabel" destination="dTk-lX-EtT" id="hm5-67-KoV"/>
@@ -245,46 +247,6 @@
             <point key="canvasLocation" x="1130" y="105"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="ControlPanelViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ControlPanelViewController.h"/>
-        </class>
-        <class className="DialView" superclassName="UIControl">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DialView.h"/>
-        </class>
-        <class className="LayoutDemoView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/LayoutDemoView.h"/>
-        </class>
-        <class className="LayoutDemoViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/LayoutDemoViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="panGestureWasRecognized:" candidateClass="UIPanGestureRecognizer"/>
-                <relationship kind="outlet" name="myView" candidateClass="UIView"/>
-            </relationships>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="SettingCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SettingCell.h"/>
-        </class>
-        <class className="StrutSettingCell" superclassName="SettingCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/StrutSettingCell.h"/>
-            <relationships>
-                <relationship kind="action" name="showStrutButtonWasTapped:"/>
-                <relationship kind="outlet" name="dialView" candidateClass="DialView"/>
-                <relationship kind="outlet" name="nameLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="showStrutButton" candidateClass="UIButton"/>
-            </relationships>
-        </class>
-        <class className="ViewVisibilitySettingCell" superclassName="SettingCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewVisibilitySettingCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="nameLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="showViewButton" candidateClass="UIButton"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackOpaque"/>
         <simulatedOrientationMetrics key="orientation"/>
