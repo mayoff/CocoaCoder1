@@ -10,6 +10,7 @@
 		3135465E178D1EC100574C20 /* AxisView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3135465D178D1EC100574C20 /* AxisView.m */; };
 		31354661178D2C5100574C20 /* FloatSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = 31354660178D2C5100574C20 /* FloatSetting.m */; };
 		318C6062178D335D00E5C6D9 /* NSObject+Rob_BlockKVO.m in Sources */ = {isa = PBXBuildFile; fileRef = 318C6061178D335D00E5C6D9 /* NSObject+Rob_BlockKVO.m */; };
+		318C6065178D4A3900E5C6D9 /* AxisSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = 318C6064178D4A3900E5C6D9 /* AxisSetting.m */; };
 		3198D0AA1788B20400A8ED58 /* SettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3198D0A91788B20400A8ED58 /* SettingCell.m */; };
 		3198D0AE1788B66900A8ED58 /* ViewVisibilitySetting.m in Sources */ = {isa = PBXBuildFile; fileRef = 3198D0AD1788B66900A8ED58 /* ViewVisibilitySetting.m */; };
 		3198D0B11788B73C00A8ED58 /* ViewVisibilitySettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3198D0B01788B73C00A8ED58 /* ViewVisibilitySettingCell.m */; };
@@ -58,6 +59,8 @@
 		31354660178D2C5100574C20 /* FloatSetting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FloatSetting.m; sourceTree = "<group>"; };
 		318C6060178D335D00E5C6D9 /* NSObject+Rob_BlockKVO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Rob_BlockKVO.h"; sourceTree = "<group>"; };
 		318C6061178D335D00E5C6D9 /* NSObject+Rob_BlockKVO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Rob_BlockKVO.m"; sourceTree = "<group>"; };
+		318C6063178D4A3900E5C6D9 /* AxisSetting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AxisSetting.h; sourceTree = "<group>"; };
+		318C6064178D4A3900E5C6D9 /* AxisSetting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AxisSetting.m; sourceTree = "<group>"; };
 		3198D0A81788B20400A8ED58 /* SettingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingCell.h; sourceTree = "<group>"; };
 		3198D0A91788B20400A8ED58 /* SettingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingCell.m; sourceTree = "<group>"; };
 		3198D0AB1788B43D00A8ED58 /* SettingCell+SubclassHooks.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SettingCell+SubclassHooks.h"; sourceTree = "<group>"; };
@@ -143,6 +146,7 @@
 				31C364031788ACB50077496D /* Setting.h */,
 				3135465F178D2C5100574C20 /* FloatSetting.h */,
 				31D3E2D61787F85400C7E666 /* StrutSetting.h */,
+				318C6063178D4A3900E5C6D9 /* AxisSetting.h */,
 				3198D0AC1788B66900A8ED58 /* ViewVisibilitySetting.h */,
 				3198D0A61788B0F500A8ED58 /* Implementation */,
 			);
@@ -159,6 +163,7 @@
 				3198D0A81788B20400A8ED58 /* SettingCell.h */,
 				3198D0A91788B20400A8ED58 /* SettingCell.m */,
 				31D3E2D71787F85400C7E666 /* StrutSetting.m */,
+				318C6064178D4A3900E5C6D9 /* AxisSetting.m */,
 				31C376141787EFD100F814B8 /* FloatSettingCell.h */,
 				31C376151787EFD100F814B8 /* FloatSettingCell.m */,
 				3198D0AD1788B66900A8ED58 /* ViewVisibilitySetting.m */,
@@ -384,6 +389,7 @@
 				31C5E72917877AF900AB361D /* LayoutDemoView.m in Sources */,
 				31D3E2DE17889F0900C7E666 /* DottedLayoutDemoView.m in Sources */,
 				31C376161787EFD100F814B8 /* FloatSettingCell.m in Sources */,
+				318C6065178D4A3900E5C6D9 /* AxisSetting.m in Sources */,
 				31C5E72C17877BBA00AB361D /* UIColor+my_projectColors.m in Sources */,
 				3198D0B11788B73C00A8ED58 /* ViewVisibilitySettingCell.m in Sources */,
 				3198D0B41788C2CD00A8ED58 /* NumberCell.m in Sources */,

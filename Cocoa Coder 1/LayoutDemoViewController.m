@@ -1,5 +1,6 @@
 
 #import "Anchor.h"
+#import "AxisSetting.h"
 #import "AxisView.h"
 #import "ControlPanelViewController.h"
 #import "DottedLayoutDemoView.h"
@@ -74,18 +75,24 @@ static CGFloat const ZPosition_Strut = 3;
 
 #pragma mark - Implementation details
 
+static void makeViewUseAutoresizing(UIView *view) {
+    // Removing a view from the view hierarchy removes all constraints linking it to views outside itself.
+    UIView *superview = view.superview;
+    [view removeFromSuperview];
+    [view removeConstraints:view.constraints];
+    view.translatesAutoresizingMaskIntoConstraints = YES;
+    view.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleRightMargin;
+    [superview addSubview:view];
+}
+
 - (void)initSuperview {
-    self.myView.superview.layer.zPosition = ZPosition_Superview;
+    UIView *superview = self.myView.superview;
+    superview.layer.zPosition = ZPosition_Superview;
+    makeViewUseAutoresizing(superview);
 }
 
 - (void)initMyView {
-    // Removing myView from the view hierarchy should remove all constraints to outside views.
-    UIView *superview = self.myView.superview;
-    [self.myView removeFromSuperview];
-    [self.myView removeConstraints:self.myView.constraints];
-    self.myView.translatesAutoresizingMaskIntoConstraints = YES;
-    self.myView.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleRightMargin;
-    [superview addSubview:self.myView];
+    makeViewUseAutoresizing(self.myView);
 }
 
 - (void)initSettings {
@@ -130,15 +137,8 @@ static CGFloat const ZPosition_Strut = 3;
         [myView layoutIfNeeded];
     }];
 
-    UIView *yAxisView = [AxisView yAxisViewObservingView:superview];
-    yAxisView.layer.zPosition = ZPosition_Axis;
-    [self.canvasView addSubview:yAxisView];
-    [self addVisibilitySettingWithName:@"superview.bounds.origin.x" view:yAxisView];
-
-    UIView *xAxisView = [AxisView xAxisViewObservingView:superview];
-    xAxisView.layer.zPosition = ZPosition_Axis;
-    [self.canvasView addSubview:xAxisView];
-    [self addVisibilitySettingWithName:@"superview.bounds.origin.y" view:xAxisView];
+    [self addAxisSettingWithName:@"superview.bounds.origin.x" calloutView:[AxisView yAxisViewObservingView:superview] zPosition:ZPosition_Axis];
+    [self addAxisSettingWithName:@"superview.bounds.origin.y" calloutView:[AxisView xAxisViewObservingView:superview] zPosition:ZPosition_Axis];
 
     controlPanelViewController.settings = settings;
 }
@@ -148,6 +148,14 @@ static CGFloat const ZPosition_Strut = 3;
     ViewVisibilitySetting *setting = [[ViewVisibilitySetting alloc] init];
     setting.name = name;
     setting.view = view;
+    [settings addObject:setting];
+}
+
+- (void)addAxisSettingWithName:(NSString *)name calloutView:(UIView *)calloutView zPosition:(CGFloat)zPosition {
+    calloutView.hidden = YES;
+    calloutView.layer.zPosition = zPosition;
+    [self.canvasView addSubview:calloutView];
+    AxisSetting *setting = [[AxisSetting alloc] initWithName:name calloutView:calloutView];
     [settings addObject:setting];
 }
 

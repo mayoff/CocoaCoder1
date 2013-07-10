@@ -10,4 +10,6 @@ Copyright (c) 2013 Rob Mayoff. All rights reserved.
 + (instancetype)xAxisViewObservingView:(UIView *)view;
 + (instancetype)yAxisViewObservingView:(UIView *)view;
 
+@property (nonatomic) CGFloat axisOffset;
+
 @end

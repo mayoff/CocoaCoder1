@@ -5,6 +5,7 @@ Copyright (c) 2013 Rob Mayoff. All rights reserved.
 
 #import "AxisView.h"
 #import "NSObject+Rob_BlockKVO.h"
+#import "RobGeometry.h"
 
 @interface AxisView ()
 
@@ -35,6 +36,9 @@ Copyright (c) 2013 Rob Mayoff. All rights reserved.
 + (instancetype)yAxisViewObservingView:(UIView *)view {
     return [[YAxisView alloc] initWithObservedView:view];
 }
+
+// Subclasses must implement this.
+@dynamic axisOffset;
 
 #pragma mark - Subclass API
 
@@ -70,6 +74,10 @@ Copyright (c) 2013 Rob Mayoff. All rights reserved.
     self.frame = [self frameForConvertedOrigin:origin];
 }
 
++ (NSSet *)keyPathsForValuesAffectingValueForAxisOffset {
+    return [NSSet setWithObject:@"observedView.bounds"];
+}
+
 @end
 
 @implementation XAxisView
@@ -81,6 +89,14 @@ Copyright (c) 2013 Rob Mayoff. All rights reserved.
     return frame;
 }
 
+- (CGFloat)axisOffset {
+    return self.observedView.bounds.origin.y;
+}
+
+- (void)setAxisOffset:(CGFloat)axisOffset {
+    self.observedView.bounds = rectByReplacingY(self.observedView.bounds, axisOffset);
+}
+
 @end
 
 @implementation YAxisView
@@ -90,6 +106,14 @@ Copyright (c) 2013 Rob Mayoff. All rights reserved.
     frame.origin.x = point.x;
     frame.size.width = 2;
     return frame;
+}
+
+- (CGFloat)axisOffset {
+    return self.observedView.bounds.origin.x;
+}
+
+- (void)setAxisOffset:(CGFloat)axisOffset {
+    self.observedView.bounds = rectByReplacingX(self.observedView.bounds, axisOffset);
 }
 
 @end

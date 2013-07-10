@@ -1,14 +1,8 @@
 
 #import "StrutSetting.h"
 #import "StrutView.h"
-#import "NSObject+Rob_BlockKVO.h"
 
-@implementation StrutSetting {
-    CGFloat priorSignedLength;
-    id signedLengthObserver;
-}
-
-#pragma mark - Public API
+@implementation StrutSetting
 
 - (instancetype)initWithName:(NSString *)name strutView:(StrutView *)strutView setLengthBlock:(void (^)(CGFloat))block {
     if (!(self = [super initWithName:name calloutView:strutView]))
@@ -26,8 +20,6 @@
 - (void)setFloatValue:(float)floatValue {
     self.setLength(floatValue);
 }
-
-#pragma mark - Implementation details
 
 + (NSSet *)keyPathsForValuesAffectingFloatValue {
     return [NSSet setWithObject:@"calloutView.signedLength"];
