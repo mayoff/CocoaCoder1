@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3135465E178D1EC100574C20 /* AxisView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3135465D178D1EC100574C20 /* AxisView.m */; };
+		31354661178D2C5100574C20 /* FloatSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = 31354660178D2C5100574C20 /* FloatSetting.m */; };
 		3198D0AA1788B20400A8ED58 /* SettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3198D0A91788B20400A8ED58 /* SettingCell.m */; };
 		3198D0AE1788B66900A8ED58 /* ViewVisibilitySetting.m in Sources */ = {isa = PBXBuildFile; fileRef = 3198D0AD1788B66900A8ED58 /* ViewVisibilitySetting.m */; };
 		3198D0B11788B73C00A8ED58 /* ViewVisibilitySettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3198D0B01788B73C00A8ED58 /* ViewVisibilitySettingCell.m */; };
@@ -52,6 +53,8 @@
 /* Begin PBXFileReference section */
 		3135465C178D1EC100574C20 /* AxisView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AxisView.h; sourceTree = "<group>"; };
 		3135465D178D1EC100574C20 /* AxisView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AxisView.m; sourceTree = "<group>"; };
+		3135465F178D2C5100574C20 /* FloatSetting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FloatSetting.h; sourceTree = "<group>"; };
+		31354660178D2C5100574C20 /* FloatSetting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FloatSetting.m; sourceTree = "<group>"; };
 		3198D0A81788B20400A8ED58 /* SettingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingCell.h; sourceTree = "<group>"; };
 		3198D0A91788B20400A8ED58 /* SettingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingCell.m; sourceTree = "<group>"; };
 		3198D0AB1788B43D00A8ED58 /* SettingCell+SubclassHooks.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SettingCell+SubclassHooks.h"; sourceTree = "<group>"; };
@@ -135,6 +138,7 @@
 			children = (
 				31C376111787EF5000F814B8 /* ControlPanelViewController.h */,
 				31C364031788ACB50077496D /* Setting.h */,
+				3135465F178D2C5100574C20 /* FloatSetting.h */,
 				31D3E2D61787F85400C7E666 /* StrutSetting.h */,
 				3198D0AC1788B66900A8ED58 /* ViewVisibilitySetting.h */,
 				3198D0A61788B0F500A8ED58 /* Implementation */,
@@ -148,6 +152,7 @@
 				3198D0AB1788B43D00A8ED58 /* SettingCell+SubclassHooks.h */,
 				31C376121787EF5000F814B8 /* ControlPanelViewController.m */,
 				31C364041788ACB50077496D /* Setting.m */,
+				31354660178D2C5100574C20 /* FloatSetting.m */,
 				3198D0A81788B20400A8ED58 /* SettingCell.h */,
 				3198D0A91788B20400A8ED58 /* SettingCell.m */,
 				31D3E2D71787F85400C7E666 /* StrutSetting.m */,
@@ -384,6 +389,7 @@
 				3198D0AE1788B66900A8ED58 /* ViewVisibilitySetting.m in Sources */,
 				3135465E178D1EC100574C20 /* AxisView.m in Sources */,
 				31C5E6FF178779AE00AB361D /* main.m in Sources */,
+				31354661178D2C5100574C20 /* FloatSetting.m in Sources */,
 				31D3E2D81787F85400C7E666 /* StrutSetting.m in Sources */,
 				31C376131787EF5000F814B8 /* ControlPanelViewController.m in Sources */,
 			);

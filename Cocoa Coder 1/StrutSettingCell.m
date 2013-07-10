@@ -34,12 +34,12 @@ static char kStrutSettingCellContext;
 
 - (void)connect {
     self.nameLabel.text = self.setting.name;
-    [self.setting.strutView addObserver:self forKeyPath:@"signedLength" options:NSKeyValueObservingOptionInitial context:&kStrutSettingCellContext];
+    [self.setting.calloutView addObserver:self forKeyPath:@"signedLength" options:NSKeyValueObservingOptionInitial context:&kStrutSettingCellContext];
     [self updateFromModel];
 }
 
 - (void)disconnect {
-    [self.setting.strutView removeObserver:self forKeyPath:@"signedLength" context:&kStrutSettingCellContext];
+    [self.setting.calloutView removeObserver:self forKeyPath:@"signedLength" context:&kStrutSettingCellContext];
 }
 
 #pragma mark - NSObject overrides
@@ -78,7 +78,7 @@ static char kStrutSettingCellContext;
 #pragma mark - Storyboard actions
 
 - (IBAction)showStrutButtonWasTapped:(id)sender {
-    self.setting.strutView.hidden = !self.setting.strutView.hidden;
+    self.setting.calloutView.hidden = !self.setting.calloutView.hidden;
     [self updateFromModel];
 }
 
@@ -108,9 +108,9 @@ static char kStrutSettingCellContext;
 }
 
 - (void)updateFromModel {
-    self.showStrutButton.selected = !self.setting.strutView.hidden;
-    if (self.dialView.value != self.setting.strutView.signedLength) {
-        self.dialView.value = self.setting.strutView.signedLength;
+    self.showStrutButton.selected = !self.setting.calloutView.hidden;
+    if (self.dialView.value != self.setting.calloutView.signedLength) {
+        self.dialView.value = self.setting.calloutView.signedLength;
     }
 }
 

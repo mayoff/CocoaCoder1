@@ -1,18 +1,14 @@
 
 #import <Foundation/Foundation.h>
-#import "Setting.h"
+#import "FloatSetting.h"
+#import "StrutView.h"
 
-@class StrutView;
-
-@interface StrutSetting : Setting
+@interface StrutSetting : FloatSetting
 
 - (instancetype)initWithName:(NSString *)name strutView:(StrutView *)strutView setLengthBlock:(void (^)(CGFloat length))block;
 
-@property (nonatomic, strong, readonly) NSString *name;
-@property (nonatomic) BOOL shouldShowControls;
-@property (nonatomic, strong, readonly) StrutView *strutView;
+@property (nonatomic, strong, readonly) StrutView *calloutView;
 
-/** You need to set this to a block that sets the strut length. */
-@property (nonatomic, copy) void (^setLength)(CGFloat length);
+@property (nonatomic, copy, readonly) void (^setLength)(CGFloat length);
 
 @end

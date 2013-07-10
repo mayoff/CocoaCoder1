@@ -8,11 +8,9 @@
 #pragma mark - Public API
 
 - (instancetype)initWithName:(NSString *)name strutView:(StrutView *)strutView setLengthBlock:(void (^)(CGFloat))block {
-    if (!(self = [super init]))
+    if (!(self = [super initWithName:name calloutView:strutView]))
         return nil;
 
-    _name = [name copy];
-    _strutView = strutView;
     _setLength = [block copy];
 
     return self;
