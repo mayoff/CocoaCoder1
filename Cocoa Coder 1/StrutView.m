@@ -2,6 +2,7 @@
 #import "StrutView.h"
 #import "Anchor.h"
 #import "RobGeometry.h"
+#import "NSObject+Rob_BlockKVO.h"
 @import QuartzCore;
 
 @interface StrutView ()
@@ -11,14 +12,14 @@
 
 @end
 
-static char kStrutViewContext;
-
 @implementation StrutView {
     double dx;
     double dy;
     double length;
     CGFloat thickness;
     UILabel *nameLabel;
+    id anchor0Observer;
+    id anchor1Observer;
 }
 
 #pragma mark - Public API
@@ -37,8 +38,8 @@ static char kStrutViewContext;
         self.autoresizesSubviews = NO;
         [self initShapeLayer];
         [self initNameLabel];
-        [self startObservingAnchor:_anchor0];
-        [self startObservingAnchor:_anchor1];
+        anchor0Observer = [self observerForAnchor:_anchor0];
+        anchor1Observer = [self observerForAnchor:_anchor1];
         self.userInteractionEnabled = NO;
     }
     return self;
@@ -63,21 +64,6 @@ static char kStrutViewContext;
     [self setTransformWithCurrentParameters];
     [self setPathWithCurrentParameters];
     [self layoutNameLabel];
-}
-
-#pragma mark - NSObject overrides
-
-- (void)dealloc {
-    [self stopObservingAnchor:_anchor0];
-    [self stopObservingAnchor:_anchor1];
-}
-
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-    if (context != &kStrutViewContext) {
-        [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
-        return;
-    }
-    [self setNeedsLayout];
 }
 
 #pragma mark - Implementation details
@@ -159,12 +145,10 @@ static char kStrutViewContext;
     CGPathRelease(path);
 }
 
-- (void)startObservingAnchor:(Anchor *)anchor {
-    [anchor addObserver:self forKeyPath:@"point" options:NSKeyValueObservingOptionInitial context:&kStrutViewContext];
-}
-
-- (void)stopObservingAnchor:(Anchor *)anchor {
-    [anchor removeObserver:self forKeyPath:@"point" context:&kStrutViewContext];
+- (id)observerForAnchor:(Anchor *)anchor {
+    return [anchor addObserverForKeyPath:@"point" options:NSKeyValueObservingOptionInitial selfReference:self block:^(StrutView *self, NSString *observedKeyPath, id observedObject, NSDictionary *change) {
+        [self setNeedsLayout];
+    }];
 }
 
 - (void)layoutNameLabel {
