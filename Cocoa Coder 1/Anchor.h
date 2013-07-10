@@ -15,4 +15,7 @@
 
 - (CGPoint)pointInView:(UIView *)view;
 
+// This is a fake property to allow observing changes to `pointInView:`.
+@property (nonatomic, readonly) CGPoint point;
+
 @end
