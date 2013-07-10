@@ -32,7 +32,8 @@ There are two ways I can be deregistered.
 @implementation Rob_BlockKVOObserver
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-    block(selfReference, keyPath, object, change);
+    id strongSelfReference = selfReference;
+    block(strongSelfReference, keyPath, object, change);
 }
 
 - (void)deregister {
