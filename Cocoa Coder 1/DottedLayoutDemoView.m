@@ -1,5 +1,6 @@
 
 #import "DottedLayoutDemoView.h"
+#import "NSObject+Rob_BlockKVO.h"
 @import QuartzCore;
 
 @interface DottedLayoutDemoView ()
@@ -8,12 +9,11 @@
 
 @end
 
-static char kLayoutContext;
-static char kHiddenContext;
-
 @implementation DottedLayoutDemoView {
     UIView *originalView;
     CGRect originalViewBoundsInMyCoordinateSystem;
+    id layoutObserver;
+    id hiddenObserver;
 }
 
 #pragma mark - Public API
@@ -44,36 +44,16 @@ static char kHiddenContext;
     return CGRectContainsPoint(originalViewBoundsInMyCoordinateSystem, point);
 }
 
-#pragma mark - NSObject overrides
-
-- (void)dealloc {
-    [self stopObservingOriginalView];
-}
-
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-    if (context == &kLayoutContext) {
-        [self setNeedsLayout];
-    } else if (context == &kHiddenContext) {
-        self.hidden = originalView.hidden;
-    } else {
-        [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
-    }
-}
-
 #pragma mark - Implementation details
 
 - (void)startObservingOriginalView {
-    [originalView addObserver:self forKeyPath:@"center" options:NSKeyValueObservingOptionInitial context:&kLayoutContext];
-    [originalView addObserver:self forKeyPath:@"bounds" options:NSKeyValueObservingOptionInitial context:&kLayoutContext];
-    [originalView addObserver:self forKeyPath:@"frame" options:NSKeyValueObservingOptionInitial context:&kLayoutContext];
-    [originalView addObserver:self forKeyPath:@"hidden" options:NSKeyValueObservingOptionInitial context:&kHiddenContext];
-}
+    layoutObserver = [originalView addObserverForKeyPaths:@[@"center", @"bounds", @"frame"] options:NSKeyValueObservingOptionInitial selfReference:self block:^(DottedLayoutDemoView *self, NSString *observedKeyPath, id observedObject, NSDictionary *change) {
+        [self setNeedsLayout];
+    }];
 
-- (void)stopObservingOriginalView {
-    [originalView removeObserver:self forKeyPath:@"center" context:&kLayoutContext];
-    [originalView removeObserver:self forKeyPath:@"bounds" context:&kLayoutContext];
-    [originalView removeObserver:self forKeyPath:@"frame" context:&kLayoutContext];
-    [originalView removeObserver:self forKeyPath:@"hidden" context:&kHiddenContext];
+    hiddenObserver = [originalView addObserverForKeyPath:@"hidden" options:NSKeyValueObservingOptionInitial selfReference:self block:^(DottedLayoutDemoView *self, NSString *observedKeyPath, id observedObject, NSDictionary *change) {
+        self.hidden = self->originalView.hidden;
+    }];
 }
 
 - (void)initBorder {

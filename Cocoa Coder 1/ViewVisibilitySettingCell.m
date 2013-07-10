@@ -6,6 +6,7 @@ Copyright (c) 2013 Rob Mayoff. All rights reserved.
 #import "ViewVisibilitySettingCell.h"
 #import "ViewVisibilitySetting.h"
 #import "SettingCell+SubclassHooks.h"
+#import "NSObject+Rob_BlockKVO.h"
 
 @interface ViewVisibilitySettingCell ()
 
@@ -16,9 +17,9 @@ Copyright (c) 2013 Rob Mayoff. All rights reserved.
 
 @end
 
-static char kViewVisibilitySettingCellContext;
-
-@implementation ViewVisibilitySettingCell
+@implementation ViewVisibilitySettingCell {
+    id observer;
+}
 
 + (CGFloat)heightForSetting:(Setting *)setting {
     return 44.0f;
@@ -26,14 +27,6 @@ static char kViewVisibilitySettingCellContext;
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    [self updateFromModel];
-}
-
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-    if (context != &kViewVisibilitySettingCellContext) {
-        [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
-        return;
-    }
     [self updateFromModel];
 }
 
@@ -47,11 +40,9 @@ static char kViewVisibilitySettingCellContext;
 
 - (void)connect {
     self.nameLabel.text = self.setting.name;
-    [self addObserver:self forKeyPath:@"setting.view.hidden" options:NSKeyValueObservingOptionInitial context:&kViewVisibilitySettingCellContext];
-}
-
-- (void)disconnect {
-    [self removeObserver:self forKeyPath:@"setting.view.hidden" context:&kViewVisibilitySettingCellContext];
+    observer = [self.setting addObserverForKeyPath:@"view.hidden" options:NSKeyValueObservingOptionInitial selfReference:self block:^(id self, NSString *observedKeyPath, id observedObject, NSDictionary *change) {
+        [self updateFromModel];
+    }];
 }
 
 @end
