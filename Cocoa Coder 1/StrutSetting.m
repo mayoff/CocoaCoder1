@@ -15,10 +15,6 @@
         return nil;
 
     _setLength = [block copy];
-    signedLengthObserver = [strutView addObserverForKeyPath:@"signedLength" options:0 selfReference:self block:^(id self, NSString *observedKeyPath, id observedObject, NSDictionary *change) {
-        [self willChangeValueForKey:@"floatValue"];
-        [self didChangeValueForKey:@"floatValue"];
-    }];
 
     return self;
 }
@@ -29,6 +25,12 @@
 
 - (void)setFloatValue:(float)floatValue {
     self.setLength(floatValue);
+}
+
+#pragma mark - Implementation details
+
++ (NSSet *)keyPathsForValuesAffectingFloatValue {
+    return [NSSet setWithObject:@"calloutView.signedLength"];
 }
 
 @end
