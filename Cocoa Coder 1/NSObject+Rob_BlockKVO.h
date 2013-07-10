@@ -14,4 +14,9 @@ typedef void (^Rob_BlockKVOBlock)(id self, NSString *observedKeyPath, id observe
 */
 - (id)addObserverForKeyPath:(NSString *)keyPath options:(NSKeyValueObservingOptions)options selfReference:(id)selfReference block:(Rob_BlockKVOBlock)block;
 
+/**
+    I register the block as an observer of each of the given key paths.  I return a single token representing all of the registrations.  If `options` includes `NSKeyValueObservingOptionInitial`, that flag only applies to the last key path.
+*/
+- (id)addObserverForKeyPaths:(NSArray *)keyPaths options:(NSKeyValueObservingOptions)options selfReference:(id)selfReference block:(Rob_BlockKVOBlock)block;
+
 @end

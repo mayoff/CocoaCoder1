@@ -6,8 +6,6 @@ Copyright (c) 2013 Rob Mayoff. All rights reserved.
 #import "NSObject+Rob_BlockKVO.h"
 #import <objc/runtime.h>
 
-static char const *Rob_BlockKVODeallocationDetectorKey = "Rob_BlockKVODeallocationDetectorKey";
-
 @class Rob_BlockKVODeallocationDetector;
 
 /**
@@ -47,15 +45,26 @@ There are two ways I can be deregistered.
 
 - (void)dealloc {
     if (deallocationDetector) {
-        objc_setAssociatedObject(observedObject, Rob_BlockKVODeallocationDetectorKey, nil, OBJC_ASSOCIATION_ASSIGN);
+        objc_setAssociatedObject(observedObject, (__bridge const void *)(self), nil, OBJC_ASSOCIATION_ASSIGN);
         // That caused the detector to be deallocated, which told me to deregister.
+    }
+}
+
+- (NSString *)description {
+    if (deallocationDetector) {
+        NSObject *strongSelfReference = selfReference;
+        return [NSString stringWithFormat:@"<%@ %p: selfReference=<%@: %p> observedKeyPath=%@ observedObject=<%@: %p>", self.class, self, strongSelfReference.class, strongSelfReference, observedKeyPath, observedObject.class, observedObject];
+    } else {
+        return [NSString stringWithFormat:@"<%@ %p: deregistered>", self.class, self];
     }
 }
 
 @end
 
 /**
-I create a Rob_BlockKVODeallocationDetector for each registration.  I attach this object to the observed object as a retained associate.  The observed object has the only reference to the detector, so when the observed object is deallocated, the detector is also deallocated.  When that happens, it tells the Rob_BlockKVOObserver to deregister itself.
+The `addObserverForKeyPath:options:block:` method creates me and attaches me to the subject as a retained associate.  The observed object has the only reference to me, so when the observed object is deallocated, I am also deallocated.  When that happens, I tell the Rob_BlockKVOObserver to deregister itself.
+
+The method could be optimized to create a single detector per subject, regardless of how many observers there are for that subject.  I would have to keep a list of all registered observers.  But if a single observer were deregistered, it would have to remove itself from my list.  That sounds hard.  Let's go shopping.
 */
 @interface Rob_BlockKVODeallocationDetector : NSObject {
 @public
@@ -90,7 +99,7 @@ I create a Rob_BlockKVODeallocationDetector for each registration.  I attach thi
 
     observer->deallocationDetector = detector;
 
-    objc_setAssociatedObject(self, Rob_BlockKVODeallocationDetectorKey, detector, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    objc_setAssociatedObject(self, (__bridge const void *)(observer), detector, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 
     // options might include NSKeyValueObservingOptionInitial, so before I register the observer, I nil out everything I can, in case the block wants to deallocate objects.
     detector = nil;
@@ -99,6 +108,22 @@ I create a Rob_BlockKVODeallocationDetector for each registration.  I attach thi
 
     [self addObserver:observer forKeyPath:keyPath options:options context:NULL];
     return observer;
+}
+
+- (id)addObserverForKeyPaths:(NSArray *)keyPaths options:(NSKeyValueObservingOptions)options selfReference:(id)selfReference block:(Rob_BlockKVOBlock)block {
+    block = [block copy];
+    NSUInteger count = keyPaths.count;
+    id observers[count];
+    BOOL initialBit = options & NSKeyValueObservingOptionInitial;
+    options &= ~NSKeyValueObservingOptionInitial;
+    for (NSUInteger i = 0; i < count; ++i) {
+        if (i == count - 1) {
+            options |= initialBit;
+        }
+        observers[i] = [self addObserverForKeyPath:keyPaths[i] options:options selfReference:selfReference block:block];
+    }
+
+    return [NSArray arrayWithObjects:observers count:count];
 }
 
 @end
