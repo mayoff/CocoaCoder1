@@ -1,6 +1,5 @@
 
 #import "StrutSetting.h"
-#import "StrutSettingCell.h"
 #import "StrutView.h"
 #import "NSObject+Rob_BlockKVO.h"
 
@@ -16,20 +15,12 @@
         return nil;
 
     _setLength = [block copy];
-    signedLengthObserver = [strutView addObserverForKeyPath:@"signedLength" options:0 block:^(NSString *observedKeyPath, id observedObject, NSDictionary *change) {
+    signedLengthObserver = [strutView addObserverForKeyPath:@"signedLength" options:0 selfReference:self block:^(id self, NSString *observedKeyPath, id observedObject, NSDictionary *change) {
         [self willChangeValueForKey:@"floatValue"];
         [self didChangeValueForKey:@"floatValue"];
     }];
 
     return self;
-}
-
-- (NSString *)cellReuseIdentifier {
-    return @"StrutSetting";
-}
-
-- (Class)cellClass {
-    return [StrutSettingCell class];
 }
 
 - (float)floatValue {

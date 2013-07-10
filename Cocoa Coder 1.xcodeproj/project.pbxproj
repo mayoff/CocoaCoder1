@@ -17,7 +17,7 @@
 		31BE46D61788CB35007C3D0B /* DialView.m in Sources */ = {isa = PBXBuildFile; fileRef = 31BE46D51788CB35007C3D0B /* DialView.m */; };
 		31C364051788ACB50077496D /* Setting.m in Sources */ = {isa = PBXBuildFile; fileRef = 31C364041788ACB50077496D /* Setting.m */; };
 		31C376131787EF5000F814B8 /* ControlPanelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 31C376121787EF5000F814B8 /* ControlPanelViewController.m */; };
-		31C376161787EFD100F814B8 /* StrutSettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 31C376151787EFD100F814B8 /* StrutSettingCell.m */; };
+		31C376161787EFD100F814B8 /* FloatSettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 31C376151787EFD100F814B8 /* FloatSettingCell.m */; };
 		31C5E6F3178779AE00AB361D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31C5E6F2178779AE00AB361D /* Foundation.framework */; };
 		31C5E6F5178779AE00AB361D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31C5E6F4178779AE00AB361D /* CoreGraphics.framework */; };
 		31C5E6F7178779AE00AB361D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31C5E6F6178779AE00AB361D /* UIKit.framework */; };
@@ -74,8 +74,8 @@
 		31C364041788ACB50077496D /* Setting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Setting.m; sourceTree = "<group>"; };
 		31C376111787EF5000F814B8 /* ControlPanelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControlPanelViewController.h; sourceTree = "<group>"; };
 		31C376121787EF5000F814B8 /* ControlPanelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ControlPanelViewController.m; sourceTree = "<group>"; };
-		31C376141787EFD100F814B8 /* StrutSettingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StrutSettingCell.h; sourceTree = "<group>"; };
-		31C376151787EFD100F814B8 /* StrutSettingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StrutSettingCell.m; sourceTree = "<group>"; };
+		31C376141787EFD100F814B8 /* FloatSettingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FloatSettingCell.h; sourceTree = "<group>"; };
+		31C376151787EFD100F814B8 /* FloatSettingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FloatSettingCell.m; sourceTree = "<group>"; };
 		31C5E6EF178779AE00AB361D /* Cocoa Coder 1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Cocoa Coder 1.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		31C5E6F2178779AE00AB361D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		31C5E6F4178779AE00AB361D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -159,8 +159,8 @@
 				3198D0A81788B20400A8ED58 /* SettingCell.h */,
 				3198D0A91788B20400A8ED58 /* SettingCell.m */,
 				31D3E2D71787F85400C7E666 /* StrutSetting.m */,
-				31C376141787EFD100F814B8 /* StrutSettingCell.h */,
-				31C376151787EFD100F814B8 /* StrutSettingCell.m */,
+				31C376141787EFD100F814B8 /* FloatSettingCell.h */,
+				31C376151787EFD100F814B8 /* FloatSettingCell.m */,
 				3198D0AD1788B66900A8ED58 /* ViewVisibilitySetting.m */,
 				3198D0AF1788B73C00A8ED58 /* ViewVisibilitySettingCell.h */,
 				3198D0B01788B73C00A8ED58 /* ViewVisibilitySettingCell.m */,
@@ -383,7 +383,7 @@
 				31C5E72F17877F8700AB361D /* StrutView.m in Sources */,
 				31C5E72917877AF900AB361D /* LayoutDemoView.m in Sources */,
 				31D3E2DE17889F0900C7E666 /* DottedLayoutDemoView.m in Sources */,
-				31C376161787EFD100F814B8 /* StrutSettingCell.m in Sources */,
+				31C376161787EFD100F814B8 /* FloatSettingCell.m in Sources */,
 				31C5E72C17877BBA00AB361D /* UIColor+my_projectColors.m in Sources */,
 				3198D0B11788B73C00A8ED58 /* ViewVisibilitySettingCell.m in Sources */,
 				3198D0B41788C2CD00A8ED58 /* NumberCell.m in Sources */,

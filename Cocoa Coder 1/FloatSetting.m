@@ -4,6 +4,7 @@ Copyright (c) 2013 Rob Mayoff. All rights reserved.
 */
 
 #import "FloatSetting.h"
+#import "FloatSettingCell.h"
 
 @implementation FloatSetting
 
@@ -17,5 +18,13 @@ Copyright (c) 2013 Rob Mayoff. All rights reserved.
 
 // Subclasses must implement the accessors for this and make it KVO-compliant.
 @dynamic floatValue;
+
+- (NSString *)cellReuseIdentifier {
+    return @"FloatSetting";
+}
+
+- (Class)cellClass {
+    return [FloatSettingCell class];
+}
 
 @end

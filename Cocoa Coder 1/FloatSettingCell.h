@@ -2,6 +2,6 @@
 #import <UIKit/UIKit.h>
 #import "SettingCell.h"
 
-@interface StrutSettingCell : SettingCell
+@interface FloatSettingCell : SettingCell
 
 @end

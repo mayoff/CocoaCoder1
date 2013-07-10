@@ -1,31 +1,30 @@
 
-#import "StrutSettingCell.h"
-#import "StrutSetting.h"
-#import "StrutView.h"
+#import "FloatSettingCell.h"
+#import "FloatSetting.h"
 #import "SettingCell+SubclassHooks.h"
 #import "UIView+Rob_FindAncestor.h"
 #import "NumberCell.h"
 #import "DialView.h"
+#import "NSObject+Rob_BlockKVO.h"
 
-@interface StrutSettingCell () <UICollectionViewDataSource, UICollectionViewDelegate>
+@interface FloatSettingCell () <UICollectionViewDataSource, UICollectionViewDelegate>
 
-@property (nonatomic, strong) StrutSetting *setting;
+@property (nonatomic, strong) FloatSetting *setting;
 
 @property (strong, nonatomic) IBOutlet UILabel *nameLabel;
-@property (strong, nonatomic) IBOutlet UIButton *showStrutButton;
+@property (strong, nonatomic) IBOutlet UIButton *showCalloutButton;
 @property (strong, nonatomic) IBOutlet DialView *dialView;
 
 @end
 
-static char kStrutSettingCellContext;
-
-@implementation StrutSettingCell {
+@implementation FloatSettingCell {
+    id floatValueObserver;
     BOOL isUpdatingFromUserInterface : 1;
 }
 
 #pragma mark - Public API
 
-+ (CGFloat)heightForSetting:(StrutSetting *)setting {
++ (CGFloat)heightForSetting:(FloatSetting *)setting {
     // These must match the prototype cell in the storyboard.
     return setting.shouldShowControls ? 91.0f : 44.0f;
 }
@@ -34,33 +33,22 @@ static char kStrutSettingCellContext;
 
 - (void)connect {
     self.nameLabel.text = self.setting.name;
-    [self.setting.calloutView addObserver:self forKeyPath:@"signedLength" options:NSKeyValueObservingOptionInitial context:&kStrutSettingCellContext];
-    [self updateFromModel];
+    floatValueObserver = [self.setting addObserverForKeyPath:@"floatValue" options:NSKeyValueObservingOptionInitial selfReference:self block:^(FloatSettingCell *self, NSString *observedKeyPath, id observedObject, NSDictionary *change) {
+        if (!self->isUpdatingFromUserInterface) {
+            [self updateFromModel];
+        }
+    }];
 }
 
 - (void)disconnect {
-    [self.setting.calloutView removeObserver:self forKeyPath:@"signedLength" context:&kStrutSettingCellContext];
+    floatValueObserver = nil;
 }
 
 #pragma mark - NSObject overrides
 
-- (void)dealloc {
-    [self disconnect];
-}
-
 - (void)awakeFromNib {
     [super awakeFromNib];
     [self addTapGestureRecognizerToNameLabel];
-}
-
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-    if (context == &kStrutSettingCellContext) {
-        if (!isUpdatingFromUserInterface) {
-            [self updateFromModel];
-        }
-    } else {
-        [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
-    }
 }
 
 #pragma mark - UICollectionViewDataSource overrides
@@ -77,17 +65,14 @@ static char kStrutSettingCellContext;
 
 #pragma mark - Storyboard actions
 
-- (IBAction)showStrutButtonWasTapped:(id)sender {
+- (IBAction)showCalloutButtonWasTapped:(id)sender {
     self.setting.calloutView.hidden = !self.setting.calloutView.hidden;
     [self updateFromModel];
 }
 
 - (IBAction)dialValueDidChange {
     isUpdatingFromUserInterface = YES;
-    if (self.setting.setLength) {
-        CGFloat length = roundf(self.dialView.value);
-        self.setting.setLength(length);
-    }
+    self.setting.floatValue = roundf(self.dialView.value);
     isUpdatingFromUserInterface = NO;
 }
 
@@ -108,9 +93,9 @@ static char kStrutSettingCellContext;
 }
 
 - (void)updateFromModel {
-    self.showStrutButton.selected = !self.setting.calloutView.hidden;
-    if (self.dialView.value != self.setting.calloutView.signedLength) {
-        self.dialView.value = self.setting.calloutView.signedLength;
+    self.showCalloutButton.selected = !self.setting.calloutView.hidden;
+    if (self.dialView.value != self.setting.floatValue) {
+        self.dialView.value = self.setting.floatValue;
     }
 }
 

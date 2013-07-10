@@ -21,6 +21,7 @@ There are two ways I can be deregistered.
 
 @interface Rob_BlockKVOObserver : NSObject {
 @public
+    __weak id selfReference;
     Rob_BlockKVOBlock block;
     NSString *observedKeyPath;
     __unsafe_unretained NSObject *observedObject;
@@ -31,11 +32,12 @@ There are two ways I can be deregistered.
 @implementation Rob_BlockKVOObserver
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-    block(keyPath, object, change);
+    block(selfReference, keyPath, object, change);
 }
 
 - (void)deregister {
     [observedObject removeObserver:self forKeyPath:observedKeyPath];
+    selfReference = nil;
     block = nil;
     observedKeyPath = nil;
     observedObject = nil;
@@ -70,13 +72,14 @@ I create a Rob_BlockKVODeallocationDetector for each registration.  I attach thi
 
 @implementation NSObject (Rob_BlockKVO)
 
-- (id)addObserverForKeyPath:(NSString *)keyPath options:(NSKeyValueObservingOptions)options block:(Rob_BlockKVOBlock)block {
+- (id)addObserverForKeyPath:(NSString *)keyPath options:(NSKeyValueObservingOptions)options selfReference:(id)selfReference block:(Rob_BlockKVOBlock)block {
     NSAssert(block != nil, @"%s requires that block not be nil", __func__);
 
     keyPath = [keyPath copy];
     block = [block copy];
 
     Rob_BlockKVOObserver *observer = [[Rob_BlockKVOObserver alloc] init];
+    observer->selfReference = selfReference;
     observer->block = block;
     observer->observedKeyPath = keyPath;
     observer->observedObject = self;
@@ -87,7 +90,11 @@ I create a Rob_BlockKVODeallocationDetector for each registration.  I attach thi
     observer->deallocationDetector = detector;
 
     objc_setAssociatedObject(self, Rob_BlockKVODeallocationDetectorKey, detector, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+
+    // options might include NSKeyValueObservingOptionInitial, so before I register the observer, I nil out everything I can, in case the block wants to deallocate objects.
     detector = nil;
+    block = nil;
+    selfReference = nil;
 
     [self addObserver:observer forKeyPath:keyPath options:options context:NULL];
     return observer;

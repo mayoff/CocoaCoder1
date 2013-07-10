@@ -111,7 +111,7 @@
                         <color key="sectionIndexColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="sectionIndexTrackingBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="StrutSetting" rowHeight="91" id="mHy-15-Kmy" customClass="StrutSettingCell">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FloatSetting" rowHeight="91" id="mHy-15-Kmy" customClass="FloatSettingCell">
                                 <rect key="frame" x="0.0" y="22" width="256" height="91"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mHy-15-Kmy" id="O60-EH-7Rf">
@@ -146,7 +146,7 @@
                                                 <action selector="dialValueDidChange" destination="mHy-15-Kmy" eventType="valueChanged" id="tqh-bm-TgJ"/>
                                             </connections>
                                         </view>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zbc-Jf-TR4" userLabel="Show Strut Button - 🙈">
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zbc-Jf-TR4" userLabel="Show Callout Button - 🙈">
                                             <rect key="frame" x="213" y="0.0" width="44" height="43"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -164,7 +164,7 @@
                                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                             <connections>
-                                                <action selector="showStrutButtonWasTapped:" destination="mHy-15-Kmy" eventType="touchUpInside" id="cND-VH-ZQs"/>
+                                                <action selector="showCalloutButtonWasTapped:" destination="mHy-15-Kmy" eventType="touchUpInside" id="y53-YZ-Mb6"/>
                                             </connections>
                                         </button>
                                     </subviews>
@@ -183,7 +183,7 @@
                                 <connections>
                                     <outlet property="dialView" destination="ecm-st-ZFx" id="Vcf-3Q-wUP"/>
                                     <outlet property="nameLabel" destination="n0l-iS-4qa" id="5s0-BV-brB"/>
-                                    <outlet property="showStrutButton" destination="zbc-Jf-TR4" id="Ixi-co-Ihh"/>
+                                    <outlet property="showCalloutButton" destination="zbc-Jf-TR4" id="J85-Qd-hhl"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ViewVisibilitySetting" rowHeight="44" id="gdP-Jh-WH5" customClass="ViewVisibilitySettingCell">
