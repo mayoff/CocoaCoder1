@@ -10,6 +10,7 @@
 
 @interface LayoutDemoViewController ()
 
+@property (nonatomic, strong) IBOutlet UIView *canvasView;
 @property (strong, nonatomic) IBOutlet UIView *myView;
 
 @end
@@ -142,7 +143,7 @@
 
 - (void)initDottedViews {
     DottedLayoutDemoView *view = [[DottedLayoutDemoView alloc] initWithOriginalView:self.myView];
-    [self.view insertSubview:view atIndex:0];
+    [self.canvasView insertSubview:view atIndex:0];
     UIPanGestureRecognizer *recognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGestureWasRecognized:)];
     [view addGestureRecognizer:recognizer];
 }
