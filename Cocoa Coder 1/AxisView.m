@@ -4,8 +4,7 @@ Copyright (c) 2013 Rob Mayoff. All rights reserved.
 */
 
 #import "AxisView.h"
-
-static char kAxisViewContext;
+#import "NSObject+Rob_BlockKVO.h"
 
 @interface AxisView ()
 
@@ -23,7 +22,9 @@ static char kAxisViewContext;
 
 @end
 
-@implementation AxisView
+@implementation AxisView {
+    id observer;
+}
 
 #pragma mark - Public API
 
@@ -48,20 +49,6 @@ static char kAxisViewContext;
     [self layoutSelf];
 }
 
-#pragma mark - NSObject overrides
-
-- (void)dealloc {
-    [self stopObservingView];
-}
-
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-    if (context == &kAxisViewContext) {
-        [self setNeedsLayout];
-    } else {
-        [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
-    }
-}
-
 #pragma mark - Implementation details
 
 - (instancetype)initWithObservedView:(UIView *)view {
@@ -71,21 +58,11 @@ static char kAxisViewContext;
         self.userInteractionEnabled = NO;
 
         _observedView = view;
-        [self startObservingView];
+        observer = [_observedView addObserverForKeyPaths:@[@"center", @"bounds", @"frame"] options:NSKeyValueObservingOptionInitial selfReference:self block:^(AxisView *self, NSString *observedKeyPath, id observedObject, NSDictionary *change) {
+            [self setNeedsLayout];
+        }];
     }
     return self;
-}
-
-- (void)startObservingView {
-    [self.observedView addObserver:self forKeyPath:@"bounds" options:NSKeyValueObservingOptionInitial context:&kAxisViewContext];
-    [self.observedView addObserver:self forKeyPath:@"center" options:0 context:&kAxisViewContext];
-    [self.observedView addObserver:self forKeyPath:@"frame" options:0 context:&kAxisViewContext];
-}
-
-- (void)stopObservingView {
-    [self.observedView removeObserver:self forKeyPath:@"bounds" context:&kAxisViewContext];
-    [self.observedView removeObserver:self forKeyPath:@"center" context:&kAxisViewContext];
-    [self.observedView removeObserver:self forKeyPath:@"frame" context:&kAxisViewContext];
 }
 
 - (void)layoutSelf {
