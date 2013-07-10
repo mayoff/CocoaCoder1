@@ -2,8 +2,12 @@
 #import "StrutSetting.h"
 #import "StrutSettingCell.h"
 #import "StrutView.h"
+#import "NSObject+Rob_BlockKVO.h"
 
-@implementation StrutSetting
+@implementation StrutSetting {
+    CGFloat priorSignedLength;
+    id signedLengthObserver;
+}
 
 #pragma mark - Public API
 
@@ -12,6 +16,10 @@
         return nil;
 
     _setLength = [block copy];
+    signedLengthObserver = [strutView addObserverForKeyPath:@"signedLength" options:0 block:^(NSString *observedKeyPath, id observedObject, NSDictionary *change) {
+        [self willChangeValueForKey:@"floatValue"];
+        [self didChangeValueForKey:@"floatValue"];
+    }];
 
     return self;
 }
@@ -22,6 +30,14 @@
 
 - (Class)cellClass {
     return [StrutSettingCell class];
+}
+
+- (float)floatValue {
+    return self.calloutView.signedLength;
+}
+
+- (void)setFloatValue:(float)floatValue {
+    self.setLength(floatValue);
 }
 
 @end

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3135465E178D1EC100574C20 /* AxisView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3135465D178D1EC100574C20 /* AxisView.m */; };
 		31354661178D2C5100574C20 /* FloatSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = 31354660178D2C5100574C20 /* FloatSetting.m */; };
+		318C6062178D335D00E5C6D9 /* NSObject+Rob_BlockKVO.m in Sources */ = {isa = PBXBuildFile; fileRef = 318C6061178D335D00E5C6D9 /* NSObject+Rob_BlockKVO.m */; };
 		3198D0AA1788B20400A8ED58 /* SettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3198D0A91788B20400A8ED58 /* SettingCell.m */; };
 		3198D0AE1788B66900A8ED58 /* ViewVisibilitySetting.m in Sources */ = {isa = PBXBuildFile; fileRef = 3198D0AD1788B66900A8ED58 /* ViewVisibilitySetting.m */; };
 		3198D0B11788B73C00A8ED58 /* ViewVisibilitySettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3198D0B01788B73C00A8ED58 /* ViewVisibilitySettingCell.m */; };
@@ -55,6 +56,8 @@
 		3135465D178D1EC100574C20 /* AxisView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AxisView.m; sourceTree = "<group>"; };
 		3135465F178D2C5100574C20 /* FloatSetting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FloatSetting.h; sourceTree = "<group>"; };
 		31354660178D2C5100574C20 /* FloatSetting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FloatSetting.m; sourceTree = "<group>"; };
+		318C6060178D335D00E5C6D9 /* NSObject+Rob_BlockKVO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Rob_BlockKVO.h"; sourceTree = "<group>"; };
+		318C6061178D335D00E5C6D9 /* NSObject+Rob_BlockKVO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Rob_BlockKVO.m"; sourceTree = "<group>"; };
 		3198D0A81788B20400A8ED58 /* SettingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingCell.h; sourceTree = "<group>"; };
 		3198D0A91788B20400A8ED58 /* SettingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingCell.m; sourceTree = "<group>"; };
 		3198D0AB1788B43D00A8ED58 /* SettingCell+SubclassHooks.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SettingCell+SubclassHooks.h"; sourceTree = "<group>"; };
@@ -174,6 +177,8 @@
 				31C5E72B17877BBA00AB361D /* UIColor+my_projectColors.m */,
 				31D3E2D91788016C00C7E666 /* UIView+Rob_FindAncestor.h */,
 				31D3E2DA1788016C00C7E666 /* UIView+Rob_FindAncestor.m */,
+				318C6060178D335D00E5C6D9 /* NSObject+Rob_BlockKVO.h */,
+				318C6061178D335D00E5C6D9 /* NSObject+Rob_BlockKVO.m */,
 			);
 			name = "Categories on System Classes";
 			sourceTree = "<group>";
@@ -392,6 +397,7 @@
 				31354661178D2C5100574C20 /* FloatSetting.m in Sources */,
 				31D3E2D81787F85400C7E666 /* StrutSetting.m in Sources */,
 				31C376131787EF5000F814B8 /* ControlPanelViewController.m in Sources */,
+				318C6062178D335D00E5C6D9 /* NSObject+Rob_BlockKVO.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

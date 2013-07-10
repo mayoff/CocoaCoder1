@@ -15,4 +15,7 @@ Copyright (c) 2013 Rob Mayoff. All rights reserved.
     return self;
 }
 
+// Subclasses must implement the accessors for this and make it KVO-compliant.
+@dynamic floatValue;
+
 @end
