@@ -1,12 +1,21 @@
 
-#import "LayoutDemoViewController.h"
-#import "ViewVisibilitySetting.h"
-#import "StrutSetting.h"
-#import "StrutView.h"
 #import "Anchor.h"
+#import "AxisView.h"
 #import "ControlPanelViewController.h"
 #import "DottedLayoutDemoView.h"
+#import "LayoutDemoViewController.h"
 #import "RobGeometry.h"
+#import "StrutSetting.h"
+#import "StrutView.h"
+#import "ViewVisibilitySetting.h"
+
+// These are the zPosition values of the subviews of canvasView.
+static CGFloat const ZPosition_DottedView = 0;
+static CGFloat const ZPosition_Superview = 1;
+static CGFloat const ZPosition_Axis = 2;
+static CGFloat const ZPosition_Strut = 3;
+
+@import QuartzCore;
 
 @interface LayoutDemoViewController ()
 
@@ -25,9 +34,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    [self initSuperview];
     [self initMyView];
+    [self initDottedView];
     [self initSettings];
-    [self initDottedViews];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -64,6 +74,10 @@
 
 #pragma mark - Implementation details
 
+- (void)initSuperview {
+    self.myView.superview.layer.zPosition = ZPosition_Superview;
+}
+
 - (void)initMyView {
     // Removing myView from the view hierarchy should remove all constraints to outside views.
     UIView *superview = self.myView.superview;
@@ -78,8 +92,10 @@
     settings = [NSMutableArray array];
     UIView *myView = self.myView;
     UIView *superview = self.myView.superview;
+
     [self addVisibilitySettingWithName:@"myView" view:myView];
     [self addVisibilitySettingWithName:@"superview" view:superview];
+
     [self addHorizontalStrutSettingWithName:@"myView.center.x" yView:myView position:0.5 offset:0 fromXView:superview position:0 toXView:myView position:0.5 setLengthBlock:^(CGFloat length) {
         myView.center = pointByReplacingX(myView.center, length);
         [myView layoutIfNeeded];
@@ -96,6 +112,7 @@
         myView.bounds = rectByReplacingHeight(myView.bounds, length);
         [myView layoutIfNeeded];
     }];
+
     [self addHorizontalStrutSettingWithName:@"myView.frame.origin.x" yView:myView position:0 offset:0 fromXView:superview position:0 toXView:myView position:0 setLengthBlock:^(CGFloat length) {
         myView.frame = rectByReplacingX(myView.frame, length);
         [myView layoutIfNeeded];
@@ -112,6 +129,17 @@
         myView.frame = rectByReplacingHeight(myView.frame, length);
         [myView layoutIfNeeded];
     }];
+
+    UIView *yAxisView = [AxisView yAxisViewObservingView:superview];
+    yAxisView.layer.zPosition = ZPosition_Axis;
+    [self.canvasView addSubview:yAxisView];
+    [self addVisibilitySettingWithName:@"superview.bounds.origin.x" view:yAxisView];
+
+    UIView *xAxisView = [AxisView xAxisViewObservingView:superview];
+    xAxisView.layer.zPosition = ZPosition_Axis;
+    [self.canvasView addSubview:xAxisView];
+    [self addVisibilitySettingWithName:@"superview.bounds.origin.y" view:xAxisView];
+
     controlPanelViewController.settings = settings;
 }
 
@@ -128,8 +156,9 @@
     Anchor *anchor1 = [Anchor anchorWithXView:xView1 position:xPosition1 offset:0 yView:yView position:yPosition offset:yOffset];
     StrutView *strutView = [StrutView strutViewWithName:name fromAnchor:anchor0 toAnchor:anchor1 measuringAxis:StrutViewAxisHorizontal];
     strutView.hidden = YES;
+    strutView.layer.zPosition = ZPosition_Strut;
     [settings addObject:[[StrutSetting alloc] initWithName:name strutView:strutView setLengthBlock:block]];
-    [self.view addSubview:strutView];
+    [self.canvasView addSubview:strutView];
 }
 
 - (void)addVerticalStrutSettingWithName:(NSString *)name xView:(UIView *)xView position:(CGFloat)xPosition offset:(CGFloat)xOffset fromYView:(UIView *)yView0 position:(CGFloat)yPosition0 toYView:(UIView *)yView1 position:(CGFloat)yPosition1 setLengthBlock:(void (^)(CGFloat length))block {
@@ -137,12 +166,14 @@
     Anchor *anchor1 = [Anchor anchorWithXView:xView position:xPosition offset:xOffset yView:yView1 position:yPosition1 offset:0];
     StrutView *strutView = [StrutView strutViewWithName:name fromAnchor:anchor0 toAnchor:anchor1 measuringAxis:StrutViewAxisVertical];
     strutView.hidden = YES;
+    strutView.layer.zPosition = ZPosition_Strut;
     [settings addObject:[[StrutSetting alloc] initWithName:name strutView:strutView setLengthBlock:block]];
-    [self.view addSubview:strutView];
+    [self.canvasView addSubview:strutView];
 }
 
-- (void)initDottedViews {
+- (void)initDottedView {
     DottedLayoutDemoView *view = [[DottedLayoutDemoView alloc] initWithOriginalView:self.myView];
+    view.layer.zPosition = ZPosition_DottedView;
     [self.canvasView insertSubview:view atIndex:0];
     UIPanGestureRecognizer *recognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGestureWasRecognized:)];
     [view addGestureRecognizer:recognizer];
