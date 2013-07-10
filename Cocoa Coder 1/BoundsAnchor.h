@@ -1,7 +1,11 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Anchor : NSObject
+/**
+A BoundsAnchor is attached to a relative horizontal position in some view's bounds rectangle, and to a possibly different relative vertical position in some possibly different view's bounds rectangle.  A position of 0 refers to the minimum coordinate in the bounds rectangle, and a position of 1 refers to the maximum coordinate in the bounds rectangle.
+*/
+
+@interface BoundsAnchor : NSObject
 
 + (instancetype)anchorWithXView:(UIView *)xView position:(CGFloat)xPosition yView:(UIView *)yView position:(CGFloat)yPosition;
 + (instancetype)anchorWithXView:(UIView *)xView position:(CGFloat)xPosition offset:(CGFloat)xOffset yView:(UIView *)yView position:(CGFloat)yPosition offset:(CGFloat)yOffset;

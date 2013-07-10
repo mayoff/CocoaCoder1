@@ -36,7 +36,7 @@
 		31C5E72917877AF900AB361D /* LayoutDemoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 31C5E72817877AF900AB361D /* LayoutDemoView.m */; };
 		31C5E72C17877BBA00AB361D /* UIColor+my_projectColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 31C5E72B17877BBA00AB361D /* UIColor+my_projectColors.m */; };
 		31C5E72F17877F8700AB361D /* StrutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 31C5E72E17877F8700AB361D /* StrutView.m */; };
-		31C5E7321787881000AB361D /* Anchor.m in Sources */ = {isa = PBXBuildFile; fileRef = 31C5E7311787881000AB361D /* Anchor.m */; };
+		31C5E7321787881000AB361D /* BoundsAnchor.m in Sources */ = {isa = PBXBuildFile; fileRef = 31C5E7311787881000AB361D /* BoundsAnchor.m */; };
 		31D3E2D81787F85400C7E666 /* StrutSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = 31D3E2D71787F85400C7E666 /* StrutSetting.m */; };
 		31D3E2DB1788016C00C7E666 /* UIView+Rob_FindAncestor.m in Sources */ = {isa = PBXBuildFile; fileRef = 31D3E2DA1788016C00C7E666 /* UIView+Rob_FindAncestor.m */; };
 		31D3E2DE17889F0900C7E666 /* DottedLayoutDemoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 31D3E2DD17889F0900C7E666 /* DottedLayoutDemoView.m */; };
@@ -104,8 +104,8 @@
 		31C5E72B17877BBA00AB361D /* UIColor+my_projectColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+my_projectColors.m"; sourceTree = "<group>"; };
 		31C5E72D17877F8700AB361D /* StrutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StrutView.h; sourceTree = "<group>"; };
 		31C5E72E17877F8700AB361D /* StrutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StrutView.m; sourceTree = "<group>"; };
-		31C5E7301787881000AB361D /* Anchor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Anchor.h; sourceTree = "<group>"; };
-		31C5E7311787881000AB361D /* Anchor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Anchor.m; sourceTree = "<group>"; };
+		31C5E7301787881000AB361D /* BoundsAnchor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoundsAnchor.h; sourceTree = "<group>"; };
+		31C5E7311787881000AB361D /* BoundsAnchor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BoundsAnchor.m; sourceTree = "<group>"; };
 		31C5E7331787DC2F00AB361D /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		31D3E2D61787F85400C7E666 /* StrutSetting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StrutSetting.h; sourceTree = "<group>"; };
 		31D3E2D71787F85400C7E666 /* StrutSetting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StrutSetting.m; sourceTree = "<group>"; };
@@ -244,8 +244,8 @@
 				31C5E72E17877F8700AB361D /* StrutView.m */,
 				3135465C178D1EC100574C20 /* AxisView.h */,
 				3135465D178D1EC100574C20 /* AxisView.m */,
-				31C5E7301787881000AB361D /* Anchor.h */,
-				31C5E7311787881000AB361D /* Anchor.m */,
+				31C5E7301787881000AB361D /* BoundsAnchor.h */,
+				31C5E7311787881000AB361D /* BoundsAnchor.m */,
 				31C5E70A178779AE00AB361D /* Images.xcassets */,
 				3198D0A71788B12F00A8ED58 /* Categories on System Classes */,
 				31C5E6F9178779AE00AB361D /* Supporting Files */,
@@ -395,7 +395,7 @@
 				3198D0B41788C2CD00A8ED58 /* NumberCell.m in Sources */,
 				31C5E703178779AE00AB361D /* AppDelegate.m in Sources */,
 				31D3E2DB1788016C00C7E666 /* UIView+Rob_FindAncestor.m in Sources */,
-				31C5E7321787881000AB361D /* Anchor.m in Sources */,
+				31C5E7321787881000AB361D /* BoundsAnchor.m in Sources */,
 				3198D0AA1788B20400A8ED58 /* SettingCell.m in Sources */,
 				3198D0AE1788B66900A8ED58 /* ViewVisibilitySetting.m in Sources */,
 				3135465E178D1EC100574C20 /* AxisView.m in Sources */,

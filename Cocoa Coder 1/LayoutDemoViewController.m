@@ -1,5 +1,5 @@
 
-#import "Anchor.h"
+#import "BoundsAnchor.h"
 #import "AxisSetting.h"
 #import "AxisView.h"
 #import "ControlPanelViewController.h"
@@ -160,8 +160,8 @@ static void makeViewUseAutoresizing(UIView *view) {
 }
 
 - (void)addHorizontalStrutSettingWithName:(NSString *)name yView:(UIView *)yView position:(CGFloat)yPosition offset:(CGFloat)yOffset fromXView:(UIView *)xView0 position:(CGFloat)xPosition0 toXView:(UIView *)xView1 position:(CGFloat)xPosition1 setLengthBlock:(void (^)(CGFloat length))block {
-    Anchor *anchor0 = [Anchor anchorWithXView:xView0 position:xPosition0 offset:0 yView:yView position:yPosition offset:yOffset];
-    Anchor *anchor1 = [Anchor anchorWithXView:xView1 position:xPosition1 offset:0 yView:yView position:yPosition offset:yOffset];
+    BoundsAnchor *anchor0 = [BoundsAnchor anchorWithXView:xView0 position:xPosition0 offset:0 yView:yView position:yPosition offset:yOffset];
+    BoundsAnchor *anchor1 = [BoundsAnchor anchorWithXView:xView1 position:xPosition1 offset:0 yView:yView position:yPosition offset:yOffset];
     StrutView *strutView = [StrutView strutViewWithName:name fromAnchor:anchor0 toAnchor:anchor1 measuringAxis:StrutViewAxisHorizontal];
     strutView.hidden = YES;
     strutView.layer.zPosition = ZPosition_Strut;
@@ -170,8 +170,8 @@ static void makeViewUseAutoresizing(UIView *view) {
 }
 
 - (void)addVerticalStrutSettingWithName:(NSString *)name xView:(UIView *)xView position:(CGFloat)xPosition offset:(CGFloat)xOffset fromYView:(UIView *)yView0 position:(CGFloat)yPosition0 toYView:(UIView *)yView1 position:(CGFloat)yPosition1 setLengthBlock:(void (^)(CGFloat length))block {
-    Anchor *anchor0 = [Anchor anchorWithXView:xView position:xPosition offset:xOffset yView:yView0 position:yPosition0 offset:0];
-    Anchor *anchor1 = [Anchor anchorWithXView:xView position:xPosition offset:xOffset yView:yView1 position:yPosition1 offset:0];
+    BoundsAnchor *anchor0 = [BoundsAnchor anchorWithXView:xView position:xPosition offset:xOffset yView:yView0 position:yPosition0 offset:0];
+    BoundsAnchor *anchor1 = [BoundsAnchor anchorWithXView:xView position:xPosition offset:xOffset yView:yView1 position:yPosition1 offset:0];
     StrutView *strutView = [StrutView strutViewWithName:name fromAnchor:anchor0 toAnchor:anchor1 measuringAxis:StrutViewAxisVertical];
     strutView.hidden = YES;
     strutView.layer.zPosition = ZPosition_Strut;

@@ -1,7 +1,7 @@
 
-#import "Anchor.h"
+#import "BoundsAnchor.h"
 
-@implementation Anchor
+@implementation BoundsAnchor
 
 @dynamic point;
 

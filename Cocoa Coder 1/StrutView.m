@@ -1,6 +1,6 @@
 
 #import "StrutView.h"
-#import "Anchor.h"
+#import "BoundsAnchor.h"
 #import "RobGeometry.h"
 #import "NSObject+Rob_BlockKVO.h"
 @import QuartzCore;
@@ -24,11 +24,11 @@
 
 #pragma mark - Public API
 
-+ (instancetype)strutViewWithName:(NSString *)name fromAnchor:(Anchor *)anchor0 toAnchor:(Anchor *)anchor1 measuringAxis:(StrutViewAxis)axis {
++ (instancetype)strutViewWithName:(NSString *)name fromAnchor:(BoundsAnchor *)anchor0 toAnchor:(BoundsAnchor *)anchor1 measuringAxis:(StrutViewAxis)axis {
     return [[self alloc] initWithName:(NSString *)name fromAnchor:anchor0 toAnchor:anchor1 measuringAxis:axis withThickness:2];
 }
 
-- (instancetype)initWithName:(NSString *)name fromAnchor:(Anchor *)anchor0 toAnchor:(Anchor *)anchor1 measuringAxis:(StrutViewAxis)axis withThickness:(CGFloat)myThickness {
+- (instancetype)initWithName:(NSString *)name fromAnchor:(BoundsAnchor *)anchor0 toAnchor:(BoundsAnchor *)anchor1 measuringAxis:(StrutViewAxis)axis withThickness:(CGFloat)myThickness {
     if (self = [super init]) {
         _name = [name copy];
         _anchor0 = anchor0;
@@ -145,7 +145,7 @@
     CGPathRelease(path);
 }
 
-- (id)observerForAnchor:(Anchor *)anchor {
+- (id)observerForAnchor:(BoundsAnchor *)anchor {
     return [anchor addObserverForKeyPath:@"point" options:NSKeyValueObservingOptionInitial selfReference:self block:^(StrutView *self, NSString *observedKeyPath, id observedObject, NSDictionary *change) {
         [self setNeedsLayout];
     }];
