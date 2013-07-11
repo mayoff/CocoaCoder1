@@ -14,6 +14,8 @@
 		316E1F69178E5F370029A7E5 /* CanvasView.m in Sources */ = {isa = PBXBuildFile; fileRef = 316E1F68178E5F370029A7E5 /* CanvasView.m */; };
 		316E1F6C178E60D10029A7E5 /* CalloutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 316E1F6B178E60D10029A7E5 /* CalloutView.m */; };
 		316E1F72178E6A9E0029A7E5 /* NSRunLoop+Rob_Observer.m in Sources */ = {isa = PBXBuildFile; fileRef = 316E1F71178E6A9E0029A7E5 /* NSRunLoop+Rob_Observer.m */; };
+		316E1F76178E803B0029A7E5 /* FrameAnchor.m in Sources */ = {isa = PBXBuildFile; fileRef = 316E1F75178E803B0029A7E5 /* FrameAnchor.m */; };
+		316E1F79178E81A00029A7E5 /* RectAnchor.m in Sources */ = {isa = PBXBuildFile; fileRef = 316E1F78178E81A00029A7E5 /* RectAnchor.m */; };
 		318C6062178D335D00E5C6D9 /* NSObject+Rob_BlockKVO.m in Sources */ = {isa = PBXBuildFile; fileRef = 318C6061178D335D00E5C6D9 /* NSObject+Rob_BlockKVO.m */; };
 		318C6065178D4A3900E5C6D9 /* AxisSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = 318C6064178D4A3900E5C6D9 /* AxisSetting.m */; };
 		3198D0AA1788B20400A8ED58 /* SettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3198D0A91788B20400A8ED58 /* SettingCell.m */; };
@@ -72,6 +74,10 @@
 		316E1F6B178E60D10029A7E5 /* CalloutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalloutView.m; sourceTree = "<group>"; };
 		316E1F70178E6A9E0029A7E5 /* NSRunLoop+Rob_Observer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSRunLoop+Rob_Observer.h"; sourceTree = "<group>"; };
 		316E1F71178E6A9E0029A7E5 /* NSRunLoop+Rob_Observer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSRunLoop+Rob_Observer.m"; sourceTree = "<group>"; };
+		316E1F74178E803B0029A7E5 /* FrameAnchor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FrameAnchor.h; sourceTree = "<group>"; };
+		316E1F75178E803B0029A7E5 /* FrameAnchor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FrameAnchor.m; sourceTree = "<group>"; };
+		316E1F77178E81A00029A7E5 /* RectAnchor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RectAnchor.h; sourceTree = "<group>"; };
+		316E1F78178E81A00029A7E5 /* RectAnchor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RectAnchor.m; sourceTree = "<group>"; };
 		318C6060178D335D00E5C6D9 /* NSObject+Rob_BlockKVO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Rob_BlockKVO.h"; sourceTree = "<group>"; };
 		318C6061178D335D00E5C6D9 /* NSObject+Rob_BlockKVO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Rob_BlockKVO.m"; sourceTree = "<group>"; };
 		318C6063178D4A3900E5C6D9 /* AxisSetting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AxisSetting.h; sourceTree = "<group>"; };
@@ -154,6 +160,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		316E1F73178E802B0029A7E5 /* Anchors */ = {
+			isa = PBXGroup;
+			children = (
+				315CA312178DFDDC004C71E7 /* Anchor.h */,
+				315CA313178DFDDC004C71E7 /* Anchor.m */,
+				315CA315178DFE95004C71E7 /* OriginAnchor.h */,
+				315CA316178DFE95004C71E7 /* OriginAnchor.m */,
+				316E1F77178E81A00029A7E5 /* RectAnchor.h */,
+				316E1F78178E81A00029A7E5 /* RectAnchor.m */,
+				31C5E7301787881000AB361D /* BoundsAnchor.h */,
+				31C5E7311787881000AB361D /* BoundsAnchor.m */,
+				316E1F74178E803B0029A7E5 /* FrameAnchor.h */,
+				316E1F75178E803B0029A7E5 /* FrameAnchor.m */,
+			);
+			name = Anchors;
+			sourceTree = "<group>";
+		};
 		3198D0A41788B0D700A8ED58 /* Control Panel */ = {
 			isa = PBXGroup;
 			children = (
@@ -265,12 +288,7 @@
 				31C5E72E17877F8700AB361D /* StrutView.m */,
 				3135465C178D1EC100574C20 /* AxisView.h */,
 				3135465D178D1EC100574C20 /* AxisView.m */,
-				315CA312178DFDDC004C71E7 /* Anchor.h */,
-				315CA313178DFDDC004C71E7 /* Anchor.m */,
-				31C5E7301787881000AB361D /* BoundsAnchor.h */,
-				31C5E7311787881000AB361D /* BoundsAnchor.m */,
-				315CA315178DFE95004C71E7 /* OriginAnchor.h */,
-				315CA316178DFE95004C71E7 /* OriginAnchor.m */,
+				316E1F73178E802B0029A7E5 /* Anchors */,
 				31C5E70A178779AE00AB361D /* Images.xcassets */,
 				3198D0A71788B12F00A8ED58 /* Categories on System Classes */,
 				31C5E6F9178779AE00AB361D /* Supporting Files */,
@@ -431,8 +449,10 @@
 				315CA317178DFE95004C71E7 /* OriginAnchor.m in Sources */,
 				31D3E2D81787F85400C7E666 /* StrutSetting.m in Sources */,
 				31C376131787EF5000F814B8 /* ControlPanelViewController.m in Sources */,
+				316E1F79178E81A00029A7E5 /* RectAnchor.m in Sources */,
 				318C6062178D335D00E5C6D9 /* NSObject+Rob_BlockKVO.m in Sources */,
 				316E1F72178E6A9E0029A7E5 /* NSRunLoop+Rob_Observer.m in Sources */,
+				316E1F76178E803B0029A7E5 /* FrameAnchor.m in Sources */,
 				316E1F69178E5F370029A7E5 /* CanvasView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -1,18 +1,19 @@
 
-#import "BoundsAnchor.h"
 #import "AxisSetting.h"
 #import "AxisView.h"
+#import "BoundsAnchor.h"
+#import "CanvasView.h"
 #import "ControlPanelViewController.h"
 #import "DottedLayoutDemoView.h"
+#import "FrameAnchor.h"
+#import "LayoutDemoView.h"
 #import "LayoutDemoViewController.h"
+#import "NSRunLoop+Rob_Observer.h"
+#import "OriginAnchor.h"
 #import "RobGeometry.h"
 #import "StrutSetting.h"
 #import "StrutView.h"
 #import "ViewVisibilitySetting.h"
-#import "OriginAnchor.h"
-#import "CanvasView.h"
-#import "LayoutDemoView.h"
-#import "NSRunLoop+Rob_Observer.h"
 
 // I use these to ensure that struts are drawn over axes.
 static CGFloat const ZPosition_Axis = 1;
@@ -134,8 +135,9 @@ static void removeViewFromAutolayout(UIView *view) {
     OriginAnchor *superviewOriginAnchor = [OriginAnchor anchorObservingView:superview];
     BoundsAnchor *superviewTopLeftAnchor = [BoundsAnchor anchorWithUnitPosition:CGPointZero inView:superview];
     BoundsAnchor *superviewTopLeftAnchorWithTweak = [BoundsAnchor anchorWithUnitPosition:CGPointZero absoluteOffset:CGPointMake(1, 1) inView:superview]; // 1 = half the strut thickness; looks better
-    BoundsAnchor *myViewCenterAnchor = [BoundsAnchor anchorWithUnitPosition:CGPointMake(0.5, 0.5) inView:myView];
-    BoundsAnchor *myViewTopLeftAnchor = [BoundsAnchor anchorWithUnitPosition:CGPointMake(0, 0) inView:myView];
+    FrameAnchor *myViewCenterAnchor = [FrameAnchor anchorWithUnitPosition:CGPointMake(0.5, 0.5) inView:myView];
+    BoundsAnchor *myViewBoundsTopLeftAnchor = [BoundsAnchor anchorWithUnitPosition:CGPointZero inView:myView];
+    FrameAnchor *myViewFrameTopLeftAnchor = [FrameAnchor anchorWithUnitPosition:CGPointZero inView:myView];
 
     [self addHorizontalStrutSettingWithName:@"myView.center.x" fromAnchor:superviewOriginAnchor toAnchor:myViewCenterAnchor setLengthBlock:^(CGFloat length) {
         myView.center = pointByReplacingX(myView.center, length);
@@ -147,32 +149,32 @@ static void removeViewFromAutolayout(UIView *view) {
         [myView layoutIfNeeded];
     }];
 
-    [self addHorizontalStrutSettingWithName:@"myView.bounds.size.width" fromAnchor:myViewTopLeftAnchor toAnchor:[BoundsAnchor anchorWithUnitPosition:CGPointMake(1, 1) absoluteOffset:CGPointMake(0, 6) inView:myView] setLengthBlock:^(CGFloat length) {
+    [self addHorizontalStrutSettingWithName:@"myView.bounds.size.width" fromAnchor:myViewBoundsTopLeftAnchor toAnchor:[BoundsAnchor anchorWithUnitPosition:CGPointMake(1, 1) absoluteOffset:CGPointMake(0, 6) inView:myView] setLengthBlock:^(CGFloat length) {
         myView.bounds = rectByReplacingWidth(myView.bounds, length);
         [myView layoutIfNeeded];
     }];
 
-    [self addVerticalStrutSettingWithName:@"myView.bounds.size.height" fromAnchor:myViewTopLeftAnchor toAnchor:[BoundsAnchor anchorWithUnitPosition:CGPointMake(1, 1) absoluteOffset:CGPointMake(6, 0) inView:myView] setLengthBlock:^(CGFloat length) {
+    [self addVerticalStrutSettingWithName:@"myView.bounds.size.height" fromAnchor:myViewBoundsTopLeftAnchor toAnchor:[BoundsAnchor anchorWithUnitPosition:CGPointMake(1, 1) absoluteOffset:CGPointMake(6, 0) inView:myView] setLengthBlock:^(CGFloat length) {
         myView.bounds = rectByReplacingHeight(myView.bounds, length);
         [myView layoutIfNeeded];
     }];
 
-    [self addHorizontalStrutSettingWithName:@"myView.frame.origin.x" fromAnchor:superviewOriginAnchor toAnchor:myViewTopLeftAnchor setLengthBlock:^(CGFloat length) {
+    [self addHorizontalStrutSettingWithName:@"myView.frame.origin.x" fromAnchor:superviewOriginAnchor toAnchor:myViewFrameTopLeftAnchor setLengthBlock:^(CGFloat length) {
         myView.frame = rectByReplacingX(myView.frame, length);
         [myView layoutIfNeeded];
     }];
 
-    [self addVerticalStrutSettingWithName:@"myView.frame.origin.y" fromAnchor:superviewOriginAnchor toAnchor:myViewTopLeftAnchor setLengthBlock:^(CGFloat length) {
+    [self addVerticalStrutSettingWithName:@"myView.frame.origin.y" fromAnchor:superviewOriginAnchor toAnchor:myViewFrameTopLeftAnchor setLengthBlock:^(CGFloat length) {
         myView.frame = rectByReplacingY(myView.frame, length);
         [myView layoutIfNeeded];
     }];
 
-    [self addHorizontalStrutSettingWithName:@"myView.frame.size.width" fromAnchor:myViewTopLeftAnchor toAnchor:[BoundsAnchor anchorWithUnitPosition:CGPointMake(1, 1) absoluteOffset:CGPointMake(0, 6) inView:myView] setLengthBlock:^(CGFloat length) {
+    [self addHorizontalStrutSettingWithName:@"myView.frame.size.width" fromAnchor:myViewFrameTopLeftAnchor toAnchor:[FrameAnchor anchorWithUnitPosition:CGPointMake(1, 1) absoluteOffset:CGPointMake(0, 12) inView:myView] setLengthBlock:^(CGFloat length) {
         myView.bounds = rectByReplacingWidth(myView.bounds, length);
         [myView layoutIfNeeded];
     }];
 
-    [self addVerticalStrutSettingWithName:@"myView.frame.size.height" fromAnchor:myViewTopLeftAnchor toAnchor:[BoundsAnchor anchorWithUnitPosition:CGPointMake(1, 1) absoluteOffset:CGPointMake(6, 0) inView:myView] setLengthBlock:^(CGFloat length) {
+    [self addVerticalStrutSettingWithName:@"myView.frame.size.height" fromAnchor:myViewFrameTopLeftAnchor toAnchor:[FrameAnchor anchorWithUnitPosition:CGPointMake(1, 1) absoluteOffset:CGPointMake(12, 0) inView:myView] setLengthBlock:^(CGFloat length) {
         myView.bounds = rectByReplacingHeight(myView.bounds, length);
         [myView layoutIfNeeded];
     }];

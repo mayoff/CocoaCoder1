@@ -3,27 +3,13 @@
 
 @implementation BoundsAnchor
 
-+ (instancetype)anchorWithUnitPosition:(CGPoint)position absoluteOffset:(CGPoint)offset inView:(UIView *)view {
-    return [[self alloc] initWithUnitPosition:position absoluteOffset:offset inView:view];
-}
-
-+ (instancetype)anchorWithUnitPosition:(CGPoint)position inView:(UIView *)view {
-    return [[self alloc] initWithUnitPosition:position absoluteOffset:CGPointZero inView:view];
-}
-
-- (instancetype)initWithUnitPosition:(CGPoint)position absoluteOffset:(CGPoint)offset inView:(UIView *)view {
-    if (self = [super init]) {
-        _view = view;
-        _position = position;
-        _offset = offset;
-    }
-    return self;
-}
-
 - (CGPoint)pointInView:(UIView *)targetView {
-    CGRect bounds = _view.bounds;
-    CGPoint point = CGPointMake(bounds.origin.x + _position.x * bounds.size.width + _offset.x, bounds.origin.y + _position.y * bounds.size.height + _offset.y);
-    return [_view convertPoint:point toView:targetView];
+    UIView *view = self.view;
+    CGRect bounds = view.bounds;
+    CGPoint position = self.position;
+    CGPoint offset = self.offset;
+    CGPoint point = CGPointMake(bounds.origin.x + position.x * bounds.size.width + offset.x, bounds.origin.y + position.y * bounds.size.height + offset.y);
+    return [view convertPoint:point toView:targetView];
 }
 
 @end
