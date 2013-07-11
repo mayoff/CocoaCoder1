@@ -16,8 +16,7 @@ Copyright (c) 2013 Rob Mayoff. All rights reserved.
 }
 
 - (instancetype)initWithUnitPosition:(CGPoint)position absoluteOffset:(CGPoint)offset inView:(UIView *)view {
-    if (self = [super init]) {
-        _view = view;
+    if (self = [super initWithView:view]) {
         _position = position;
         _offset = offset;
     }

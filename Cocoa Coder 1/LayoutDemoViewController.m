@@ -3,6 +3,7 @@
 #import "AxisView.h"
 #import "BoundsAnchor.h"
 #import "CanvasView.h"
+#import "CenterAnchor.h"
 #import "ControlPanelViewController.h"
 #import "DottedLayoutDemoView.h"
 #import "FrameAnchor.h"
@@ -132,10 +133,10 @@ static void removeViewFromAutolayout(UIView *view) {
     [self addVisibilitySettingWithName:@"myView" view:myView];
     [self addVisibilitySettingWithName:@"superview" view:superview];
 
-    OriginAnchor *superviewOriginAnchor = [OriginAnchor anchorObservingView:superview];
+    OriginAnchor *superviewOriginAnchor = [[OriginAnchor alloc] initWithView:superview];
+    CenterAnchor *myViewCenterAnchor = [[CenterAnchor alloc] initWithView:myView];
     BoundsAnchor *superviewTopLeftAnchor = [BoundsAnchor anchorWithUnitPosition:CGPointZero inView:superview];
     BoundsAnchor *superviewTopLeftAnchorWithTweak = [BoundsAnchor anchorWithUnitPosition:CGPointZero absoluteOffset:CGPointMake(1, 1) inView:superview]; // 1 = half the strut thickness; looks better
-    FrameAnchor *myViewCenterAnchor = [FrameAnchor anchorWithUnitPosition:CGPointMake(0.5, 0.5) inView:myView];
     BoundsAnchor *myViewBoundsTopLeftAnchor = [BoundsAnchor anchorWithUnitPosition:CGPointZero inView:myView];
     FrameAnchor *myViewFrameTopLeftAnchor = [FrameAnchor anchorWithUnitPosition:CGPointZero inView:myView];
 

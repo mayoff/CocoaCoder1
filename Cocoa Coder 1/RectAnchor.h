@@ -12,7 +12,6 @@ Copyright (c) 2013 Rob Mayoff. All rights reserved.
 + (instancetype)anchorWithUnitPosition:(CGPoint)position inView:(UIView *)view;
 + (instancetype)anchorWithUnitPosition:(CGPoint)position absoluteOffset:(CGPoint)offset inView:(UIView *)view;
 
-@property (nonatomic, strong, readonly) UIView *view;
 @property (nonatomic, readonly) CGPoint position;
 @property (nonatomic, readonly) CGPoint offset;
 
