@@ -42,7 +42,7 @@ static CGFloat const ZPosition_Callout = 2;
         _dottedContainerView.translatesAutoresizingMaskIntoConstraints = YES;
         _dottedContainerView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
         _dottedContainerView.backgroundColor = nil;
-        _dottedContainerView.userInteractionEnabled = NO;
+        _dottedContainerView.userInteractionEnabled = YES; // the dotted views are draggable
 
         _dottedContainerView.layer.zPosition = ZPosition_Dotted;
 
