@@ -9,6 +9,7 @@
 #import "StrutSetting.h"
 #import "StrutView.h"
 #import "ViewVisibilitySetting.h"
+#import "OriginAnchor.h"
 
 // These are the zPosition values of the subviews of canvasView.
 static CGFloat const ZPosition_DottedView = 0;
@@ -103,42 +104,52 @@ static void makeViewUseAutoresizing(UIView *view) {
     [self addVisibilitySettingWithName:@"myView" view:myView];
     [self addVisibilitySettingWithName:@"superview" view:superview];
 
-    [self addHorizontalStrutSettingWithName:@"myView.center.x" yView:myView position:0.5 offset:0 fromXView:superview position:0 toXView:myView position:0.5 setLengthBlock:^(CGFloat length) {
+    OriginAnchor *superviewOriginAnchor = [OriginAnchor anchorObservingView:superview];
+    BoundsAnchor *myViewCenterAnchor = [BoundsAnchor anchorWithUnitPosition:CGPointMake(0.5, 0.5) inView:myView];
+    BoundsAnchor *myViewTopLeftAnchor = [BoundsAnchor anchorWithUnitPosition:CGPointMake(0, 0) inView:myView];
+
+    [self addHorizontalStrutSettingWithName:@"myView.center.x" fromAnchor:superviewOriginAnchor toAnchor:myViewCenterAnchor setLengthBlock:^(CGFloat length) {
         myView.center = pointByReplacingX(myView.center, length);
         [myView layoutIfNeeded];
     }];
-    [self addVerticalStrutSettingWithName:@"myView.center.y" xView:myView position:0.5 offset:0 fromYView:superview position:0 toYView:myView position:0.5 setLengthBlock:^(CGFloat length) {
+
+    [self addVerticalStrutSettingWithName:@"myView.center.y" fromAnchor:superviewOriginAnchor toAnchor:myViewCenterAnchor setLengthBlock:^(CGFloat length) {
         myView.center = pointByReplacingY(myView.center, length);
         [myView layoutIfNeeded];
     }];
-    [self addHorizontalStrutSettingWithName:@"myView.bounds.size.width" yView:myView position:1 offset:6 fromXView:myView position:0 toXView:myView position:1 setLengthBlock:^(CGFloat length) {
+
+    [self addHorizontalStrutSettingWithName:@"myView.bounds.size.width" fromAnchor:myViewTopLeftAnchor toAnchor:[BoundsAnchor anchorWithUnitPosition:CGPointMake(1, 1) absoluteOffset:CGPointMake(0, 6) inView:myView] setLengthBlock:^(CGFloat length) {
         myView.bounds = rectByReplacingWidth(myView.bounds, length);
         [myView layoutIfNeeded];
     }];
-    [self addVerticalStrutSettingWithName:@"myView.bounds.size.height" xView:myView position:1 offset:6 fromYView:myView position:0 toYView:myView position:1 setLengthBlock:^(CGFloat length) {
+
+    [self addVerticalStrutSettingWithName:@"myView.bounds.size.height" fromAnchor:myViewTopLeftAnchor toAnchor:[BoundsAnchor anchorWithUnitPosition:CGPointMake(1, 1) absoluteOffset:CGPointMake(6, 0) inView:myView] setLengthBlock:^(CGFloat length) {
         myView.bounds = rectByReplacingHeight(myView.bounds, length);
         [myView layoutIfNeeded];
     }];
 
-    [self addHorizontalStrutSettingWithName:@"myView.frame.origin.x" yView:myView position:0 offset:0 fromXView:superview position:0 toXView:myView position:0 setLengthBlock:^(CGFloat length) {
+    [self addHorizontalStrutSettingWithName:@"myView.frame.origin.x" fromAnchor:superviewOriginAnchor toAnchor:myViewTopLeftAnchor setLengthBlock:^(CGFloat length) {
         myView.frame = rectByReplacingX(myView.frame, length);
         [myView layoutIfNeeded];
     }];
-    [self addVerticalStrutSettingWithName:@"myView.frame.origin.y" xView:myView position:0 offset:0 fromYView:superview position:0 toYView:myView position:0 setLengthBlock:^(CGFloat length) {
+
+    [self addVerticalStrutSettingWithName:@"myView.frame.origin.y" fromAnchor:superviewOriginAnchor toAnchor:myViewTopLeftAnchor setLengthBlock:^(CGFloat length) {
         myView.frame = rectByReplacingY(myView.frame, length);
         [myView layoutIfNeeded];
     }];
-    [self addHorizontalStrutSettingWithName:@"myView.frame.size.width" yView:myView position:1 offset:6 fromXView:myView position:0 toXView:myView position:1 setLengthBlock:^(CGFloat length) {
-        myView.frame = rectByReplacingWidth(myView.frame, length);
-        [myView layoutIfNeeded];
-    }];
-    [self addVerticalStrutSettingWithName:@"myView.frame.size.height" xView:myView position:1 offset:6 fromYView:myView position:0 toYView:myView position:1 setLengthBlock:^(CGFloat length) {
-        myView.frame = rectByReplacingHeight(myView.frame, length);
+
+    [self addHorizontalStrutSettingWithName:@"myView.frame.size.width" fromAnchor:myViewTopLeftAnchor toAnchor:[BoundsAnchor anchorWithUnitPosition:CGPointMake(1, 1) absoluteOffset:CGPointMake(0, 6) inView:myView] setLengthBlock:^(CGFloat length) {
+        myView.bounds = rectByReplacingWidth(myView.bounds, length);
         [myView layoutIfNeeded];
     }];
 
-    [self addAxisSettingWithName:@"superview.bounds.origin.x" calloutView:[AxisView yAxisViewObservingView:superview] zPosition:ZPosition_Axis];
-    [self addAxisSettingWithName:@"superview.bounds.origin.y" calloutView:[AxisView xAxisViewObservingView:superview] zPosition:ZPosition_Axis];
+    [self addVerticalStrutSettingWithName:@"myView.frame.size.height" fromAnchor:myViewTopLeftAnchor toAnchor:[BoundsAnchor anchorWithUnitPosition:CGPointMake(1, 1) absoluteOffset:CGPointMake(6, 0) inView:myView] setLengthBlock:^(CGFloat length) {
+        myView.bounds = rectByReplacingHeight(myView.bounds, length);
+        [myView layoutIfNeeded];
+    }];
+
+    [self addAxisSettingWithName:@"superview.bounds.origin.x" calloutView:[AxisView yAxisViewObservingView:superview]];
+    [self addAxisSettingWithName:@"superview.bounds.origin.y" calloutView:[AxisView xAxisViewObservingView:superview]];
 
     controlPanelViewController.settings = settings;
 }
@@ -151,32 +162,29 @@ static void makeViewUseAutoresizing(UIView *view) {
     [settings addObject:setting];
 }
 
-- (void)addAxisSettingWithName:(NSString *)name calloutView:(UIView *)calloutView zPosition:(CGFloat)zPosition {
+- (void)addAxisSettingWithName:(NSString *)name calloutView:(UIView *)calloutView {
     calloutView.hidden = YES;
-    calloutView.layer.zPosition = zPosition;
+    calloutView.layer.zPosition = ZPosition_Axis;
     [self.canvasView addSubview:calloutView];
     AxisSetting *setting = [[AxisSetting alloc] initWithName:name calloutView:calloutView];
     [settings addObject:setting];
 }
 
-- (void)addHorizontalStrutSettingWithName:(NSString *)name yView:(UIView *)yView position:(CGFloat)yPosition offset:(CGFloat)yOffset fromXView:(UIView *)xView0 position:(CGFloat)xPosition0 toXView:(UIView *)xView1 position:(CGFloat)xPosition1 setLengthBlock:(void (^)(CGFloat length))block {
-    BoundsAnchor *anchor0 = [BoundsAnchor anchorWithXView:xView0 position:xPosition0 offset:0 yView:yView position:yPosition offset:yOffset];
-    BoundsAnchor *anchor1 = [BoundsAnchor anchorWithXView:xView1 position:xPosition1 offset:0 yView:yView position:yPosition offset:yOffset];
-    StrutView *strutView = [StrutView strutViewWithName:name fromAnchor:anchor0 toAnchor:anchor1 measuringAxis:StrutViewAxisHorizontal];
-    strutView.hidden = YES;
-    strutView.layer.zPosition = ZPosition_Strut;
-    [settings addObject:[[StrutSetting alloc] initWithName:name strutView:strutView setLengthBlock:block]];
-    [self.canvasView addSubview:strutView];
+- (void)addHorizontalStrutSettingWithName:(NSString *)name fromAnchor:(Anchor *)fromAnchor toAnchor:(Anchor *)toAnchor setLengthBlock:(StrutSettingSetLengthBlock)block {
+    StrutView *strutView = [StrutView horizontalStrutViewWithName:name fromAnchor:fromAnchor toAnchor:toAnchor yAnchor:toAnchor];
+    return [self addStrutSettingWithName:name strutView:strutView setLengthBlock:block];
 }
 
-- (void)addVerticalStrutSettingWithName:(NSString *)name xView:(UIView *)xView position:(CGFloat)xPosition offset:(CGFloat)xOffset fromYView:(UIView *)yView0 position:(CGFloat)yPosition0 toYView:(UIView *)yView1 position:(CGFloat)yPosition1 setLengthBlock:(void (^)(CGFloat length))block {
-    BoundsAnchor *anchor0 = [BoundsAnchor anchorWithXView:xView position:xPosition offset:xOffset yView:yView0 position:yPosition0 offset:0];
-    BoundsAnchor *anchor1 = [BoundsAnchor anchorWithXView:xView position:xPosition offset:xOffset yView:yView1 position:yPosition1 offset:0];
-    StrutView *strutView = [StrutView strutViewWithName:name fromAnchor:anchor0 toAnchor:anchor1 measuringAxis:StrutViewAxisVertical];
+- (void)addVerticalStrutSettingWithName:(NSString *)name fromAnchor:(Anchor *)fromAnchor toAnchor:(Anchor *)toAnchor setLengthBlock:(StrutSettingSetLengthBlock)block {
+    StrutView *strutView = [StrutView verticalStrutViewWithName:name fromAnchor:fromAnchor toAnchor:toAnchor xAnchor:toAnchor];
+    return [self addStrutSettingWithName:name strutView:strutView setLengthBlock:block];
+}
+
+- (void)addStrutSettingWithName:(NSString *)name strutView:(StrutView *)strutView setLengthBlock:(StrutSettingSetLengthBlock)block {
     strutView.hidden = YES;
     strutView.layer.zPosition = ZPosition_Strut;
-    [settings addObject:[[StrutSetting alloc] initWithName:name strutView:strutView setLengthBlock:block]];
     [self.canvasView addSubview:strutView];
+    [settings addObject:[[StrutSetting alloc] initWithName:name strutView:strutView setLengthBlock:block]];
 }
 
 - (void)initDottedView {

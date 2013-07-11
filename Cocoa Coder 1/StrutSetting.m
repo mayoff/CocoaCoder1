@@ -4,7 +4,7 @@
 
 @implementation StrutSetting
 
-- (instancetype)initWithName:(NSString *)name strutView:(StrutView *)strutView setLengthBlock:(void (^)(CGFloat))block {
+- (instancetype)initWithName:(NSString *)name strutView:(StrutView *)strutView setLengthBlock:(StrutSettingSetLengthBlock)block {
     if (!(self = [super initWithName:name calloutView:strutView]))
         return nil;
 

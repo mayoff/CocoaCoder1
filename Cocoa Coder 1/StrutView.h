@@ -6,15 +6,21 @@ typedef enum {
     StrutViewAxisVertical = 1
 } StrutViewAxis;
 
-@class BoundsAnchor;
+@class Anchor;
 
 @interface StrutView : UIView
 
-+ (instancetype)strutViewWithName:(NSString *)name fromAnchor:(BoundsAnchor *)anchor0 toAnchor:(BoundsAnchor *)anchor1 measuringAxis:(StrutViewAxis)axis;
+/** I return a StrutView parallel to the X axis, spanning the X distance from anchor0 to anchor1, along the Y coordinate of yAnchor (which may be the same as either of the other anchors). */
++ (instancetype)horizontalStrutViewWithName:(NSString *)name fromAnchor:(Anchor *)fromAnchor toAnchor:(Anchor *)toAnchor yAnchor:(Anchor *)yAnchor;
+
+/** I return a StrutView parallel to the Y axis, spanning the Y distance from anchor0 to anchor1, along the X coordinate of xAnchor (which may be the same as either of the other anchors). */
++ (instancetype)verticalStrutViewWithName:(NSString *)name fromAnchor:(Anchor *)fromAnchor toAnchor:(Anchor *)toAnchor xAnchor:(Anchor *)xAnchor;
 
 @property (nonatomic, copy, readonly) NSString *name;
-@property (nonatomic, strong, readonly) BoundsAnchor *anchor0;
-@property (nonatomic, strong, readonly) BoundsAnchor *anchor1;
+@property (nonatomic, strong, readonly) Anchor *fromXAnchor;
+@property (nonatomic, strong, readonly) Anchor *fromYAnchor;
+@property (nonatomic, strong, readonly) Anchor *toXAnchor;
+@property (nonatomic, strong, readonly) Anchor *toYAnchor;
 @property (nonatomic, readonly) StrutViewAxis axis;
 
 @property (nonatomic, readonly) CGFloat signedLength;

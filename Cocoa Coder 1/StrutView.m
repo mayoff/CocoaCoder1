@@ -1,6 +1,6 @@
 
 #import "StrutView.h"
-#import "BoundsAnchor.h"
+#import "Anchor.h"
 #import "RobGeometry.h"
 #import "NSObject+Rob_BlockKVO.h"
 @import QuartzCore;
@@ -12,35 +12,48 @@
 
 @end
 
+static CGFloat const kThickness = 2;
+
 @implementation StrutView {
+    CGPoint fromPoint;
+    CGPoint toPoint;
     double dx;
     double dy;
     double length;
-    CGFloat thickness;
     UILabel *nameLabel;
+    NSMutableArray *anchorObservers;
     id anchor0Observer;
     id anchor1Observer;
 }
 
 #pragma mark - Public API
 
-+ (instancetype)strutViewWithName:(NSString *)name fromAnchor:(BoundsAnchor *)anchor0 toAnchor:(BoundsAnchor *)anchor1 measuringAxis:(StrutViewAxis)axis {
-    return [[self alloc] initWithName:(NSString *)name fromAnchor:anchor0 toAnchor:anchor1 measuringAxis:axis withThickness:2];
++ (instancetype)horizontalStrutViewWithName:(NSString *)name fromAnchor:(Anchor *)fromAnchor toAnchor:(Anchor *)toAnchor yAnchor:(Anchor *)yAnchor {
+    return [[self alloc] initWithName:name fromXAnchor:fromAnchor yAnchor:yAnchor toXAnchor:toAnchor yAnchor:yAnchor measuringAxis:StrutViewAxisHorizontal];
 }
 
-- (instancetype)initWithName:(NSString *)name fromAnchor:(BoundsAnchor *)anchor0 toAnchor:(BoundsAnchor *)anchor1 measuringAxis:(StrutViewAxis)axis withThickness:(CGFloat)myThickness {
++ (instancetype)verticalStrutViewWithName:(NSString *)name fromAnchor:(Anchor *)fromAnchor toAnchor:(Anchor *)toAnchor xAnchor:(Anchor *)xAnchor {
+    return [[self alloc] initWithName:name fromXAnchor:xAnchor yAnchor:fromAnchor toXAnchor:xAnchor yAnchor:toAnchor measuringAxis:StrutViewAxisVertical];
+}
+
+- (instancetype)initWithName:(NSString *)name fromXAnchor:(Anchor *)fromXAnchor yAnchor:(Anchor *)fromYAnchor toXAnchor:(Anchor *)toXAnchor yAnchor:(Anchor *)toYAnchor measuringAxis:(StrutViewAxis)axis {
     if (self = [super init]) {
         _name = [name copy];
-        _anchor0 = anchor0;
-        _anchor1 = anchor1;
+        _fromXAnchor = fromXAnchor;
+        _fromYAnchor = fromYAnchor;
+        _toXAnchor = toXAnchor;
+        _toYAnchor = toYAnchor;
         _axis = axis;
-        thickness = myThickness;
+
         self.autoresizesSubviews = NO;
+        self.userInteractionEnabled = NO;
         [self initShapeLayer];
         [self initNameLabel];
-        anchor0Observer = [self observerForAnchor:_anchor0];
-        anchor1Observer = [self observerForAnchor:_anchor1];
-        self.userInteractionEnabled = NO;
+
+        anchorObservers = [NSMutableArray array];
+        for (Anchor *anchor in [NSSet setWithArray:@[_fromXAnchor, _fromYAnchor, _toXAnchor, _toYAnchor]]) {
+            [anchorObservers addObject:[self observerForAnchor:anchor]];
+        }
     }
     return self;
 }
@@ -52,7 +65,7 @@
 }
 
 - (CGSize)intrinsicContentSize {
-    return CGSizeMake(3 * thickness, UIViewNoIntrinsicMetric);
+    return CGSizeMake(3 * kThickness, UIViewNoIntrinsicMetric);
 }
 
 - (void)layoutSubviews {
@@ -84,25 +97,33 @@
     nameLabel.textAlignment = NSTextAlignmentCenter;
     nameLabel.textColor = [UIColor colorWithCGColor:self.layer.fillColor];
     nameLabel.backgroundColor = [UIColor colorWithWhite:0 alpha:0.8];
-    nameLabel.layer.cornerRadius = 2 * thickness;
+    nameLabel.layer.cornerRadius = 2 * kThickness;
     [self addSubview:nameLabel];
 }
 
+- (CGPoint)uncachedFromPoint {
+    return CGPointMake([self.fromXAnchor pointInView:self.superview].x, [self.fromYAnchor pointInView:self.superview].y);
+}
+
+- (CGPoint)uncachedToPoint {
+    return CGPointMake([self.toXAnchor pointInView:self.superview].x, [self.toYAnchor pointInView:self.superview].y);
+}
+
 - (void)updateParameters {
-    CGPoint p0 = [self.anchor0 pointInView:self.superview];
-    CGPoint p1 = [self.anchor1 pointInView:self.superview];
-    dx = p1.x - p0.x;
-    dy = p1.y - p0.y;
+    fromPoint = [self uncachedFromPoint];
+    toPoint = [self uncachedToPoint];
+    dx = toPoint.x - fromPoint.x;
+    dy = toPoint.y - fromPoint.y;
     length = hypot(dx, dy);
     self.signedLength = _axis == StrutViewAxisHorizontal ? dx : dy;
 }
 
 - (void)setCenterWithCurrentParameters {
-    self.center = [self.anchor0 pointInView:self.superview];
+    self.center = fromPoint;
 }
 
 - (void)setBoundsWithCurrentParameters {
-    self.bounds = CGRectMake(0, -1.5f * thickness, length, 3 * thickness);
+    self.bounds = CGRectMake(0, -1.5f * kThickness, length, 3 * kThickness);
 }
 
 - (void)setTransformWithCurrentParameters {
@@ -114,11 +135,11 @@
 - (void)setPathWithCurrentParameters {
     CGFloat x0 = 0;
     CGFloat x3 = length;
-    CGFloat x1 = MIN(x0 + thickness, x3);
-    CGFloat x2 = MAX(x0, x3 - thickness);
+    CGFloat x1 = MIN(x0 + kThickness, x3);
+    CGFloat x2 = MAX(x0, x3 - kThickness);
 
-    CGFloat y0 = -1.5f * thickness;
-    CGFloat y1 = -0.5f * thickness;
+    CGFloat y0 = -1.5f * kThickness;
+    CGFloat y1 = -0.5f * kThickness;
     CGFloat y2 = -y1;
     CGFloat y3 = -y0;
 
@@ -145,7 +166,7 @@
     CGPathRelease(path);
 }
 
-- (id)observerForAnchor:(BoundsAnchor *)anchor {
+- (id)observerForAnchor:(Anchor *)anchor {
     return [anchor addObserverForKeyPath:@"point" options:NSKeyValueObservingOptionInitial selfReference:self block:^(StrutView *self, NSString *observedKeyPath, id observedObject, NSDictionary *change) {
         [self setNeedsLayout];
     }];
@@ -153,12 +174,12 @@
 
 - (void)layoutNameLabel {
     CGRect myBounds = self.bounds;
-    CGRect labelBounds = CGRectInset((CGRect){ CGPointZero, nameLabel.intrinsicContentSize }, -thickness, -0.5f * thickness);
-    if (labelBounds.size.width + 4 * thickness > myBounds.size.width) {
+    CGRect labelBounds = CGRectInset((CGRect){ CGPointZero, nameLabel.intrinsicContentSize }, -kThickness, -0.5f * kThickness);
+    if (labelBounds.size.width + 4 * kThickness > myBounds.size.width) {
         nameLabel.hidden = YES;
     } else {
         nameLabel.hidden = NO;
-        nameLabel.center = pointOffset(rectMidpoint(self.bounds), 0, 0.5f * labelBounds.size.height + 2 * thickness);
+        nameLabel.center = pointOffset(rectMidpoint(self.bounds), 0, 0.5f * labelBounds.size.height + 2 * kThickness);
         nameLabel.bounds = labelBounds;
         nameLabel.frame = CGRectIntegral(nameLabel.frame);
     }
