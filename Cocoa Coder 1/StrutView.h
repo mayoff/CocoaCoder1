@@ -1,5 +1,6 @@
 
 #import <UIKit/UIKit.h>
+#import "CalloutView.h"
 
 typedef enum {
     StrutViewAxisHorizontal = 0,
@@ -8,7 +9,7 @@ typedef enum {
 
 @class Anchor;
 
-@interface StrutView : UIView
+@interface StrutView : CalloutView
 
 /** I return a StrutView parallel to the X axis, spanning the X distance from anchor0 to anchor1, along the Y coordinate of yAnchor (which may be the same as either of the other anchors). */
 + (instancetype)horizontalStrutViewWithName:(NSString *)name fromAnchor:(Anchor *)fromAnchor toAnchor:(Anchor *)toAnchor yAnchor:(Anchor *)yAnchor;

@@ -11,6 +11,9 @@
 		31354661178D2C5100574C20 /* FloatSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = 31354660178D2C5100574C20 /* FloatSetting.m */; };
 		315CA314178DFDDC004C71E7 /* Anchor.m in Sources */ = {isa = PBXBuildFile; fileRef = 315CA313178DFDDC004C71E7 /* Anchor.m */; };
 		315CA317178DFE95004C71E7 /* OriginAnchor.m in Sources */ = {isa = PBXBuildFile; fileRef = 315CA316178DFE95004C71E7 /* OriginAnchor.m */; };
+		316E1F69178E5F370029A7E5 /* CanvasView.m in Sources */ = {isa = PBXBuildFile; fileRef = 316E1F68178E5F370029A7E5 /* CanvasView.m */; };
+		316E1F6C178E60D10029A7E5 /* CalloutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 316E1F6B178E60D10029A7E5 /* CalloutView.m */; };
+		316E1F72178E6A9E0029A7E5 /* NSRunLoop+Rob_Observer.m in Sources */ = {isa = PBXBuildFile; fileRef = 316E1F71178E6A9E0029A7E5 /* NSRunLoop+Rob_Observer.m */; };
 		318C6062178D335D00E5C6D9 /* NSObject+Rob_BlockKVO.m in Sources */ = {isa = PBXBuildFile; fileRef = 318C6061178D335D00E5C6D9 /* NSObject+Rob_BlockKVO.m */; };
 		318C6065178D4A3900E5C6D9 /* AxisSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = 318C6064178D4A3900E5C6D9 /* AxisSetting.m */; };
 		3198D0AA1788B20400A8ED58 /* SettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3198D0A91788B20400A8ED58 /* SettingCell.m */; };
@@ -63,6 +66,12 @@
 		315CA313178DFDDC004C71E7 /* Anchor.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.c.objc; path = Anchor.m; sourceTree = "<group>"; tabWidth = 8; usesTabs = 0; wrapsLines = 1; };
 		315CA315178DFE95004C71E7 /* OriginAnchor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OriginAnchor.h; sourceTree = "<group>"; };
 		315CA316178DFE95004C71E7 /* OriginAnchor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OriginAnchor.m; sourceTree = "<group>"; };
+		316E1F67178E5F370029A7E5 /* CanvasView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CanvasView.h; sourceTree = "<group>"; };
+		316E1F68178E5F370029A7E5 /* CanvasView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CanvasView.m; sourceTree = "<group>"; };
+		316E1F6A178E60D10029A7E5 /* CalloutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalloutView.h; sourceTree = "<group>"; };
+		316E1F6B178E60D10029A7E5 /* CalloutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalloutView.m; sourceTree = "<group>"; };
+		316E1F70178E6A9E0029A7E5 /* NSRunLoop+Rob_Observer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSRunLoop+Rob_Observer.h"; sourceTree = "<group>"; };
+		316E1F71178E6A9E0029A7E5 /* NSRunLoop+Rob_Observer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSRunLoop+Rob_Observer.m"; sourceTree = "<group>"; };
 		318C6060178D335D00E5C6D9 /* NSObject+Rob_BlockKVO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Rob_BlockKVO.h"; sourceTree = "<group>"; };
 		318C6061178D335D00E5C6D9 /* NSObject+Rob_BlockKVO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Rob_BlockKVO.m"; sourceTree = "<group>"; };
 		318C6063178D4A3900E5C6D9 /* AxisSetting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AxisSetting.h; sourceTree = "<group>"; };
@@ -190,6 +199,8 @@
 				31D3E2DA1788016C00C7E666 /* UIView+Rob_FindAncestor.m */,
 				318C6060178D335D00E5C6D9 /* NSObject+Rob_BlockKVO.h */,
 				318C6061178D335D00E5C6D9 /* NSObject+Rob_BlockKVO.m */,
+				316E1F70178E6A9E0029A7E5 /* NSRunLoop+Rob_Observer.h */,
+				316E1F71178E6A9E0029A7E5 /* NSRunLoop+Rob_Observer.m */,
 			);
 			name = "Categories on System Classes";
 			sourceTree = "<group>";
@@ -246,6 +257,10 @@
 				31C5E72817877AF900AB361D /* LayoutDemoView.m */,
 				31D3E2DC17889F0800C7E666 /* DottedLayoutDemoView.h */,
 				31D3E2DD17889F0900C7E666 /* DottedLayoutDemoView.m */,
+				316E1F67178E5F370029A7E5 /* CanvasView.h */,
+				316E1F68178E5F370029A7E5 /* CanvasView.m */,
+				316E1F6A178E60D10029A7E5 /* CalloutView.h */,
+				316E1F6B178E60D10029A7E5 /* CalloutView.m */,
 				31C5E72D17877F8700AB361D /* StrutView.h */,
 				31C5E72E17877F8700AB361D /* StrutView.m */,
 				3135465C178D1EC100574C20 /* AxisView.h */,
@@ -407,6 +422,7 @@
 				31C5E703178779AE00AB361D /* AppDelegate.m in Sources */,
 				31D3E2DB1788016C00C7E666 /* UIView+Rob_FindAncestor.m in Sources */,
 				31C5E7321787881000AB361D /* BoundsAnchor.m in Sources */,
+				316E1F6C178E60D10029A7E5 /* CalloutView.m in Sources */,
 				3198D0AA1788B20400A8ED58 /* SettingCell.m in Sources */,
 				3198D0AE1788B66900A8ED58 /* ViewVisibilitySetting.m in Sources */,
 				3135465E178D1EC100574C20 /* AxisView.m in Sources */,
@@ -416,6 +432,8 @@
 				31D3E2D81787F85400C7E666 /* StrutSetting.m in Sources */,
 				31C376131787EF5000F814B8 /* ControlPanelViewController.m in Sources */,
 				318C6062178D335D00E5C6D9 /* NSObject+Rob_BlockKVO.m in Sources */,
+				316E1F72178E6A9E0029A7E5 /* NSRunLoop+Rob_Observer.m in Sources */,
+				316E1F69178E5F370029A7E5 /* CanvasView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

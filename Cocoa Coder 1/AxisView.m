@@ -40,17 +40,15 @@ Copyright (c) 2013 Rob Mayoff. All rights reserved.
 // Subclasses must implement this.
 @dynamic axisOffset;
 
+- (void)layoutSelf {
+    CGPoint origin = [self.observedView convertPoint:CGPointZero toView:self.superview];
+    self.frame = [self frameForConvertedOrigin:origin];
+}
+
 #pragma mark - Subclass API
 
 - (CGRect)frameForConvertedOrigin:(CGPoint)point {
     [self doesNotRecognizeSelector:_cmd]; abort();
-}
-
-#pragma mark - UIView overrides
-
-- (void)layoutSubviews {
-    [super layoutSubviews];
-    [self layoutSelf];
 }
 
 #pragma mark - Implementation details
@@ -67,11 +65,6 @@ Copyright (c) 2013 Rob Mayoff. All rights reserved.
         }];
     }
     return self;
-}
-
-- (void)layoutSelf {
-    CGPoint origin = [self.observedView convertPoint:CGPointZero toView:self.superview];
-    self.frame = [self frameForConvertedOrigin:origin];
 }
 
 + (NSSet *)keyPathsForValuesAffectingValueForAxisOffset {

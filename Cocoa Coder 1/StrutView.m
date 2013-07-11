@@ -58,6 +58,15 @@ static CGFloat const kThickness = 2;
     return self;
 }
 
+- (void)layoutSelf {
+    [self updateParameters];
+    [self setCenterWithCurrentParameters];
+    [self setBoundsWithCurrentParameters];
+    [self setTransformWithCurrentParameters];
+    [self setPathWithCurrentParameters];
+    [self layoutNameLabel];
+}
+
 #pragma mark - UIView overrides
 
 + (Class)layerClass {
@@ -66,17 +75,6 @@ static CGFloat const kThickness = 2;
 
 - (CGSize)intrinsicContentSize {
     return CGSizeMake(3 * kThickness, UIViewNoIntrinsicMetric);
-}
-
-- (void)layoutSubviews {
-    [super layoutSubviews];
-
-    [self updateParameters];
-    [self setCenterWithCurrentParameters];
-    [self setBoundsWithCurrentParameters];
-    [self setTransformWithCurrentParameters];
-    [self setPathWithCurrentParameters];
-    [self layoutNameLabel];
 }
 
 #pragma mark - Implementation details

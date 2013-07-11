@@ -4,3 +4,5 @@
 @interface LayoutDemoView : UIView
 
 @end
+
+extern NSString *const LayoutDemoViewLayoutDidChange;

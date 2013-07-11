@@ -4,8 +4,9 @@ Copyright (c) 2013 Rob Mayoff. All rights reserved.
 */
 
 #import <UIKit/UIKit.h>
+#import "CalloutView.h"
 
-@interface AxisView : UIView
+@interface AxisView : CalloutView
 
 + (instancetype)xAxisViewObservingView:(UIView *)view;
 + (instancetype)yAxisViewObservingView:(UIView *)view;

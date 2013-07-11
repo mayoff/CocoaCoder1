@@ -10,18 +10,23 @@
 #import "StrutView.h"
 #import "ViewVisibilitySetting.h"
 #import "OriginAnchor.h"
+#import "CanvasView.h"
+#import "LayoutDemoView.h"
+#import "NSRunLoop+Rob_Observer.h"
 
-// These are the zPosition values of the subviews of canvasView.
-static CGFloat const ZPosition_DottedView = 0;
-static CGFloat const ZPosition_Superview = 1;
-static CGFloat const ZPosition_Axis = 2;
-static CGFloat const ZPosition_Strut = 3;
+// I use these to ensure that struts are drawn over axes.
+static CGFloat const ZPosition_Axis = 1;
+static CGFloat const ZPosition_Strut = 2;
+
+// I use these to ensure that the dotted view is under the demo superview.
+static CGFloat const ZPosition_DottedView = 1;
+static CGFloat const ZPosition_DemoView = 2;
 
 @import QuartzCore;
 
 @interface LayoutDemoViewController ()
 
-@property (nonatomic, strong) IBOutlet UIView *canvasView;
+@property (nonatomic, strong) IBOutlet CanvasView *canvasView;
 @property (strong, nonatomic) IBOutlet UIView *myView;
 
 @end
@@ -29,6 +34,12 @@ static CGFloat const ZPosition_Strut = 3;
 @implementation LayoutDemoViewController {
     NSMutableArray *settings;
     ControlPanelViewController *controlPanelViewController;
+
+    // This is the observer that sees when the layout of any demo view changes.
+    id layoutDidChangeObserver;
+
+    // This is the observer that is notified by the run loop before QuartzCore's layout pass.
+    Rob_RunLoopObserver *preLayoutObserver;
 }
 
 #pragma mark - UIViewController overrides
@@ -58,6 +69,22 @@ static CGFloat const ZPosition_Strut = 3;
 #pragma clang diagnostic pop
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self startObservingLayoutDidChange];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [self startObservingLayoutDidChange];
+}
+
+#pragma mark - NSObject overrides
+
+- (void)dealloc {
+    [self stopObservingLayoutDidChange];
+}
+
 #pragma mark - Storyboard actions and segues
 
 - (IBAction)panGestureWasRecognized:(UIPanGestureRecognizer *)recognizer {
@@ -74,26 +101,26 @@ static CGFloat const ZPosition_Strut = 3;
     controlPanelViewController.settings = settings;
 }
 
-#pragma mark - Implementation details
+#pragma mark - Implementation details - Initialization
 
-static void makeViewUseAutoresizing(UIView *view) {
+static void removeViewFromAutolayout(UIView *view) {
     // Removing a view from the view hierarchy removes all constraints linking it to views outside itself.
     UIView *superview = view.superview;
     [view removeFromSuperview];
     [view removeConstraints:view.constraints];
     view.translatesAutoresizingMaskIntoConstraints = YES;
-    view.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleRightMargin;
+    view.autoresizingMask = 0;
     [superview addSubview:view];
 }
 
 - (void)initSuperview {
     UIView *superview = self.myView.superview;
-    superview.layer.zPosition = ZPosition_Superview;
-    makeViewUseAutoresizing(superview);
+    superview.layer.zPosition = ZPosition_DemoView;
+    removeViewFromAutolayout(superview);
 }
 
 - (void)initMyView {
-    makeViewUseAutoresizing(self.myView);
+    removeViewFromAutolayout(self.myView);
 }
 
 - (void)initSettings {
@@ -165,7 +192,7 @@ static void makeViewUseAutoresizing(UIView *view) {
 - (void)addAxisSettingWithName:(NSString *)name calloutView:(UIView *)calloutView {
     calloutView.hidden = YES;
     calloutView.layer.zPosition = ZPosition_Axis;
-    [self.canvasView addSubview:calloutView];
+    [self.canvasView.calloutContainerView addSubview:calloutView];
     AxisSetting *setting = [[AxisSetting alloc] initWithName:name calloutView:calloutView];
     [settings addObject:setting];
 }
@@ -183,16 +210,49 @@ static void makeViewUseAutoresizing(UIView *view) {
 - (void)addStrutSettingWithName:(NSString *)name strutView:(StrutView *)strutView setLengthBlock:(StrutSettingSetLengthBlock)block {
     strutView.hidden = YES;
     strutView.layer.zPosition = ZPosition_Strut;
-    [self.canvasView addSubview:strutView];
+    [self.canvasView.calloutContainerView addSubview:strutView];
     [settings addObject:[[StrutSetting alloc] initWithName:name strutView:strutView setLengthBlock:block]];
 }
 
 - (void)initDottedView {
     DottedLayoutDemoView *view = [[DottedLayoutDemoView alloc] initWithOriginalView:self.myView];
     view.layer.zPosition = ZPosition_DottedView;
-    [self.canvasView insertSubview:view atIndex:0];
+    [self.canvasView.demoView insertSubview:view atIndex:0];
     UIPanGestureRecognizer *recognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGestureWasRecognized:)];
     [view addGestureRecognizer:recognizer];
+}
+
+#pragma mark - Implementation details - model/view sync
+
+- (void)startObservingLayoutDidChange {
+    if (!layoutDidChangeObserver) {
+        layoutDidChangeObserver = [[NSNotificationCenter defaultCenter] addObserverForName:LayoutDemoViewLayoutDidChange object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *note) {
+            [self scheduleCalloutAndControlPanelUpdate];
+        }];
+    }
+}
+
+- (void)stopObservingLayoutDidChange {
+    if (layoutDidChangeObserver) {
+        [[NSNotificationCenter defaultCenter] removeObserver:layoutDidChangeObserver];
+        layoutDidChangeObserver = nil;
+    }
+}
+
+- (void)scheduleCalloutAndControlPanelUpdate {
+    if (!preLayoutObserver) {
+        preLayoutObserver = [[Rob_RunLoopObserver alloc] initWithActivities:kCFRunLoopBeforeWaiting repeats:NO order:0 weakObject:self block:^(LayoutDemoViewController *self, CFRunLoopActivity activity) {
+            [self syncViewsToModel];
+            self->preLayoutObserver = nil;
+        }];
+        [[NSRunLoop mainRunLoop] Rob_addObserver:preLayoutObserver forMode:NSRunLoopCommonModes];
+    }
+}
+
+- (void)syncViewsToModel {
+    // The demo views are the “model”.  I need to make sure they are laid out (which should actually be a no-op in the current setup).  Then I need to get the callout views laid out.  The control panel views observe the callout views so they will update themselves.
+    [self.canvasView setNeedsLayout];
+    [self.canvasView layoutIfNeeded];
 }
 
 @end
