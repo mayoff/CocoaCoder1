@@ -170,12 +170,12 @@ static void removeViewFromAutolayout(UIView *view) {
         [myView layoutIfNeeded];
     }];
 
-    [self addHorizontalStrutSettingWithName:@"myView.frame.size.width" fromAnchor:myViewFrameTopLeftAnchor toAnchor:[FrameAnchor anchorWithUnitPosition:CGPointMake(1, 1) absoluteOffset:CGPointMake(0, 12) inView:myView] setLengthBlock:^(CGFloat length) {
+    [self addHorizontalStrutSettingWithName:@"myView.frame.size.width" fromAnchor:myViewFrameTopLeftAnchor toAnchor:[FrameAnchor anchorWithUnitPosition:CGPointMake(1, 1) absoluteOffset:CGPointMake(0, 30) inView:myView] setLengthBlock:^(CGFloat length) {
         myView.bounds = rectByReplacingWidth(myView.bounds, length);
         [myView layoutIfNeeded];
     }];
 
-    [self addVerticalStrutSettingWithName:@"myView.frame.size.height" fromAnchor:myViewFrameTopLeftAnchor toAnchor:[FrameAnchor anchorWithUnitPosition:CGPointMake(1, 1) absoluteOffset:CGPointMake(12, 0) inView:myView] setLengthBlock:^(CGFloat length) {
+    [self addVerticalStrutSettingWithName:@"myView.frame.size.height" fromAnchor:myViewFrameTopLeftAnchor toAnchor:[FrameAnchor anchorWithUnitPosition:CGPointMake(1, 1) absoluteOffset:CGPointMake(30, 0) inView:myView] setLengthBlock:^(CGFloat length) {
         myView.bounds = rectByReplacingHeight(myView.bounds, length);
         [myView layoutIfNeeded];
     }];
