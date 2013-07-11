@@ -22,7 +22,7 @@
 
 - (CGPoint)pointInView:(UIView *)targetView {
     CGRect bounds = _view.bounds;
-    CGPoint point = CGPointMake(bounds.origin.x + _position.x * bounds.size.width + _offset.x, bounds.origin.y + _position.y * bounds.size.width + _offset.y);
+    CGPoint point = CGPointMake(bounds.origin.x + _position.x * bounds.size.width + _offset.x, bounds.origin.y + _position.y * bounds.size.height + _offset.y);
     return [_view convertPoint:point toView:targetView];
 }
 
