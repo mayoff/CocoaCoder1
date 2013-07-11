@@ -53,6 +53,7 @@ Copyright (c) 2013 Rob Mayoff. All rights reserved.
 
 - (instancetype)initWithObservedView:(UIView *)view {
     if (self = [super init]) {
+        self.observedView = view;
         self.backgroundColor = [UIColor colorWithRed:1 green:124.0f/255 blue:247.0f/255 alpha:1];
         self.translatesAutoresizingMaskIntoConstraints = NO;
         self.userInteractionEnabled = NO;
