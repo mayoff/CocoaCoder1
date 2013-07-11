@@ -657,6 +657,7 @@
 				316E1FB0178F35950029A7E5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		31C5E6EA178779AE00AB361D /* Build configuration list for PBXProject "Cocoa Coder 1" */ = {
 			isa = XCConfigurationList;
