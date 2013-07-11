@@ -66,7 +66,11 @@
 #pragma mark - Storyboard actions
 
 - (IBAction)showCalloutButtonWasTapped:(id)sender {
-    self.setting.calloutView.hidden = !self.setting.calloutView.hidden;
+    BOOL hidden = !self.setting.calloutView.hidden;
+    self.setting.calloutView.hidden = hidden;
+    for (UIView *view in self.setting.otherCalloutViews) {
+        view.hidden = hidden;
+    }
     [self updateFromModel];
 }
 

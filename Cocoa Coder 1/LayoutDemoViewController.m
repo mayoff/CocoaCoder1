@@ -132,6 +132,8 @@ static void removeViewFromAutolayout(UIView *view) {
     [self addVisibilitySettingWithName:@"superview" view:superview];
 
     OriginAnchor *superviewOriginAnchor = [OriginAnchor anchorObservingView:superview];
+    BoundsAnchor *superviewTopLeftAnchor = [BoundsAnchor anchorWithUnitPosition:CGPointZero inView:superview];
+    BoundsAnchor *superviewTopLeftAnchorWithTweak = [BoundsAnchor anchorWithUnitPosition:CGPointZero absoluteOffset:CGPointMake(1, 1) inView:superview]; // 1 = half the strut thickness; looks better
     BoundsAnchor *myViewCenterAnchor = [BoundsAnchor anchorWithUnitPosition:CGPointMake(0.5, 0.5) inView:myView];
     BoundsAnchor *myViewTopLeftAnchor = [BoundsAnchor anchorWithUnitPosition:CGPointMake(0, 0) inView:myView];
 
@@ -175,8 +177,8 @@ static void removeViewFromAutolayout(UIView *view) {
         [myView layoutIfNeeded];
     }];
 
-    [self addAxisSettingWithName:@"superview.bounds.origin.x" calloutView:[AxisView yAxisViewObservingView:superview]];
-    [self addAxisSettingWithName:@"superview.bounds.origin.y" calloutView:[AxisView xAxisViewObservingView:superview]];
+    [self addAxisSettingWithName:@"superview.bounds.origin.x" axisView:[AxisView yAxisViewObservingView:superview] strutView:[StrutView horizontalStrutViewWithName:@"superview.bounds.origin.x" fromAnchor:superviewOriginAnchor toAnchor:superviewTopLeftAnchor yAnchor:superviewTopLeftAnchorWithTweak]];
+    [self addAxisSettingWithName:@"superview.bounds.origin.y" axisView:[AxisView xAxisViewObservingView:superview] strutView:[StrutView verticalStrutViewWithName:@"superview.bounds.origin.y" fromAnchor:superviewOriginAnchor toAnchor:superviewTopLeftAnchor xAnchor:superviewTopLeftAnchorWithTweak]];
 
     controlPanelViewController.settings = settings;
 }
@@ -189,11 +191,17 @@ static void removeViewFromAutolayout(UIView *view) {
     [settings addObject:setting];
 }
 
-- (void)addAxisSettingWithName:(NSString *)name calloutView:(UIView *)calloutView {
+- (void)addAxisSettingWithName:(NSString *)name axisView:(UIView *)calloutView strutView:(UIView *)strutView {
     calloutView.hidden = YES;
     calloutView.layer.zPosition = ZPosition_Axis;
     [self.canvasView.calloutContainerView addSubview:calloutView];
+
+    strutView.hidden = YES;
+    strutView.layer.zPosition = ZPosition_Strut;
+    [self.canvasView.calloutContainerView addSubview:strutView];
+
     AxisSetting *setting = [[AxisSetting alloc] initWithName:name calloutView:calloutView];
+    setting.otherCalloutViews = [NSSet setWithObject:strutView];
     [settings addObject:setting];
 }
 
@@ -217,7 +225,7 @@ static void removeViewFromAutolayout(UIView *view) {
 - (void)initDottedView {
     DottedLayoutDemoView *view = [[DottedLayoutDemoView alloc] initWithOriginalView:self.myView];
     view.layer.zPosition = ZPosition_DottedView;
-    [self.canvasView.demoView insertSubview:view atIndex:0];
+    [self.canvasView.dottedContainerView insertSubview:view atIndex:0];
     UIPanGestureRecognizer *recognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGestureWasRecognized:)];
     [view addGestureRecognizer:recognizer];
 }

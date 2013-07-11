@@ -5,4 +5,6 @@
 
 - (id)initWithOriginalView:(UIView *)theOriginalView;
 
+- (void)layoutSelf;
+
 @end

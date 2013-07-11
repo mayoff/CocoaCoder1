@@ -78,7 +78,7 @@
                                     <constraint firstItem="APN-GT-3Y7" firstAttribute="top" secondItem="Tpg-ca-2Bp" secondAttribute="top" id="yhX-kZ-vg8"/>
                                 </constraints>
                                 <connections>
-                                    <outlet property="demoView" destination="APN-GT-3Y7" id="7Rx-RQ-G5q"/>
+                                    <outlet property="demoContainerView" destination="APN-GT-3Y7" id="LZ4-rY-Ov0"/>
                                 </connections>
                             </view>
                         </subviews>

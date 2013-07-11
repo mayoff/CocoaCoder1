@@ -11,8 +11,6 @@
 
 @implementation DottedLayoutDemoView {
     UIView *originalView;
-    CGRect originalViewBoundsInMyCoordinateSystem;
-    id layoutObserver;
     id hiddenObserver;
 }
 
@@ -29,32 +27,18 @@
     return self;
 }
 
+- (void)layoutSelf {
+    [self setFrameFromOriginalView];
+    [self setPath];
+}
+
 #pragma mark - UIView overrides
 
 + (Class)layerClass {
     return [CAShapeLayer class];
 }
 
-- (void)layoutSubviews {
-    [super layoutSubviews];
-    [self setPath];
-}
-
-- (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event {
-    return CGRectContainsPoint(originalViewBoundsInMyCoordinateSystem, point);
-}
-
 #pragma mark - Implementation details
-
-- (void)startObservingOriginalView {
-    layoutObserver = [originalView addObserverForKeyPaths:@[@"center", @"bounds", @"frame"] options:NSKeyValueObservingOptionInitial selfReference:self block:^(DottedLayoutDemoView *self, NSString *observedKeyPath, id observedObject, NSDictionary *change) {
-        [self setNeedsLayout];
-    }];
-
-    hiddenObserver = [originalView addObserverForKeyPath:@"hidden" options:NSKeyValueObservingOptionInitial selfReference:self block:^(DottedLayoutDemoView *self, NSString *observedKeyPath, id observedObject, NSDictionary *change) {
-        self.hidden = self->originalView.hidden;
-    }];
-}
 
 - (void)initBorder {
     CAShapeLayer *layer = self.layer;
@@ -66,10 +50,20 @@
     layer.lineJoin = kCGLineJoinMiter;
 }
 
+- (void)startObservingOriginalView {
+    hiddenObserver = [originalView addObserverForKeyPath:@"hidden" options:NSKeyValueObservingOptionInitial selfReference:self block:^(DottedLayoutDemoView *self, NSString *observedKeyPath, id observedObject, NSDictionary *change) {
+        self.hidden = self->originalView.hidden;
+    }];
+}
+
+- (void)setFrameFromOriginalView {
+    self.frame = [originalView convertRect:originalView.bounds toView:self.superview];
+}
+
 - (void)setPath {
-    originalViewBoundsInMyCoordinateSystem = [originalView convertRect:originalView.bounds toView:self];
+    CGRect bounds = self.bounds;
     CGFloat inset = self.layer.lineWidth * 0.5f;
-    CGPathRef path = CGPathCreateWithRect(CGRectInset(originalViewBoundsInMyCoordinateSystem, inset, inset), NULL);
+    CGPathRef path = CGPathCreateWithRect(CGRectInset(bounds, inset, inset), NULL);
     self.layer.path = path;
     CGPathRelease(path);
 }
