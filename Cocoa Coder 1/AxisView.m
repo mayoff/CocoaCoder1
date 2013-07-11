@@ -23,9 +23,7 @@ Copyright (c) 2013 Rob Mayoff. All rights reserved.
 
 @end
 
-@implementation AxisView {
-    id observer;
-}
+@implementation AxisView
 
 #pragma mark - Public API
 
@@ -58,17 +56,13 @@ Copyright (c) 2013 Rob Mayoff. All rights reserved.
         self.backgroundColor = [UIColor colorWithRed:1 green:124.0f/255 blue:247.0f/255 alpha:1];
         self.translatesAutoresizingMaskIntoConstraints = NO;
         self.userInteractionEnabled = NO;
-
-        _observedView = view;
-        observer = [_observedView addObserverForKeyPaths:@[@"center", @"bounds", @"frame"] options:NSKeyValueObservingOptionInitial selfReference:self block:^(AxisView *self, NSString *observedKeyPath, id observedObject, NSDictionary *change) {
-            [self setNeedsLayout];
-        }];
     }
     return self;
 }
 
 + (NSSet *)keyPathsForValuesAffectingValueForAxisOffset {
-    return [NSSet setWithObject:@"observedView.bounds"];
+    // I update my frame in `layoutSelf`, so I don't need to mention center or bounds.
+    return [NSSet setWithObject:@"frame"];
 }
 
 @end

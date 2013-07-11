@@ -21,9 +21,6 @@ static CGFloat const kThickness = 2;
     double dy;
     double length;
     UILabel *nameLabel;
-    NSMutableArray *anchorObservers;
-    id anchor0Observer;
-    id anchor1Observer;
 }
 
 #pragma mark - Public API
@@ -49,11 +46,6 @@ static CGFloat const kThickness = 2;
         self.userInteractionEnabled = NO;
         [self initShapeLayer];
         [self initNameLabel];
-
-        anchorObservers = [NSMutableArray array];
-        for (Anchor *anchor in [NSSet setWithArray:@[_fromXAnchor, _fromYAnchor, _toXAnchor, _toYAnchor]]) {
-            [anchorObservers addObject:[self observerForAnchor:anchor]];
-        }
     }
     return self;
 }
@@ -78,6 +70,11 @@ static CGFloat const kThickness = 2;
 }
 
 #pragma mark - Implementation details
+
++ (NSSet *)keyPathsForValuesAffectingSignedLength {
+    // I update bounds when my length changes.
+    return [NSSet setWithObject:@"bounds"];
+}
 
 - (void)initShapeLayer {
     CAShapeLayer *layer = self.layer;
@@ -162,12 +159,6 @@ static CGFloat const kThickness = 2;
     CGPathCloseSubpath(path);
     self.layer.path = path;
     CGPathRelease(path);
-}
-
-- (id)observerForAnchor:(Anchor *)anchor {
-    return [anchor addObserverForKeyPath:@"point" options:NSKeyValueObservingOptionInitial selfReference:self block:^(StrutView *self, NSString *observedKeyPath, id observedObject, NSDictionary *change) {
-        [self setNeedsLayout];
-    }];
 }
 
 - (void)layoutNameLabel {
