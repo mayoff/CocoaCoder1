@@ -38,6 +38,16 @@
                ReferencedContainer = "container:Cocoa Coder 1.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "316E1F9F178F35950029A7E5"
+               BuildableName = "Autoresizing ScrollersTests.xctest"
+               BlueprintName = "Autoresizing ScrollersTests"
+               ReferencedContainer = "container:Cocoa Coder 1.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference

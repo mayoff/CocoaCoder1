@@ -17,6 +17,15 @@
 		316E1F76178E803B0029A7E5 /* FrameAnchor.m in Sources */ = {isa = PBXBuildFile; fileRef = 316E1F75178E803B0029A7E5 /* FrameAnchor.m */; };
 		316E1F79178E81A00029A7E5 /* RectAnchor.m in Sources */ = {isa = PBXBuildFile; fileRef = 316E1F78178E81A00029A7E5 /* RectAnchor.m */; };
 		316E1F7C178E84370029A7E5 /* CenterAnchor.m in Sources */ = {isa = PBXBuildFile; fileRef = 316E1F7B178E84370029A7E5 /* CenterAnchor.m */; };
+		316E1F82178F35940029A7E5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31C5E6F2178779AE00AB361D /* Foundation.framework */; };
+		316E1F83178F35940029A7E5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31C5E6F4178779AE00AB361D /* CoreGraphics.framework */; };
+		316E1F84178F35940029A7E5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31C5E6F6178779AE00AB361D /* UIKit.framework */; };
+		316E1F8A178F35940029A7E5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 316E1F88178F35940029A7E5 /* InfoPlist.strings */; };
+		316E1F8C178F35940029A7E5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 316E1F8B178F35940029A7E5 /* main.m */; };
+		316E1F90178F35940029A7E5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 316E1F8F178F35940029A7E5 /* AppDelegate.m */; };
+		316E1F93178F35940029A7E5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 316E1F91178F35940029A7E5 /* Main.storyboard */; };
+		316E1F9B178F35940029A7E5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 316E1F9A178F35940029A7E5 /* Images.xcassets */; };
+		316E1FB6178F4CA40029A7E5 /* Demo1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 316E1FB5178F4CA40029A7E5 /* Demo1ViewController.m */; };
 		318C6062178D335D00E5C6D9 /* NSObject+Rob_BlockKVO.m in Sources */ = {isa = PBXBuildFile; fileRef = 318C6061178D335D00E5C6D9 /* NSObject+Rob_BlockKVO.m */; };
 		318C6065178D4A3900E5C6D9 /* AxisSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = 318C6064178D4A3900E5C6D9 /* AxisSetting.m */; };
 		3198D0AA1788B20400A8ED58 /* SettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3198D0A91788B20400A8ED58 /* SettingCell.m */; };
@@ -36,11 +45,6 @@
 		31C5E706178779AE00AB361D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 31C5E704178779AE00AB361D /* Main.storyboard */; };
 		31C5E709178779AE00AB361D /* LayoutDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 31C5E708178779AE00AB361D /* LayoutDemoViewController.m */; };
 		31C5E70B178779AE00AB361D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31C5E70A178779AE00AB361D /* Images.xcassets */; };
-		31C5E712178779AE00AB361D /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31C5E711178779AE00AB361D /* XCTest.framework */; };
-		31C5E713178779AE00AB361D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31C5E6F2178779AE00AB361D /* Foundation.framework */; };
-		31C5E714178779AE00AB361D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31C5E6F6178779AE00AB361D /* UIKit.framework */; };
-		31C5E71C178779AE00AB361D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 31C5E71A178779AE00AB361D /* InfoPlist.strings */; };
-		31C5E71E178779AE00AB361D /* Cocoa_Coder_1Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 31C5E71D178779AE00AB361D /* Cocoa_Coder_1Tests.m */; };
 		31C5E72917877AF900AB361D /* LayoutDemoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 31C5E72817877AF900AB361D /* LayoutDemoView.m */; };
 		31C5E72C17877BBA00AB361D /* UIColor+my_projectColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 31C5E72B17877BBA00AB361D /* UIColor+my_projectColors.m */; };
 		31C5E72F17877F8700AB361D /* StrutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 31C5E72E17877F8700AB361D /* StrutView.m */; };
@@ -49,16 +53,6 @@
 		31D3E2DB1788016C00C7E666 /* UIView+Rob_FindAncestor.m in Sources */ = {isa = PBXBuildFile; fileRef = 31D3E2DA1788016C00C7E666 /* UIView+Rob_FindAncestor.m */; };
 		31D3E2DE17889F0900C7E666 /* DottedLayoutDemoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 31D3E2DD17889F0900C7E666 /* DottedLayoutDemoView.m */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		31C5E715178779AE00AB361D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 31C5E6E7178779AE00AB361D /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 31C5E6EE178779AE00AB361D;
-			remoteInfo = "Cocoa Coder 1";
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		3135465C178D1EC100574C20 /* AxisView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AxisView.h; sourceTree = "<group>"; };
@@ -81,6 +75,17 @@
 		316E1F78178E81A00029A7E5 /* RectAnchor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RectAnchor.m; sourceTree = "<group>"; };
 		316E1F7A178E84370029A7E5 /* CenterAnchor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CenterAnchor.h; sourceTree = "<group>"; };
 		316E1F7B178E84370029A7E5 /* CenterAnchor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CenterAnchor.m; sourceTree = "<group>"; };
+		316E1F81178F35940029A7E5 /* Autoresizing Scrollers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Autoresizing Scrollers.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		316E1F87178F35940029A7E5 /* Autoresizing Scrollers-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Autoresizing Scrollers-Info.plist"; sourceTree = "<group>"; };
+		316E1F89178F35940029A7E5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		316E1F8B178F35940029A7E5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		316E1F8D178F35940029A7E5 /* Autoresizing Scrollers-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Autoresizing Scrollers-Prefix.pch"; sourceTree = "<group>"; };
+		316E1F8E178F35940029A7E5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		316E1F8F178F35940029A7E5 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		316E1F92178F35940029A7E5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		316E1F9A178F35940029A7E5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		316E1FB4178F4CA40029A7E5 /* Demo1ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Demo1ViewController.h; sourceTree = "<group>"; };
+		316E1FB5178F4CA40029A7E5 /* Demo1ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Demo1ViewController.m; sourceTree = "<group>"; };
 		318C6060178D335D00E5C6D9 /* NSObject+Rob_BlockKVO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Rob_BlockKVO.h"; sourceTree = "<group>"; };
 		318C6061178D335D00E5C6D9 /* NSObject+Rob_BlockKVO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Rob_BlockKVO.m"; sourceTree = "<group>"; };
 		318C6063178D4A3900E5C6D9 /* AxisSetting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AxisSetting.h; sourceTree = "<group>"; };
@@ -117,11 +122,7 @@
 		31C5E707178779AE00AB361D /* LayoutDemoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LayoutDemoViewController.h; sourceTree = "<group>"; };
 		31C5E708178779AE00AB361D /* LayoutDemoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LayoutDemoViewController.m; sourceTree = "<group>"; };
 		31C5E70A178779AE00AB361D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		31C5E710178779AE00AB361D /* Cocoa Coder 1Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Cocoa Coder 1Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		31C5E711178779AE00AB361D /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		31C5E719178779AE00AB361D /* Cocoa Coder 1Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Cocoa Coder 1Tests-Info.plist"; sourceTree = "<group>"; };
-		31C5E71B178779AE00AB361D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		31C5E71D178779AE00AB361D /* Cocoa_Coder_1Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Cocoa_Coder_1Tests.m; sourceTree = "<group>"; };
 		31C5E72717877AF900AB361D /* LayoutDemoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LayoutDemoView.h; sourceTree = "<group>"; };
 		31C5E72817877AF900AB361D /* LayoutDemoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LayoutDemoView.m; sourceTree = "<group>"; };
 		31C5E72A17877BBA00AB361D /* UIColor+my_projectColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+my_projectColors.h"; sourceTree = "<group>"; };
@@ -140,6 +141,16 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		316E1F7E178F35940029A7E5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				316E1F83178F35940029A7E5 /* CoreGraphics.framework in Frameworks */,
+				316E1F84178F35940029A7E5 /* UIKit.framework in Frameworks */,
+				316E1F82178F35940029A7E5 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		31C5E6EC178779AE00AB361D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -147,16 +158,6 @@
 				31C5E6F5178779AE00AB361D /* CoreGraphics.framework in Frameworks */,
 				31C5E6F7178779AE00AB361D /* UIKit.framework in Frameworks */,
 				31C5E6F3178779AE00AB361D /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		31C5E70D178779AE00AB361D /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				31C5E712178779AE00AB361D /* XCTest.framework in Frameworks */,
-				31C5E714178779AE00AB361D /* UIKit.framework in Frameworks */,
-				31C5E713178779AE00AB361D /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -180,6 +181,31 @@
 				316E1F75178E803B0029A7E5 /* FrameAnchor.m */,
 			);
 			name = Anchors;
+			sourceTree = "<group>";
+		};
+		316E1F85178F35940029A7E5 /* Autoresizing Scrollers */ = {
+			isa = PBXGroup;
+			children = (
+				316E1F8E178F35940029A7E5 /* AppDelegate.h */,
+				316E1F8F178F35940029A7E5 /* AppDelegate.m */,
+				316E1F91178F35940029A7E5 /* Main.storyboard */,
+				316E1FB4178F4CA40029A7E5 /* Demo1ViewController.h */,
+				316E1FB5178F4CA40029A7E5 /* Demo1ViewController.m */,
+				316E1F9A178F35940029A7E5 /* Images.xcassets */,
+				316E1F86178F35940029A7E5 /* Supporting Files */,
+			);
+			path = "Autoresizing Scrollers";
+			sourceTree = "<group>";
+		};
+		316E1F86178F35940029A7E5 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				316E1F87178F35940029A7E5 /* Autoresizing Scrollers-Info.plist */,
+				316E1F88178F35940029A7E5 /* InfoPlist.strings */,
+				316E1F8B178F35940029A7E5 /* main.m */,
+				316E1F8D178F35940029A7E5 /* Autoresizing Scrollers-Prefix.pch */,
+			);
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		3198D0A41788B0D700A8ED58 /* Control Panel */ = {
@@ -247,7 +273,7 @@
 			children = (
 				31C5E7331787DC2F00AB361D /* .gitignore */,
 				31C5E6F8178779AE00AB361D /* Cocoa Coder 1 */,
-				31C5E717178779AE00AB361D /* Cocoa Coder 1Tests */,
+				316E1F85178F35940029A7E5 /* Autoresizing Scrollers */,
 				31C5E6F1178779AE00AB361D /* Frameworks */,
 				31C5E6F0178779AE00AB361D /* Products */,
 			);
@@ -257,7 +283,7 @@
 			isa = PBXGroup;
 			children = (
 				31C5E6EF178779AE00AB361D /* Cocoa Coder 1.app */,
-				31C5E710178779AE00AB361D /* Cocoa Coder 1Tests.xctest */,
+				316E1F81178F35940029A7E5 /* Autoresizing Scrollers.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -315,27 +341,26 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		31C5E717178779AE00AB361D /* Cocoa Coder 1Tests */ = {
-			isa = PBXGroup;
-			children = (
-				31C5E71D178779AE00AB361D /* Cocoa_Coder_1Tests.m */,
-				31C5E718178779AE00AB361D /* Supporting Files */,
-			);
-			path = "Cocoa Coder 1Tests";
-			sourceTree = "<group>";
-		};
-		31C5E718178779AE00AB361D /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				31C5E719178779AE00AB361D /* Cocoa Coder 1Tests-Info.plist */,
-				31C5E71A178779AE00AB361D /* InfoPlist.strings */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		316E1F80178F35940029A7E5 /* Autoresizing Scrollers */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 316E1FAE178F35950029A7E5 /* Build configuration list for PBXNativeTarget "Autoresizing Scrollers" */;
+			buildPhases = (
+				316E1F7D178F35940029A7E5 /* Sources */,
+				316E1F7E178F35940029A7E5 /* Frameworks */,
+				316E1F7F178F35940029A7E5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Autoresizing Scrollers";
+			productName = "Autoresizing Scrollers";
+			productReference = 316E1F81178F35940029A7E5 /* Autoresizing Scrollers.app */;
+			productType = "com.apple.product-type.application";
+		};
 		31C5E6EE178779AE00AB361D /* Cocoa Coder 1 */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 31C5E721178779AE00AB361D /* Build configuration list for PBXNativeTarget "Cocoa Coder 1" */;
@@ -353,24 +378,6 @@
 			productReference = 31C5E6EF178779AE00AB361D /* Cocoa Coder 1.app */;
 			productType = "com.apple.product-type.application";
 		};
-		31C5E70F178779AE00AB361D /* Cocoa Coder 1Tests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 31C5E724178779AE00AB361D /* Build configuration list for PBXNativeTarget "Cocoa Coder 1Tests" */;
-			buildPhases = (
-				31C5E70C178779AE00AB361D /* Sources */,
-				31C5E70D178779AE00AB361D /* Frameworks */,
-				31C5E70E178779AE00AB361D /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				31C5E716178779AE00AB361D /* PBXTargetDependency */,
-			);
-			name = "Cocoa Coder 1Tests";
-			productName = "Cocoa Coder 1Tests";
-			productReference = 31C5E710178779AE00AB361D /* Cocoa Coder 1Tests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -379,11 +386,6 @@
 			attributes = {
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Rob Mayoff";
-				TargetAttributes = {
-					31C5E70F178779AE00AB361D = {
-						TestTargetID = 31C5E6EE178779AE00AB361D;
-					};
-				};
 			};
 			buildConfigurationList = 31C5E6EA178779AE00AB361D /* Build configuration list for PBXProject "Cocoa Coder 1" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -399,12 +401,22 @@
 			projectRoot = "";
 			targets = (
 				31C5E6EE178779AE00AB361D /* Cocoa Coder 1 */,
-				31C5E70F178779AE00AB361D /* Cocoa Coder 1Tests */,
+				316E1F80178F35940029A7E5 /* Autoresizing Scrollers */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		316E1F7F178F35940029A7E5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				316E1F9B178F35940029A7E5 /* Images.xcassets in Resources */,
+				316E1F8A178F35940029A7E5 /* InfoPlist.strings in Resources */,
+				316E1F93178F35940029A7E5 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		31C5E6ED178779AE00AB361D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -415,17 +427,19 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		31C5E70E178779AE00AB361D /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				31C5E71C178779AE00AB361D /* InfoPlist.strings in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		316E1F7D178F35940029A7E5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				316E1F90178F35940029A7E5 /* AppDelegate.m in Sources */,
+				316E1FB6178F4CA40029A7E5 /* Demo1ViewController.m in Sources */,
+				316E1F8C178F35940029A7E5 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		31C5E6EB178779AE00AB361D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -463,25 +477,25 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		31C5E70C178779AE00AB361D /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				31C5E71E178779AE00AB361D /* Cocoa_Coder_1Tests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXTargetDependency section */
-		31C5E716178779AE00AB361D /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 31C5E6EE178779AE00AB361D /* Cocoa Coder 1 */;
-			targetProxy = 31C5E715178779AE00AB361D /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
 /* Begin PBXVariantGroup section */
+		316E1F88178F35940029A7E5 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				316E1F89178F35940029A7E5 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		316E1F91178F35940029A7E5 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				316E1F92178F35940029A7E5 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
 		31C5E6FB178779AE00AB361D /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -498,17 +512,43 @@
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		31C5E71A178779AE00AB361D /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				31C5E71B178779AE00AB361D /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		316E1FAF178F35950029A7E5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Autoresizing Scrollers/Autoresizing Scrollers-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Autoresizing Scrollers/Autoresizing Scrollers-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		316E1FB0178F35950029A7E5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Autoresizing Scrollers/Autoresizing Scrollers-Prefix.pch";
+				INFOPLIST_FILE = "Autoresizing Scrollers/Autoresizing Scrollers-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
 		31C5E71F178779AE00AB361D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -607,49 +647,17 @@
 			};
 			name = Release;
 		};
-		31C5E725178779AE00AB361D /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Cocoa Coder 1.app/Cocoa Coder 1";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(SYSTEM_APPS_DIR)/Xcode5-DP2.app/Contents/Developer/Library/Frameworks",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Cocoa Coder 1/Cocoa Coder 1-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "Cocoa Coder 1Tests/Cocoa Coder 1Tests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Debug;
-		};
-		31C5E726178779AE00AB361D /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Cocoa Coder 1.app/Cocoa Coder 1";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(SYSTEM_APPS_DIR)/Xcode5-DP2.app/Contents/Developer/Library/Frameworks",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Cocoa Coder 1/Cocoa Coder 1-Prefix.pch";
-				INFOPLIST_FILE = "Cocoa Coder 1Tests/Cocoa Coder 1Tests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		316E1FAE178F35950029A7E5 /* Build configuration list for PBXNativeTarget "Autoresizing Scrollers" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				316E1FAF178F35950029A7E5 /* Debug */,
+				316E1FB0178F35950029A7E5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		31C5E6EA178779AE00AB361D /* Build configuration list for PBXProject "Cocoa Coder 1" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -664,15 +672,6 @@
 			buildConfigurations = (
 				31C5E722178779AE00AB361D /* Debug */,
 				31C5E723178779AE00AB361D /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		31C5E724178779AE00AB361D /* Build configuration list for PBXNativeTarget "Cocoa Coder 1Tests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				31C5E725178779AE00AB361D /* Debug */,
-				31C5E726178779AE00AB361D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

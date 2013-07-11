@@ -4,6 +4,16 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Autoresizing Scrollers.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
+		<key>Cocoa Coder 1 Release.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 		<key>Cocoa Coder 1.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -12,6 +22,16 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>316E1F80178F35940029A7E5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>316E1F9F178F35950029A7E5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>31C5E6EE178779AE00AB361D</key>
 		<dict>
 			<key>primary</key>
