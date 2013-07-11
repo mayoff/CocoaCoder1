@@ -155,6 +155,7 @@
 		31D3E2DA1788016C00C7E666 /* UIView+Rob_FindAncestor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Rob_FindAncestor.m"; sourceTree = "<group>"; };
 		31D3E2DC17889F0800C7E666 /* DottedLayoutDemoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DottedLayoutDemoView.h; sourceTree = "<group>"; };
 		31D3E2DD17889F0900C7E666 /* DottedLayoutDemoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DottedLayoutDemoView.m; sourceTree = "<group>"; };
+		31DA1F6D178F77C50003D2CB /* Cocoa Coder View Layout Tips.key */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cocoa Coder View Layout Tips.key"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -321,6 +322,7 @@
 		31C5E6E6178779AE00AB361D = {
 			isa = PBXGroup;
 			children = (
+				31DA1F6D178F77C50003D2CB /* Cocoa Coder View Layout Tips.key */,
 				31C5E7331787DC2F00AB361D /* .gitignore */,
 				31C5E6F8178779AE00AB361D /* Cocoa Coder 1 */,
 				316E1F85178F35940029A7E5 /* Autoresizing Scrollers */,
