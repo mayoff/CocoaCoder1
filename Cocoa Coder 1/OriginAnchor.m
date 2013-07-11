@@ -22,10 +22,6 @@ Copyright (c) 2013 Rob Mayoff. All rights reserved.
     return self;
 }
 
-+ (NSSet *)keyPathsForValuesAffectingPoint {
-    return [NSSet setWithArray:@[@"observedView.bounds", @"observedView.center", @"observedView.frame"]];
-}
-
 - (CGPoint)pointInView:(UIView *)view {
     return [self.observedView convertPoint:CGPointZero toView:view];
 }
