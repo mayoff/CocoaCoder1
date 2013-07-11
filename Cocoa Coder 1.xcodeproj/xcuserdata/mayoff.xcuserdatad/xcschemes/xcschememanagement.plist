@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Auto Layout Scrollers.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>3</integer>
+		</dict>
 		<key>Autoresizing Scrollers.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -12,7 +17,7 @@
 		<key>Cocoa Coder 1 Release.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>1</integer>
+			<integer>2</integer>
 		</dict>
 		<key>Cocoa Coder 1.xcscheme</key>
 		<dict>
@@ -28,6 +33,16 @@
 			<true/>
 		</dict>
 		<key>316E1F9F178F35950029A7E5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>316E1FBA178F63E00029A7E5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>316E1FD9178F63E00029A7E5</key>
 		<dict>
 			<key>primary</key>
 			<true/>
