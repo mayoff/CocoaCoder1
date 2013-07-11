@@ -26,10 +26,4 @@
     return [_view convertPoint:point toView:targetView];
 }
 
-#pragma mark - Implementation details
-
-+ (NSSet *)keyPathsForValuesAffectingPoint {
-    return [NSSet setWithArray:@[@"view.center", @"view.bounds", @"view.frame" ]];
-}
-
 @end

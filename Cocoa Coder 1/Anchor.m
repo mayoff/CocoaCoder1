@@ -9,6 +9,4 @@
     [self doesNotRecognizeSelector:_cmd]; abort();
 }
 
-@dynamic point;
-
 @end
